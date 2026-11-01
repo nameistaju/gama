@@ -163,7 +163,7 @@ function ApiIntegrationsDemo({ className }) {
   return (
     <div
       className={cn(
-        "relative flex h-[310px] sm:h-[330px] w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white to-slate-50/90 p-3 sm:p-6 border border-slate-200/80 shadow-[inset_0_1px_3px_rgba(0,0,0,0.03)]",
+        "relative flex h-[310px] sm:h-[330px] w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white/80 to-slate-50/60 p-3 sm:p-6",
         className
       )}
       ref={containerRef}
@@ -243,7 +243,7 @@ function MultiChannelAutomationDemo() {
   return (
     <div
       ref={containerRef}
-      className="relative flex h-[310px] sm:h-[330px] w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white to-slate-50/90 p-3 sm:p-6 border border-slate-200/80 shadow-[inset_0_1px_3px_rgba(0,0,0,0.03)]"
+      className="relative flex h-[310px] sm:h-[330px] w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white/80 to-slate-50/60 p-3 sm:p-6"
     >
       <div className="absolute inset-0 bg-[radial-gradient(#8B5CF6_1px,transparent_1px)] [background-size:22px_22px] opacity-10 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-gradient-to-r from-[#8B5CF6]/12 via-[#EC4899]/8 to-[#00D4FF]/12 rounded-full blur-3xl pointer-events-none" />
@@ -304,60 +304,118 @@ function MultiChannelAutomationDemo() {
 // 3. Trusted Authentication Security Shield Demo (Light Theme)
 // ==========================================
 function TrustedAuthenticationDemo() {
-  const tagsRow1 = ["Infrastructure", "Cognitive AI", "Zero Trust", "OAuth 2.0", "Data Pipelines"];
-  const tagsRow2 = ["SOC-2 Compliant", "End-to-End Encrypted", "Intelligent Agents", "Multi-Tenant"];
-  const tagsRow3 = ["Role-Based Access", "Audit Trails", "Real-Time Telemetry", "Vault Secrets"];
+  const tagsRow1 = [
+    "Infrastructure",
+    "Cognitive AI",
+    "Zero Trust",
+    "OAuth 2.0",
+    "Data Pipelines",
+    "Cloud Native",
+    "Kubernetes",
+  ];
+  const tagsRow2 = [
+    "SOC-2 Compliant",
+    "End-to-End Encrypted",
+    "Intelligent Agents",
+    "Multi-Tenant",
+    "mTLS Security",
+    "OWASP Top 10",
+  ];
+  const tagsRow3 = [
+    "Role-Based Access",
+    "Audit Trails",
+    "Real-Time Telemetry",
+    "Vault Secrets",
+    "Hardware KMS",
+    "ISO 27001",
+  ];
 
   return (
-    <div className="relative flex h-[310px] sm:h-[330px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white to-slate-50/90 p-3 sm:p-6 border border-slate-200/80 shadow-[inset_0_1px_3px_rgba(0,0,0,0.03)]">
+    <div className="relative flex h-[310px] sm:h-[330px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white/80 to-slate-50/60 p-3 sm:p-6">
+      <style>{`
+        @keyframes bento-marquee-left {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes bento-marquee-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0%); }
+        }
+        .bento-marquee-row-left {
+          display: flex;
+          width: max-content;
+          will-change: transform;
+          animation: bento-marquee-left 25s linear infinite;
+        }
+        .bento-marquee-row-right {
+          display: flex;
+          width: max-content;
+          will-change: transform;
+          animation: bento-marquee-right 30s linear infinite;
+        }
+        .bento-marquee-row-left-slow {
+          display: flex;
+          width: max-content;
+          will-change: transform;
+          animation: bento-marquee-left 28s linear infinite;
+        }
+      `}</style>
+
       {/* Background Prism Light Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#0457DF]/10 via-[#8B5CF6]/8 to-[#00D4FF]/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Floating Tag Rows */}
-      <div className="w-full flex flex-col gap-2 sm:gap-3 pointer-events-none select-none">
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-          {tagsRow1.map((tag, i) => (
-            <span
-              key={i}
-              className="px-2.5 py-1 rounded-full text-[11px] font-mono tracking-wide bg-white/90 border border-slate-200/90 text-slate-700 shadow-sm backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
+      {/* Looping Marquee Tag Rows with gradient fade edges */}
+      <div className="w-full flex flex-col gap-3 sm:gap-4 pointer-events-none select-none [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
+        {/* Row 1 - Left Marquee */}
+        <div className="w-full overflow-hidden flex">
+          <div className="bento-marquee-row-left flex items-center gap-2.5 sm:gap-3">
+            {[...tagsRow1, ...tagsRow1].map((tag, i) => (
+              <span
+                key={i}
+                className="px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-mono tracking-wide bg-white/95 border border-slate-200/90 text-slate-700 shadow-sm backdrop-blur-sm whitespace-nowrap shrink-0"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-          {tagsRow2.map((tag, i) => (
-            <span
-              key={i}
-              className="px-3 py-1.5 rounded-full text-[11px] font-mono tracking-wide bg-white border border-slate-200 text-slate-800 shadow-sm backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
+
+        {/* Row 2 - Right Marquee */}
+        <div className="w-full overflow-hidden flex">
+          <div className="bento-marquee-row-right flex items-center gap-2.5 sm:gap-3">
+            {[...tagsRow2, ...tagsRow2].map((tag, i) => (
+              <span
+                key={i}
+                className="px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-mono tracking-wide bg-white border border-slate-200 text-slate-800 shadow-sm backdrop-blur-sm whitespace-nowrap shrink-0"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-          {tagsRow3.map((tag, i) => (
-            <span
-              key={i}
-              className="px-2.5 py-1 rounded-full text-[11px] font-mono tracking-wide bg-white/90 border border-slate-200/90 text-slate-700 shadow-sm backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
+
+        {/* Row 3 - Left Marquee */}
+        <div className="w-full overflow-hidden flex">
+          <div className="bento-marquee-row-left-slow flex items-center gap-2.5 sm:gap-3">
+            {[...tagsRow3, ...tagsRow3].map((tag, i) => (
+              <span
+                key={i}
+                className="px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-mono tracking-wide bg-white/95 border border-slate-200/90 text-slate-700 shadow-sm backdrop-blur-sm whitespace-nowrap shrink-0"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Center Radiant Security Shield with Prism Refraction */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+      {/* Center Radiant Security Shield with Prism Refraction (Enterprise Verified pill removed) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center pointer-events-none">
         <div className="relative flex items-center justify-center">
           <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-[#0457DF] via-[#00D4FF] via-[#8B5CF6] to-[#EC4899] opacity-45 blur-xl animate-pulse" />
-          <div className="relative flex size-16 sm:size-20 items-center justify-center rounded-full border-2 border-blue-200/80 bg-gradient-to-br from-white to-blue-50/70 shadow-[0_8px_30px_rgba(4,87,223,0.25)]">
+          <div className="relative flex size-16 sm:size-20 items-center justify-center rounded-full border-2 border-blue-200/80 bg-gradient-to-br from-white to-blue-50/80 shadow-[0_8px_30px_rgba(4,87,223,0.25)] backdrop-blur-sm">
             <ShieldCheck className="w-8 h-8 sm:w-9 sm:h-9 text-[#0457DF] drop-shadow-[0_2px_8px_rgba(4,87,223,0.3)]" />
           </div>
-        </div>
-        <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold shadow-sm backdrop-blur-md">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-          Enterprise Verified
         </div>
       </div>
     </div>
@@ -369,7 +427,7 @@ function TrustedAuthenticationDemo() {
 // ==========================================
 function VisualWorkflowDesignerDemo() {
   return (
-    <div className="relative flex h-[310px] sm:h-[330px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white to-slate-50/90 p-3 sm:p-5 border border-slate-200/80 shadow-[inset_0_1px_3px_rgba(0,0,0,0.03)]">
+    <div className="relative flex h-[310px] sm:h-[330px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-white/80 to-slate-50/60 p-3 sm:p-5">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#8B5CF6]/10 via-[#00D4FF]/8 to-[#EC4899]/10 rounded-full blur-3xl pointer-events-none" />
 
