@@ -504,11 +504,18 @@ export default function AIWorkforceSection({ onOpenContact }) {
       rowSpan: 1,
       content: (
         <div className="flex flex-col h-full w-full justify-between">
-          <div className="flex flex-col items-center text-center mb-4 pt-1">
+          <div className="flex flex-col items-center text-center mb-4 pt-1 w-full">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Seamless API Integrations
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-2 max-w-md">
+            <div
+              className="w-full max-w-md h-[1px] my-3 select-none pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(100, 116, 139, 0.35) 12%, rgba(100, 116, 139, 0.75) 50%, rgba(100, 116, 139, 0.35) 88%, transparent 100%)",
+              }}
+            />
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md">
               GAMA natively interconnects with your preferred tools, data warehouses, and messaging services.
             </p>
           </div>
@@ -524,11 +531,18 @@ export default function AIWorkforceSection({ onOpenContact }) {
       rowSpan: 1,
       content: (
         <div className="flex flex-col h-full w-full justify-between">
-          <div className="flex flex-col items-center text-center mb-4 pt-1">
+          <div className="flex flex-col items-center text-center mb-4 pt-1 w-full">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Trusted Authentication
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-2 max-w-md">
+            <div
+              className="w-full max-w-md h-[1px] my-3 select-none pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(100, 116, 139, 0.35) 12%, rgba(100, 116, 139, 0.75) 50%, rgba(100, 116, 139, 0.35) 88%, transparent 100%)",
+              }}
+            />
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md">
               Quickly integrate enterprise platforms to active workflows with bank-grade security protocols.
             </p>
           </div>
@@ -544,11 +558,18 @@ export default function AIWorkforceSection({ onOpenContact }) {
       rowSpan: 1,
       content: (
         <div className="flex flex-col h-full w-full justify-between">
-          <div className="flex flex-col items-center text-center mb-4 pt-1">
+          <div className="flex flex-col items-center text-center mb-4 pt-1 w-full">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Multi-Channel Automation
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-2 max-w-md">
+            <div
+              className="w-full max-w-md h-[1px] my-3 select-none pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(100, 116, 139, 0.35) 12%, rgba(100, 116, 139, 0.75) 50%, rgba(100, 116, 139, 0.35) 88%, transparent 100%)",
+              }}
+            />
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md">
               Trigger synchronized emails, webhooks, Slack alerts, and background jobs automatically.
             </p>
           </div>
@@ -564,11 +585,18 @@ export default function AIWorkforceSection({ onOpenContact }) {
       rowSpan: 1,
       content: (
         <div className="flex flex-col h-full w-full justify-between">
-          <div className="flex flex-col items-center text-center mb-4 pt-1">
+          <div className="flex flex-col items-center text-center mb-4 pt-1 w-full">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
               Visual Workflow Designer
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-2 max-w-md">
+            <div
+              className="w-full max-w-md h-[1px] my-3 select-none pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(100, 116, 139, 0.35) 12%, rgba(100, 116, 139, 0.75) 50%, rgba(100, 116, 139, 0.35) 88%, transparent 100%)",
+              }}
+            />
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md">
               Drag-and-drop AI actions to construct autonomous decision loops with real-time accuracy tracking.
             </p>
           </div>
