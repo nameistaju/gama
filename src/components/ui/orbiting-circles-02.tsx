@@ -77,7 +77,7 @@ export default function OrbitingCirclesGlobeDemo() {
         return (
           <div
             key={index}
-            className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border border-slate-200/90 dark:border-border/70 ${orbit.size}`}
+            className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border-[1.5px] border-slate-400/80 dark:border-slate-600 ${orbit.size}`}
           >
             {allIcons.map((iconData, iconIndex) => (
               <div
