@@ -84,6 +84,7 @@ export default function App() {
         {/* 4. Interactive ScrollExpand Showcase (expand.png) */}
         <ScrollExpand
           src="/expand.png"
+          mobileSrc="/expand_mobile.png.png"
           alt="GAMA Software - Don't follow the future. Build it."
           title="Don't follow the future. Build it."
           scrollHint="Scroll to expand"

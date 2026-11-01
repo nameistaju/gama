@@ -12,6 +12,7 @@ const smoothstep = (edge0, edge1, x) => {
 
 export default function ScrollExpand({
   src = '',
+  mobileSrc = '',
   mediaType = 'image',
   poster = '',
   alt = '',
@@ -43,6 +44,21 @@ export default function ScrollExpand({
   const scrimRef = useRef(null);
   const hintRef = useRef(null);
 
+  const [activeSrc, setActiveSrc] = React.useState(src);
+
+  useEffect(() => {
+    if (!mobileSrc) {
+      setActiveSrc(src);
+      return;
+    }
+    const updateSrc = () => {
+      setActiveSrc(window.innerWidth < 768 ? mobileSrc : src);
+    };
+    updateSrc();
+    window.addEventListener('resize', updateSrc);
+    return () => window.removeEventListener('resize', updateSrc);
+  }, [src, mobileSrc]);
+
   const propsRef = useRef({});
   propsRef.current = {
     startWidth,
@@ -67,11 +83,16 @@ export default function ScrollExpand({
     // Smoothstep expansion from 0 to 1
     const e = smoothstep(0, 1, p);
 
-    const w = c.startWidth + (100 - c.startWidth) * e;
-    const h = c.startHeight + (100 - c.startHeight) * e;
+    const isMobile = window.innerWidth < 768;
+    const sWidth = isMobile ? 50 : c.startWidth;
+    const sHeight = isMobile ? 62 : c.startHeight;
+    const sRadius = isMobile ? 24 : c.startRadius;
+
+    const w = sWidth + (100 - sWidth) * e;
+    const h = sHeight + (100 - sHeight) * e;
     const ix = Math.max(0, (100 - w) / 2);
     const iy = Math.max(0, (100 - h) / 2);
-    const r = c.startRadius + (c.endRadius - c.startRadius) * e;
+    const r = sRadius + (c.endRadius - sRadius) * e;
 
     frame.style.clipPath = `inset(${iy}% ${ix}% ${iy}% ${ix}% round ${r}px)`;
     media.style.transform = `scale(${c.mediaZoom + (1 - c.mediaZoom) * e})`;
@@ -192,7 +213,7 @@ export default function ScrollExpand({
       <video
         ref={mediaRef}
         className="scroll-expand__media"
-        src={src}
+        src={activeSrc}
         poster={poster}
         autoPlay
         muted
@@ -200,7 +221,7 @@ export default function ScrollExpand({
         playsInline
       />
     ) : (
-      <img ref={mediaRef} className="scroll-expand__media" src={src} alt={alt} draggable={false} />
+      <img ref={mediaRef} className="scroll-expand__media" src={activeSrc} alt={alt} draggable={false} />
     );
 
   return (

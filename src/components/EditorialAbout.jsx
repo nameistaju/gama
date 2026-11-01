@@ -74,12 +74,12 @@ export default function EditorialAbout() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: isMobile ? 'top 80%' : 'top top',
-          end: isMobile ? 'bottom 40%' : '+=1600',
-          pin: !isMobile,
-          pinSpacing: !isMobile,
-          scrub: isMobile ? 0.4 : 0.8,
-          anticipatePin: isMobile ? 0 : 1,
+          start: 'top top',
+          end: isMobile ? '+=1200' : '+=1600',
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.8,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
@@ -126,13 +126,13 @@ export default function EditorialAbout() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full bg-[#F8FAFC] py-14 sm:py-20 md:py-0 md:h-[100dvh] md:min-h-screen px-4 sm:px-8 md:px-12 overflow-hidden flex flex-col items-center justify-center z-10"
+      className="relative w-full bg-[#F8FAFC] h-[100dvh] min-h-[100dvh] px-4 sm:px-8 md:px-12 overflow-hidden flex flex-col items-center justify-center z-10"
     >
       {/* Editorial Statement styled with GAMA logo chromatic palette */}
       <div className="relative w-full max-w-5xl mx-auto text-left sm:text-center px-2 sm:px-6">
         <p
           ref={textRef}
-          className="font-sans text-[16px] xs:text-[17px] sm:text-[22px] md:text-[36px] lg:text-[44px] font-semibold text-[#0F172A] leading-[1.68] sm:leading-[1.5] md:leading-[1.38] tracking-normal md:tracking-[-0.025em] select-none"
+          className="font-sans text-[17px] xs:text-[19px] sm:text-[22px] md:text-[36px] lg:text-[44px] font-semibold text-[#0F172A] leading-[1.68] sm:leading-[1.5] md:leading-[1.38] tracking-normal md:tracking-[-0.025em] select-none"
         >
           {segments.map((segment, sIdx) => {
             const hasColor = Boolean(segment.color);
@@ -163,7 +163,7 @@ export default function EditorialAbout() {
 
                 {/* Aesthetic 1:1 Transparent Sticker Image */}
                 {segment.image && (
-                  <span className="about-badge inline-flex items-center justify-center w-6 h-6 xs:w-7 xs:h-7 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-16 lg:h-16 align-middle mx-1 sm:mx-2 md:mx-2.5 -mt-0.5 sm:-mt-1 md:-mt-2 select-none relative group/badge cursor-pointer">
+                  <span className="about-badge inline-flex items-center justify-center w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-16 lg:h-16 align-middle mx-1 sm:mx-2 md:mx-2.5 -mt-0.5 sm:-mt-1 md:-mt-2 select-none relative group/badge cursor-pointer">
                     <img
                       src={segment.image}
                       alt={segment.alt || ''}

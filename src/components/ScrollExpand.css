@@ -112,3 +112,15 @@
   will-change: opacity, transform;
   z-index: 6;
 }
+
+@media (max-width: 767px) {
+  .scroll-expand__stage {
+    --se-title-size: clamp(1.75rem, 6.5vw, 2.75rem);
+  }
+  .scroll-expand__frame {
+    clip-path: inset(19% 25% 19% 25% round 24px);
+  }
+  .scroll-expand__title {
+    padding: 0 12%;
+  }
+}
