@@ -60,7 +60,7 @@ export default function Hero({ onOpenContact }) {
       </div>
 
       {/* Hero Content Container: Positioned cleanly ABOVE the hands on mobile, centered on desktop */}
-      <div className="absolute top-[11%] xs:top-[12%] sm:top-[42%] md:top-[43%] left-1/2 -translate-x-1/2 z-20 w-full max-w-4xl px-4 sm:px-6 text-center flex flex-col items-center pointer-events-none select-none">
+      <div className="absolute top-[11%] xs:top-[12%] sm:top-[38%] md:top-[39%] lg:top-[40%] left-1/2 -translate-x-1/2 z-30 w-full max-w-4xl px-4 sm:px-6 text-center flex flex-col items-center pointer-events-none select-none">
         {/* Refined Headline: responsive scaling */}
         <h1
           className="font-sans font-bold tracking-tight text-white leading-[1.22] sm:leading-[1.18] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] max-w-3xl text-[1.24rem] xs:text-[1.38rem] sm:text-[2rem] md:text-[clamp(1.6rem,3.2vw,3rem)]"
@@ -90,8 +90,8 @@ export default function Hero({ onOpenContact }) {
         </div>
       </div>
 
-      {/* Seamless Progressive Bottom Dissolve: hidden on mobile per user instruction, active on desktop */}
-      <div className="hidden sm:block absolute bottom-0 left-0 w-full sm:h-32 md:h-52 lg:h-64 bg-gradient-to-b from-transparent via-[#000000]/60 to-[#F8FAFC] pointer-events-none z-30" />
+      {/* Seamless Progressive Bottom Dissolve: positioned strictly below the button & earth at the section edge */}
+      <div className="hidden sm:block absolute bottom-0 left-0 w-full h-16 sm:h-20 md:h-24 bg-gradient-to-b from-transparent to-[#F8FAFC] pointer-events-none z-20" />
     </section>
   );
 }
