@@ -1,6 +1,7 @@
 import React from 'react';
 import Prism from './ui/Prism';
 import { Globe, GlobeSvg, GlobeGlow } from './ui/globe';
+import TextHighlight from './ui/text-highlight';
 
 export default function Hero({ onOpenContact }) {
   const scrollToServices = () => {
@@ -64,7 +65,11 @@ export default function Hero({ onOpenContact }) {
         <h1
           className="font-sans font-bold tracking-tight text-white leading-[1.22] sm:leading-[1.18] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] max-w-3xl text-[1.24rem] xs:text-[1.38rem] sm:text-[2rem] md:text-[clamp(1.6rem,3.2vw,3rem)]"
         >
-          Where human ingenuity meets machine precision,<br className="hidden sm:inline" />{' '}
+          Where human ingenuity meets{' '}
+          <TextHighlight color="#fde047" delay={0.3}>
+            machine precision
+          </TextHighlight>
+          ,<br className="hidden sm:inline" />{' '}
           the future of software takes shape
         </h1>
 

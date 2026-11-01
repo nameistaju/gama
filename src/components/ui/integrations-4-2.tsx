@@ -2,6 +2,7 @@
 
 import React from "react";
 import OrbitingCirclesGlobeDemo from "@/components/ui/orbiting-circles-02";
+import TextHighlight from "@/components/ui/text-highlight";
 
 export function Integrations() {
   return (
@@ -13,7 +14,7 @@ export function Integrations() {
         {/* Header Content */}
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-4">
           <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl text-[#0F172A] tracking-tight leading-tight">
-            Tech Stack We Use
+            <TextHighlight color="#fde047">Tech Stack</TextHighlight> We Use
           </h2>
           <p className="text-base sm:text-lg text-slate-500 leading-relaxed font-normal max-w-2xl mx-auto">
             From modern reactive frontends and distributed cloud architectures to frontier AI models and automated CI/CD pipelines — engineered for resilience, speed, and scale.

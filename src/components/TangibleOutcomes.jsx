@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, MessageSquare, Sparkles, Terminal, Cpu } from 'lucide-react';
+import TextHighlight from './ui/text-highlight';
 
 // 4 Core Capabilities using the exact colors from the GAMA Logo
 const outcomes = [
@@ -71,7 +72,7 @@ export default function TangibleOutcomes({ onOpenContact }) {
         {/* Top Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-8 sm:mb-12 pb-4">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-[#0F172A]">
-            See tangible outcomes
+            See <TextHighlight color="#fde047">tangible outcomes</TextHighlight>
           </h2>
           <span className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-slate-600 font-bold">
             WHAT WE DO

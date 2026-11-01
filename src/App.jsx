@@ -14,6 +14,7 @@ import ContactModal from './components/ContactModal';
 import GamaLoader from './components/GamaLoader';
 import GlobeSection from './components/GlobeSection';
 import TangibleOutcomes from './components/TangibleOutcomes';
+import TextHighlight from './components/ui/text-highlight';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -86,7 +87,12 @@ export default function App() {
           src="/expand.png"
           mobileSrc="/expand_mobile.png.png"
           alt="GAMA Software - Don't follow the future. Build it."
-          title="Don't follow the future. Build it."
+          title={(
+            <>
+              Don't follow the future.{' '}
+              <TextHighlight color="#fde047">Build it.</TextHighlight>
+            </>
+          )}
           scrollHint="Scroll to expand"
           startWidth={46}
           startHeight={58}

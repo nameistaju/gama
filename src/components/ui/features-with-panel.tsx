@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Sparkles, Maximize2, Volume2, VolumeX } from "lucide-react";
+import TextHighlight from "@/components/ui/text-highlight";
 
 interface StepItem {
   id: number;
@@ -161,7 +162,7 @@ export default function FeaturesWithPanel() {
           {/* Section Heading */}
           <div className="order-1 md:col-start-1 md:row-start-1">
             <h2 className="text-4xl font-bold tracking-tight text-[#0F172A] md:text-5xl lg:text-6xl mb-6 md:mb-10">
-              How We Build.
+              How We <TextHighlight color="#fde047">Build.</TextHighlight>
             </h2>
           </div>
 
