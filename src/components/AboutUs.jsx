@@ -72,38 +72,13 @@ export default function AboutUs({ onOpenContact }) {
 
           {/* Right Column: Corporate Handshake Over Colorful Logo Image */}
           <div className="lg:col-span-6 w-full flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl group">
-              {/* Backlight Glow matching GAMA multicolored ribbon palette */}
-              <div
-                className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#0457DF]/40 via-[#00D4FF]/30 to-[#FD9705]/30 blur-2xl opacity-60 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none"
-                aria-hidden="true"
+            <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl">
+              <img
+                src="/Corporate Handshake Over Colorful Logo.png"
+                alt="Corporate Handshake Over Colorful GAMA Logo"
+                className="w-full h-auto object-contain select-none pointer-events-none rounded-2xl"
+                loading="lazy"
               />
-
-              {/* Image Frame Container */}
-              <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] transition-transform duration-500 group-hover:scale-[1.015]">
-                <img
-                  src="/Corporate Handshake Over Colorful Logo.png"
-                  alt="Corporate Handshake Over Colorful GAMA Logo"
-                  className="w-full h-auto object-cover aspect-square select-none pointer-events-none"
-                  loading="lazy"
-                />
-
-                {/* Subtle Glassmorphic Overlay Gradient at the bottom */}
-                <div
-                  className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"
-                  aria-hidden="true"
-                />
-
-                {/* Bottom Caption Pill */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-4 py-2.5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-md">
-                  <span className="text-xs sm:text-sm font-medium text-white/90">
-                    Trusted Enterprise Engineering
-                  </span>
-                  <span className="text-[11px] sm:text-xs text-[#38BDF8] font-semibold">
-                    Global Partnerships
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
