@@ -640,7 +640,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                   <button
                     onClick={() => {
                       setActiveMegaMenu(null);
-                      onNavigate('about');
+                      onNavigate('values');
                     }}
                     className="group flex items-center justify-between p-4 rounded-2xl hover:bg-white/[0.06] transition-all cursor-pointer text-left pt-5"
                   >
@@ -799,7 +799,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                 <button
                   onClick={() => {
                     closeMenu();
-                    onNavigate('about');
+                    onNavigate('values');
                   }}
                   className="w-full text-left text-xs py-2 px-2.5 hover:bg-slate-50 rounded-lg text-slate-700 flex items-center justify-between"
                 >

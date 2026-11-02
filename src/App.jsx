@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
+import ValuesPage from './components/ValuesPage';
 import SolutionsSection from './components/SolutionsSection';
 import CurvedMarquee from './components/CurvedMarquee';
 import EditorialAbout from './components/EditorialAbout';
@@ -22,6 +23,25 @@ export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
   const [loaderComplete, setLoaderComplete] = useState(false);
   const [selectedService, setSelectedService] = useState('');
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#values') {
+      return 'values';
+    }
+    return 'home';
+  });
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#values') {
+        setCurrentView('values');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (window.location.hash === '' || window.location.hash === '#home') {
+        setCurrentView('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   const handleOpenContact = (service = '') => {
     if (typeof service === 'string' && service) {
@@ -30,27 +50,67 @@ export default function App() {
     setContactOpen(true);
   };
 
-  // Smooth scroll handler for homepage navigation
+  // Smooth scroll and view handler
   const handleNavigate = (target) => {
     if (target === 'contact') {
       setContactOpen(true);
       return;
     }
 
-    if (target === 'home') {
+    if (target === 'values') {
+      setCurrentView('values');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      try {
+        window.history.pushState(null, '', '#values');
+      } catch (e) {}
+      return;
+    }
+
+    if (target === 'home') {
+      if (currentView !== 'home') {
+        setCurrentView('home');
+        try {
+          window.history.pushState(null, '', '#');
+        } catch (e) {}
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (currentView !== 'home') {
+      setCurrentView('home');
+      try {
+        window.history.pushState(null, '', '#');
+      } catch (e) {}
+      setTimeout(() => {
+        const elementMap = {
+          capabilities: 'services',
+          'what-we-do': 'solutions',
+          solutions: 'solutions',
+          industries: 'solutions',
+          services: 'solutions',
+          'who-we-are': 'about',
+          brand: 'about',
+          about: 'about',
+          faq: 'faq',
+        };
+        const targetId = elementMap[target] || target;
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
       return;
     }
 
     const elementMap = {
       capabilities: 'services',
       'what-we-do': 'solutions',
-      'solutions': 'solutions',
-      'industries': 'solutions',
-      'services': 'solutions',
+      solutions: 'solutions',
+      industries: 'solutions',
+      services: 'solutions',
       'who-we-are': 'about',
-      'brand': 'about-brand',
-      'values': 'about-values',
+      brand: 'about',
       about: 'about',
       faq: 'faq',
     };
@@ -72,14 +132,26 @@ export default function App() {
       {/* Top Header & Navigation Bar */}
       <Navbar
         onOpenContact={() => setContactOpen(true)}
-        currentView="home"
+        currentView={currentView}
         onNavigate={handleNavigate}
       />
 
-      {/* Main Home Page Sections */}
-      <main>
-        {/* 1. Hero Headline & Video Showcase (Fits in 1 Glance / 100vh) */}
-        <Hero onOpenContact={() => setContactOpen(true)} />
+      {currentView === 'values' ? (
+        <main>
+          <ValuesPage
+            onOpenContact={handleOpenContact}
+            onBackHome={() => handleNavigate('home')}
+          />
+          <Footer
+            onOpenContact={() => setContactOpen(true)}
+            onNavigate={handleNavigate}
+          />
+        </main>
+      ) : (
+        /* Main Home Page Sections */
+        <main>
+          {/* 1. Hero Headline & Video Showcase (Fits in 1 Glance / 100vh) */}
+          <Hero onOpenContact={() => setContactOpen(true)} />
 
         {/* About Us Section: Inspired by TCS Who We Are (Brand & Values) */}
         <AboutUs onOpenContact={handleOpenContact} />
@@ -152,6 +224,7 @@ export default function App() {
           onNavigate={handleNavigate}
         />
       </main>
+      )}
 
       {/* Full-Screen "Let's Talk" Contact Experience */}
       {contactOpen && (
