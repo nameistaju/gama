@@ -19,12 +19,24 @@ import VideoIntro from './components/VideoIntro';
 import GlobeSection from './components/GlobeSection';
 import TangibleOutcomes from './components/TangibleOutcomes';
 import TextHighlight from './components/ui/text-highlight';
+import IndustryModal from './components/IndustryModal';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
-  // Intro sequence: 'loader' -> 'video' -> 'ready'
-  const [introStep, setIntroStep] = useState('loader');
+  // Intro sequence: 'loader' -> 'video' -> 'ready' (skip if direct deep link hash is present)
+  const [introStep, setIntroStep] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      return 'ready';
+    }
+    return 'loader';
+  });
   const [selectedService, setSelectedService] = useState('');
+  const [selectedIndustry, setSelectedIndustry] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash.startsWith('#industry/')) {
+      return window.location.hash.replace('#industry/', '');
+    }
+    return null;
+  });
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined' && window.location.hash === '#values') {
       return 'values';
@@ -34,16 +46,43 @@ export default function App() {
 
   useEffect(() => {
     const handleHash = () => {
-      if (window.location.hash === '#values') {
+      const hash = window.location.hash;
+      if (hash === '#values') {
         setCurrentView('values');
+        setSelectedIndustry(null);
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash === '' || window.location.hash === '#home') {
+      } else if (hash.startsWith('#industry/')) {
+        const slug = hash.replace('#industry/', '');
+        setSelectedIndustry(slug);
+      } else if (hash === '' || hash === '#home') {
         setCurrentView('home');
+        setSelectedIndustry(null);
       }
     };
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
+
+  const handleSelectIndustry = (industryNameOrSlug) => {
+    setSelectedIndustry(industryNameOrSlug);
+    try {
+      const slug = industryNameOrSlug
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+      window.history.pushState(null, '', `#industry/${slug}`);
+    } catch (e) {}
+  };
+
+  const handleCloseIndustry = () => {
+    setSelectedIndustry(null);
+    try {
+      if (window.location.hash.startsWith('#industry/')) {
+        window.history.pushState(null, '', currentView === 'values' ? '#values' : '#');
+      }
+    } catch (e) {}
+  };
 
   const handleOpenContact = (service = '') => {
     if (typeof service === 'string' && service) {
@@ -139,6 +178,7 @@ export default function App() {
       {/* Top Header & Navigation Bar */}
       <Navbar
         onOpenContact={() => setContactOpen(true)}
+        onSelectIndustry={handleSelectIndustry}
         currentView={currentView}
         onNavigate={handleNavigate}
       />
@@ -166,7 +206,10 @@ export default function App() {
         <AboutUs onOpenContact={handleOpenContact} />
 
         {/* Cutting Edge Solutions: Industries & Services In-Place Popup */}
-        <SolutionsSection onOpenContact={handleOpenContact} />
+        <SolutionsSection
+          onOpenContact={handleOpenContact}
+          onSelectIndustry={handleSelectIndustry}
+        />
 
         {/* Global Infrastructure Curved Earth Section */}
         <GlobeSection />
@@ -233,6 +276,15 @@ export default function App() {
           onNavigate={handleNavigate}
         />
       </main>
+
+      {/* Dedicated Industry Specification Modal with Scroll-to-Full-Page Experience */}
+      {selectedIndustry && (
+        <IndustryModal
+          industryId={selectedIndustry}
+          onClose={handleCloseIndustry}
+          onOpenContact={handleOpenContact}
+        />
+      )}
 
       {/* Full-Screen "Let's Talk" Contact Experience */}
       {contactOpen && (

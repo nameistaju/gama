@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, X } from 'lucide-react';
 import TextHighlight from './ui/text-highlight';
 
-export default function SolutionsSection({ onOpenContact }) {
+export default function SolutionsSection({ onOpenContact, onSelectIndustry }) {
   // 'industries' | 'services' | null
   const [activePopup, setActivePopup] = useState(null);
 
@@ -45,6 +45,14 @@ export default function SolutionsSection({ onOpenContact }) {
     'Industrial Autonomy & Engineering',
     'Network Solutions and Services',
   ];
+
+  const handleIndustryClick = (name) => {
+    if (onSelectIndustry) {
+      onSelectIndustry(name);
+    } else if (onOpenContact) {
+      onOpenContact(name);
+    }
+  };
 
   const handleItemClick = (name) => {
     if (onOpenContact) {
@@ -181,7 +189,7 @@ export default function SolutionsSection({ onOpenContact }) {
                   {industriesCol1.map((item) => (
                     <button
                       key={item}
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleIndustryClick(item)}
                       className="w-full text-left text-sm sm:text-base text-slate-200 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1.5 cursor-pointer block leading-snug"
                     >
                       {item}
@@ -194,7 +202,7 @@ export default function SolutionsSection({ onOpenContact }) {
                   {industriesCol2.map((item) => (
                     <button
                       key={item}
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleIndustryClick(item)}
                       className="w-full text-left text-sm sm:text-base text-slate-200 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1.5 cursor-pointer block leading-snug"
                     >
                       {item}
@@ -207,7 +215,7 @@ export default function SolutionsSection({ onOpenContact }) {
                   {industriesCol3.map((item) => (
                     <button
                       key={item}
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleIndustryClick(item)}
                       className="w-full text-left text-sm sm:text-base text-slate-200 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1.5 cursor-pointer block leading-snug"
                     >
                       {item}

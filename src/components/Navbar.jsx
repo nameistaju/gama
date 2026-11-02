@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { Phone, ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
 
-export default function Navbar({ onOpenContact, currentView, onNavigate, experienceProgress = 0 }) {
+export default function Navbar({ onOpenContact, onSelectIndustry, currentView, onNavigate, experienceProgress = 0 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -530,7 +530,11 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                             key={ind}
                             onClick={() => {
                               setActiveMegaMenu(null);
-                              onOpenContact(ind);
+                              if (onSelectIndustry) {
+                                onSelectIndustry(ind);
+                              } else {
+                                onOpenContact(ind);
+                              }
                             }}
                             className="text-left text-xs lg:text-[13px] text-slate-300 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1 cursor-pointer truncate"
                             title={ind}
@@ -734,7 +738,11 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                       key={item}
                       onClick={() => {
                         closeMenu();
-                        onOpenContact(item);
+                        if (mobileCategory === 'industries' && onSelectIndustry) {
+                          onSelectIndustry(item);
+                        } else {
+                          onOpenContact(item);
+                        }
                       }}
                       className="w-full text-left text-xs py-1.5 px-2.5 hover:bg-slate-50 rounded-lg text-slate-700 truncate"
                     >
