@@ -20,6 +20,7 @@ import GlobeSection from './components/GlobeSection';
 import TangibleOutcomes from './components/TangibleOutcomes';
 import TextHighlight from './components/ui/text-highlight';
 import IndustryModal from './components/IndustryModal';
+import ServiceModal from './components/ServiceModal';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -37,6 +38,12 @@ export default function App() {
     }
     return null;
   });
+  const [selectedServiceModal, setSelectedServiceModal] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash.startsWith('#service/')) {
+      return window.location.hash.replace('#service/', '');
+    }
+    return null;
+  });
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined' && window.location.hash === '#values') {
       return 'values';
@@ -50,13 +57,20 @@ export default function App() {
       if (hash === '#values') {
         setCurrentView('values');
         setSelectedIndustry(null);
+        setSelectedServiceModal(null);
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (hash.startsWith('#industry/')) {
         const slug = hash.replace('#industry/', '');
         setSelectedIndustry(slug);
+        setSelectedServiceModal(null);
+      } else if (hash.startsWith('#service/')) {
+        const slug = hash.replace('#service/', '');
+        setSelectedServiceModal(slug);
+        setSelectedIndustry(null);
       } else if (hash === '' || hash === '#home') {
         setCurrentView('home');
         setSelectedIndustry(null);
+        setSelectedServiceModal(null);
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -65,6 +79,7 @@ export default function App() {
 
   const handleSelectIndustry = (industryNameOrSlug) => {
     setSelectedIndustry(industryNameOrSlug);
+    setSelectedServiceModal(null);
     try {
       const slug = industryNameOrSlug
         .toLowerCase()
@@ -79,6 +94,29 @@ export default function App() {
     setSelectedIndustry(null);
     try {
       if (window.location.hash.startsWith('#industry/')) {
+        window.history.pushState(null, '', currentView === 'values' ? '#values' : '#');
+      }
+    } catch (e) {}
+  };
+
+  const handleSelectService = (serviceNameOrSlug) => {
+    setSelectedServiceModal(serviceNameOrSlug);
+    setSelectedIndustry(null);
+    try {
+      const slug = serviceNameOrSlug
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+      window.history.pushState(null, '', `#service/${slug}`);
+    } catch (e) {}
+  };
+
+  const handleCloseService = () => {
+    setSelectedServiceModal(null);
+    try {
+      if (window.location.hash.startsWith('#service/')) {
         window.history.pushState(null, '', currentView === 'values' ? '#values' : '#');
       }
     } catch (e) {}
@@ -179,6 +217,7 @@ export default function App() {
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onSelectIndustry={handleSelectIndustry}
+        onSelectService={handleSelectService}
         currentView={currentView}
         onNavigate={handleNavigate}
       />
@@ -209,6 +248,7 @@ export default function App() {
         <SolutionsSection
           onOpenContact={handleOpenContact}
           onSelectIndustry={handleSelectIndustry}
+          onSelectService={handleSelectService}
         />
 
         {/* Global Infrastructure Curved Earth Section */}
@@ -282,6 +322,15 @@ export default function App() {
         <IndustryModal
           industryId={selectedIndustry}
           onClose={handleCloseIndustry}
+          onOpenContact={handleOpenContact}
+        />
+      )}
+
+      {/* Dedicated Service Specification Modal with Scroll-to-Full-Page Experience */}
+      {selectedServiceModal && (
+        <ServiceModal
+          serviceId={selectedServiceModal}
+          onClose={handleCloseService}
           onOpenContact={handleOpenContact}
         />
       )}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, X } from 'lucide-react';
 import TextHighlight from './ui/text-highlight';
 
-export default function SolutionsSection({ onOpenContact, onSelectIndustry }) {
+export default function SolutionsSection({ onOpenContact, onSelectIndustry, onSelectService }) {
   // 'industries' | 'services' | null
   const [activePopup, setActivePopup] = useState(null);
 
@@ -49,6 +49,14 @@ export default function SolutionsSection({ onOpenContact, onSelectIndustry }) {
   const handleIndustryClick = (name) => {
     if (onSelectIndustry) {
       onSelectIndustry(name);
+    } else if (onOpenContact) {
+      onOpenContact(name);
+    }
+  };
+
+  const handleServiceClick = (name) => {
+    if (onSelectService) {
+      onSelectService(name);
     } else if (onOpenContact) {
       onOpenContact(name);
     }
@@ -253,7 +261,7 @@ export default function SolutionsSection({ onOpenContact, onSelectIndustry }) {
                   {servicesCol1.map((item) => (
                     <button
                       key={item}
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleServiceClick(item)}
                       className="w-full text-left text-sm sm:text-base text-slate-200 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1.5 cursor-pointer block leading-snug"
                     >
                       {item}
@@ -266,7 +274,7 @@ export default function SolutionsSection({ onOpenContact, onSelectIndustry }) {
                   {servicesCol2.map((item) => (
                     <button
                       key={item}
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleServiceClick(item)}
                       className="w-full text-left text-sm sm:text-base text-slate-200 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1.5 cursor-pointer block leading-snug"
                     >
                       {item}
@@ -279,7 +287,7 @@ export default function SolutionsSection({ onOpenContact, onSelectIndustry }) {
                   {servicesCol3.map((item) => (
                     <button
                       key={item}
-                      onClick={() => handleItemClick(item)}
+                      onClick={() => handleServiceClick(item)}
                       className="w-full text-left text-sm sm:text-base text-slate-200 hover:text-[#38BDF8] hover:translate-x-1 transition-all py-1.5 cursor-pointer block leading-snug"
                     >
                       {item}
