@@ -50,15 +50,9 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
     'Artificial Intelligence and Data & Analytics',
     'AI-led Data Centres',
     'Cloud',
-    'Cognitive Business Operations',
     'Consulting',
-    'Cybersecurity',
-    'Enterprise Solutions',
     'Industrial Autonomy & Engineering',
     'Network Solutions and Services',
-    'Sustainability Services',
-    'Global Value & Innovation Centres',
-    'GAMA Interactive',
   ];
 
   const handleMegaMenuOpen = (menu) => {

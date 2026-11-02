@@ -30,24 +30,20 @@ export default function SolutionsSection({ onOpenContact }) {
     'Travel and Logistics',
   ];
 
-  // Services list matching Image 3 with exact 3-column grouping
+  // Services list matching selected items from user reference
   const servicesCol1 = [
-    'AI and Data & Analytics',
-    'Cloud',
-    'Cognitive Business Operations',
-    'Consulting',
+    'Artificial Intelligence and Data & Analytics',
+    'AI-led Data Centres',
   ];
 
   const servicesCol2 = [
-    'Cybersecurity',
-    'Enterprise Solutions',
-    'Industrial Autonomy & Engineering',
-    'Network Solutions and Service',
+    'Cloud',
+    'Consulting',
   ];
 
   const servicesCol3 = [
-    'Sustainability Services',
-    'GAMA Interactive',
+    'Industrial Autonomy & Engineering',
+    'Network Solutions and Services',
   ];
 
   const handleItemClick = (name) => {
