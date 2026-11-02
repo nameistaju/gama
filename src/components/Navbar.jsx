@@ -622,7 +622,7 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
                   <button
                     onClick={() => {
                       setActiveMegaMenu(null);
-                      onNavigate('about');
+                      onNavigate('brand');
                     }}
                     className="group flex items-center justify-between p-4 rounded-2xl hover:bg-white/[0.06] transition-all cursor-pointer text-left"
                   >
@@ -794,7 +794,7 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
                 <button
                   onClick={() => {
                     closeMenu();
-                    onNavigate('about');
+                    onNavigate('brand');
                   }}
                   className="w-full text-left text-xs py-2 px-2.5 hover:bg-slate-50 rounded-lg text-slate-700 flex items-center justify-between"
                 >

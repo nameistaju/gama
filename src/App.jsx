@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import ValuesPage from './components/ValuesPage';
+import BrandPage from './components/BrandPage';
 import SolutionsSection from './components/SolutionsSection';
 import CurvedMarquee from './components/CurvedMarquee';
 import EditorialAbout from './components/EditorialAbout';
@@ -45,8 +46,9 @@ export default function App() {
     return null;
   });
   const [currentView, setCurrentView] = useState(() => {
-    if (typeof window !== 'undefined' && window.location.hash === '#values') {
-      return 'values';
+    if (typeof window !== 'undefined') {
+      if (window.location.hash === '#values') return 'values';
+      if (window.location.hash === '#brand') return 'brand';
     }
     return 'home';
   });
@@ -56,6 +58,11 @@ export default function App() {
       const hash = window.location.hash;
       if (hash === '#values') {
         setCurrentView('values');
+        setSelectedIndustry(null);
+        setSelectedServiceModal(null);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (hash === '#brand') {
+        setCurrentView('brand');
         setSelectedIndustry(null);
         setSelectedServiceModal(null);
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -94,7 +101,8 @@ export default function App() {
     setSelectedIndustry(null);
     try {
       if (window.location.hash.startsWith('#industry/')) {
-        window.history.pushState(null, '', currentView === 'values' ? '#values' : '#');
+        const fallback = currentView === 'values' ? '#values' : currentView === 'brand' ? '#brand' : '#';
+        window.history.pushState(null, '', fallback);
       }
     } catch (e) {}
   };
@@ -117,7 +125,8 @@ export default function App() {
     setSelectedServiceModal(null);
     try {
       if (window.location.hash.startsWith('#service/')) {
-        window.history.pushState(null, '', currentView === 'values' ? '#values' : '#');
+        const fallback = currentView === 'values' ? '#values' : currentView === 'brand' ? '#brand' : '#';
+        window.history.pushState(null, '', fallback);
       }
     } catch (e) {}
   };
@@ -141,6 +150,15 @@ export default function App() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       try {
         window.history.pushState(null, '', '#values');
+      } catch (e) {}
+      return;
+    }
+
+    if (target === 'brand') {
+      setCurrentView('brand');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      try {
+        window.history.pushState(null, '', '#brand');
       } catch (e) {}
       return;
     }
@@ -236,8 +254,22 @@ export default function App() {
         </main>
       )}
 
+      {/* Brand Page View */}
+      {currentView === 'brand' && (
+        <main>
+          <BrandPage
+            onOpenContact={handleOpenContact}
+            onBackHome={() => handleNavigate('home')}
+          />
+          <Footer
+            onOpenContact={() => setContactOpen(true)}
+            onNavigate={handleNavigate}
+          />
+        </main>
+      )}
+
       {/* Main Home Page Sections (hidden when viewing dedicated pages to preserve GSAP pins and prevent DOM errors) */}
-      <main className={currentView === 'values' ? 'hidden' : 'block'}>
+      <main className={currentView === 'values' || currentView === 'brand' ? 'hidden' : 'block'}>
         {/* 1. Hero Headline & Video Showcase (Fits in 1 Glance / 100vh) */}
         <Hero onOpenContact={() => setContactOpen(true)} />
 
