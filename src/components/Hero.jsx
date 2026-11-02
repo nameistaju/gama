@@ -49,14 +49,17 @@ export default function Hero({ onOpenContact }) {
         />
       </div>
 
-      {/* Earth Planet Visual Layer with Prism Chromatic Atmosphere (Solid deep black on mobile, smooth dissolve on desktop) */}
-      <div
-        className="absolute top-[56%] sm:top-[44%] md:top-[40%] lg:top-[38%] left-1/2 -translate-x-1/2 w-[165vw] sm:w-[140vw] md:w-[150vw] lg:w-[160vw] max-w-none pointer-events-none z-10 flex flex-col items-center justify-start select-none sm:[mask-image:linear-gradient(to_bottom,black_0%,black_65%,transparent_95%)] sm:[webkit-mask-image:linear-gradient(to_bottom,black_0%,black_65%,transparent_95%)]"
-      >
+      {/* Earth Planet Visual Layer with Prism Chromatic Atmosphere */}
+      <div className="absolute top-[56%] sm:top-[44%] md:top-[40%] lg:top-[38%] left-1/2 -translate-x-1/2 w-[165vw] sm:w-[140vw] md:w-[150vw] lg:w-[160vw] max-w-none pointer-events-none z-10 flex flex-col items-center justify-start select-none">
+        {/* Atmospheric Glow placed outside masked container to spread smoothly without clipping */}
         <GlobeGlow />
-        <Globe className="w-full">
-          <GlobeSvg className="w-full h-auto drop-shadow-[0_0_90px_rgba(0,229,255,0.45)]" />
-        </Globe>
+
+        {/* Earth Planet Visual Layer with smooth top and bottom dissolve */}
+        <div className="w-full flex flex-col items-center justify-start sm:[mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_65%,transparent_95%)] sm:[webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_65%,transparent_95%)]">
+          <Globe className="w-full">
+            <GlobeSvg className="w-full h-auto drop-shadow-[0_0_90px_rgba(0,229,255,0.45)]" />
+          </Globe>
+        </div>
       </div>
 
       {/* Hero Content Container: Positioned cleanly ABOVE the hands on mobile, centered on desktop */}
