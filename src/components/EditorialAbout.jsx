@@ -124,7 +124,7 @@ export default function EditorialAbout() {
 
   return (
     <section
-      id="about"
+      id="editorial"
       ref={sectionRef}
       className="relative w-full bg-[#F8FAFC] h-[100dvh] min-h-[100dvh] px-4 sm:px-8 md:px-12 overflow-hidden flex flex-col items-center justify-center z-10"
     >

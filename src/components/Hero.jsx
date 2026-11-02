@@ -93,8 +93,8 @@ export default function Hero({ onOpenContact }) {
         </div>
       </div>
 
-      {/* Seamless Progressive Bottom Dissolve: positioned strictly below the button & earth at the section edge */}
-      <div className="hidden sm:block absolute bottom-0 left-0 w-full h-16 sm:h-20 md:h-24 bg-gradient-to-b from-transparent to-[#F8FAFC] pointer-events-none z-20" />
+      {/* Seamless Progressive Bottom Dissolve: smoothly grounds the earth globe into the dark About Us section */}
+      <div className="hidden sm:block absolute bottom-0 left-0 w-full h-16 sm:h-20 md:h-24 bg-gradient-to-b from-transparent to-[#000000] pointer-events-none z-20" />
     </section>
   );
 }
