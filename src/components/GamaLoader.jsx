@@ -218,19 +218,19 @@ export default function GamaLoader({ onComplete }) {
       const elapsed = (now - t0) / 1000;
       frame(elapsed);
 
-      // Once the full logo is assembled at ~4.8s, trigger smooth fade out
-      if (elapsed >= 4.6 && !hasTriggeredFade) {
+      // Allow the full logo and accents to completely assemble (~5.3s) plus 1.2s extra hold time (~6.5s)
+      if (elapsed >= 6.5 && !hasTriggeredFade) {
         hasTriggeredFade = true;
         setFading(true);
         setTimeout(() => {
           setMounted(false);
           if (onComplete) onComplete();
-        }, 700);
+        }, 600);
       }
 
-      if (elapsed < 6.0 && !hasTriggeredFade) {
+      if (elapsed < 7.5 && !hasTriggeredFade) {
         animId = requestAnimationFrame(loop);
-      } else if (elapsed < 5.8) {
+      } else if (elapsed < 7.2) {
         animId = requestAnimationFrame(loop);
       }
     }

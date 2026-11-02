@@ -15,13 +15,15 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import GamaLoader from './components/GamaLoader';
+import VideoIntro from './components/VideoIntro';
 import GlobeSection from './components/GlobeSection';
 import TangibleOutcomes from './components/TangibleOutcomes';
 import TextHighlight from './components/ui/text-highlight';
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
-  const [loaderComplete, setLoaderComplete] = useState(false);
+  // Intro sequence: 'loader' -> 'video' -> 'ready'
+  const [introStep, setIntroStep] = useState('loader');
   const [selectedService, setSelectedService] = useState('');
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined' && window.location.hash === '#values') {
@@ -124,9 +126,14 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#0F172A] selection:text-white overflow-x-clip font-sans">
-      {/* GAMA Logo Animated Loader */}
-      {!loaderComplete && (
-        <GamaLoader onComplete={() => setLoaderComplete(true)} />
+      {/* Step 1: Animated Logo Loader (Full animation + 1.2s extra hold) */}
+      {introStep === 'loader' && (
+        <GamaLoader onComplete={() => setIntroStep('video')} />
+      )}
+
+      {/* Step 2: Cinematic Video Intro (intro.mp4 with Mute & Skip) */}
+      {introStep === 'video' && (
+        <VideoIntro onComplete={() => setIntroStep('ready')} />
       )}
 
       {/* Top Header & Navigation Bar */}
