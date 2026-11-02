@@ -108,12 +108,6 @@ export default function AboutUs({ onOpenContact }) {
           </div>
         </div>
       </div>
-
-      {/* Seamless Transition Gradient into the Light Editorial / Globe Section */}
-      <div
-        className="absolute bottom-0 left-0 w-full h-20 sm:h-28 md:h-36 bg-gradient-to-b from-transparent via-[#F8FAFC]/40 to-[#F8FAFC] pointer-events-none select-none z-10"
-        aria-hidden="true"
-      />
     </section>
   );
 }

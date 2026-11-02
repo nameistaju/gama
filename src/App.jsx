@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
+import SolutionsSection from './components/SolutionsSection';
 import CurvedMarquee from './components/CurvedMarquee';
 import EditorialAbout from './components/EditorialAbout';
 import ScrollExpand from './components/ScrollExpand';
@@ -43,11 +44,13 @@ export default function App() {
 
     const elementMap = {
       capabilities: 'services',
-      'what-we-do': 'services',
+      'what-we-do': 'solutions',
+      'solutions': 'solutions',
+      'industries': 'solutions',
+      'services': 'solutions',
       'who-we-are': 'about',
       'brand': 'about-brand',
       'values': 'about-values',
-      services: 'services',
       about: 'about',
       faq: 'faq',
     };
@@ -80,6 +83,9 @@ export default function App() {
 
         {/* About Us Section: Inspired by TCS Who We Are (Brand & Values) */}
         <AboutUs onOpenContact={handleOpenContact} />
+
+        {/* Cutting Edge Solutions: Industries & Services In-Place Popup */}
+        <SolutionsSection onOpenContact={handleOpenContact} />
 
         {/* Global Infrastructure Curved Earth Section */}
         <GlobeSection />
