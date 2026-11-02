@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { Phone, ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
-import GamaLogo from './GamaLogo';
 
 export default function Navbar({ onOpenContact, currentView, onNavigate, experienceProgress = 0 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
   // Mega Menu State
@@ -89,14 +87,6 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
   };
 
   useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(Boolean(document.fullscreenElement));
-    };
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  }, []);
-
-  useEffect(() => {
     const handleClickOutside = (e) => {
       if (megaMenuContainerRef.current && !megaMenuContainerRef.current.contains(e.target)) {
         if (megaCloseTimeoutRef.current) {
@@ -138,16 +128,6 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen]);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen().catch(() => {});
-      }
-    }
-  };
 
   const lockScroll = () => {
     document.documentElement.style.overflow = 'hidden';
@@ -306,121 +286,106 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
               isVisible ? 'pointer-events-auto' : 'pointer-events-none'
             }`}
           >
-            {/* Left Pill Links: What we do, Who we are, FAQ (Desktop Only) */}
-            <div className="hidden md:flex items-center gap-2 lg:gap-3">
-              {/* What We Do Trigger Pill */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleMegaMenuOpen('what-we-do')}
-                onMouseLeave={handleMegaMenuClose}
-              >
-                <button
-                  onClick={() => toggleMegaMenu('what-we-do')}
-                  className={`inline-flex items-center gap-1.5 px-4 lg:px-4.5 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    activeMegaMenu === 'what-we-do'
-                      ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                      : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                  }`}
-                >
-                  <span>What we do</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeMegaMenu === 'what-we-do' ? 'rotate-180 text-white' : 'text-slate-500'
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* Who We Are Trigger Pill */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleMegaMenuOpen('who-we-are')}
-                onMouseLeave={handleMegaMenuClose}
-              >
-                <button
-                  onClick={() => toggleMegaMenu('who-we-are')}
-                  className={`inline-flex items-center gap-1.5 px-4 lg:px-4.5 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    activeMegaMenu === 'who-we-are'
-                      ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                      : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                  }`}
-                >
-                  <span>Who we are</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeMegaMenu === 'who-we-are' ? 'rotate-180 text-white' : 'text-slate-500'
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* FAQ Direct Anchor Pill */}
+            {/* Left Section: Wordmark Logo (gama_white_wordmark_transparent.png) + Desktop Nav Links */}
+            <div className="flex items-center gap-3 lg:gap-5">
+              {/* Left Brand Logo: gama_white_wordmark_transparent.png */}
               <button
                 onClick={() => {
                   setActiveMegaMenu(null);
-                  onNavigate('faq');
+                  onNavigate('home');
                 }}
-                className={`px-4 lg:px-4.5 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  currentView === 'faq'
-                    ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                    : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                }`}
+                className="flex items-center shrink-0 cursor-pointer transition-transform duration-200 hover:scale-105"
+                aria-label="GAMA Technologies Home"
               >
-                FAQ
+                <img
+                  src="/gama_white_wordmark_transparent.png"
+                  alt="GAMA Technologies"
+                  className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto max-w-[170px] sm:max-w-[210px] md:max-w-[230px] object-contain select-none pointer-events-none"
+                />
               </button>
+
+              {/* Desktop Nav Links: What we do, Who we are, About us, FAQ */}
+              <div className="hidden md:flex items-center gap-1.5 lg:gap-2.5">
+                {/* What We Do Trigger Pill */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMegaMenuOpen('what-we-do')}
+                  onMouseLeave={handleMegaMenuClose}
+                >
+                  <button
+                    onClick={() => toggleMegaMenu('what-we-do')}
+                    className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                      activeMegaMenu === 'what-we-do'
+                        ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
+                        : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
+                    }`}
+                  >
+                    <span>What we do</span>
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        activeMegaMenu === 'what-we-do' ? 'rotate-180 text-white' : 'text-slate-500'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {/* Who We Are Trigger Pill */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMegaMenuOpen('who-we-are')}
+                  onMouseLeave={handleMegaMenuClose}
+                >
+                  <button
+                    onClick={() => toggleMegaMenu('who-we-are')}
+                    className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                      activeMegaMenu === 'who-we-are'
+                        ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
+                        : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
+                    }`}
+                  >
+                    <span>Who we are</span>
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        activeMegaMenu === 'who-we-are' ? 'rotate-180 text-white' : 'text-slate-500'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {/* About Us Direct Anchor Pill */}
+                <button
+                  onClick={() => {
+                    setActiveMegaMenu(null);
+                    onNavigate('about');
+                  }}
+                  className={`px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    currentView === 'about'
+                      ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
+                      : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
+                  }`}
+                >
+                  About us
+                </button>
+
+                {/* FAQ Direct Anchor Pill */}
+                <button
+                  onClick={() => {
+                    setActiveMegaMenu(null);
+                    onNavigate('faq');
+                  }}
+                  className={`px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    currentView === 'faq'
+                      ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
+                      : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
+                  }`}
+                >
+                  FAQ
+                </button>
+              </div>
             </div>
 
-            {/* Brand Logo: GAMA Multicolor Gradient Logo.png only on mobile, dual hover on desktop */}
-            <button
-              onClick={() => {
-                setActiveMegaMenu(null);
-                onNavigate('home');
-              }}
-              className="group relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105 md:absolute md:left-1/2 md:-translate-x-1/2 h-8 sm:h-9 md:h-10 w-auto max-w-[140px] sm:w-32 md:w-36 shrink-0"
-              aria-label="GAMA Software Home"
-            >
-              {/* Mobile Only Logo */}
-              <img
-                src="/GAMA Multicolor Gradient Logo.png"
-                alt="GAMA Multicolor Gradient Logo"
-                className="block md:hidden h-7 sm:h-8 w-auto max-w-full object-contain select-none pointer-events-none"
-              />
-
-              {/* Desktop Default: gama-logo.png */}
-              <img
-                src="/gama-logo.png"
-                alt="GAMA Logo"
-                className="hidden md:block h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity duration-300 ease-in-out group-hover:opacity-0 select-none pointer-events-none"
-              />
-
-              {/* Desktop Hover: GAMA Multicolor Gradient Logo.png */}
-              <img
-                src="/GAMA Multicolor Gradient Logo.png"
-                alt="GAMA Multicolor Gradient Logo"
-                className="hidden md:block absolute inset-0 m-auto h-8 sm:h-9 md:h-10 w-auto max-w-full object-contain opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 select-none pointer-events-none"
-              />
-            </button>
-
-            {/* Right Controls */}
-            <div className="flex items-center gap-2.5 sm:gap-4">
-              {/* Fullscreen Toggle (Desktop Only) */}
-              <button
-                onClick={toggleFullscreen}
-                className="hidden md:flex w-9 h-9 rounded-full bg-white/95 hover:bg-white text-[#0F172A] hover:text-[#0457DF] border border-[#E2E8F0] items-center justify-center transition-all duration-200 shadow-sm cursor-pointer hover:border-[#0F172A]/30"
-                title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
-                aria-label="Toggle Fullscreen"
-              >
-                {isFullscreen ? (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
-                  </svg>
-                ) : (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                  </svg>
-                )}
-              </button>
-
+            {/* Right Section: Contact Us CTA + gama-logo.png (Desktop) + Mobile Menu Toggle */}
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
               {/* Contact Us CTA (Desktop Only) */}
               <button
                 onClick={() => {
@@ -433,6 +398,22 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                 <span className="w-6 h-6 rounded-full bg-[#0457DF] text-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                   <Phone className="w-3.5 h-3.5" />
                 </span>
+              </button>
+
+              {/* Right Brand Symbol Logo: gama-logo.png (Desktop Only) */}
+              <button
+                onClick={() => {
+                  setActiveMegaMenu(null);
+                  onNavigate('home');
+                }}
+                className="hidden md:flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-200 hover:scale-110 ml-1"
+                aria-label="GAMA Ribbon Symbol"
+              >
+                <img
+                  src="/gama-logo.png"
+                  alt="GAMA Logo Symbol"
+                  className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none pointer-events-none drop-shadow-md"
+                />
               </button>
 
               {/* Mobile Menu Toggle Button (<768px Only) */}
@@ -477,7 +458,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
           </nav>
 
           {/* ======================================================== */}
-          {/* DESKTOP MEGA MENU 1: WHAT WE DO (TCS Inspiro)            */}
+          {/* DESKTOP MEGA MENU 1: WHAT WE DO (TCS Inspo)              */}
           {/* ======================================================== */}
           {activeMegaMenu === 'what-we-do' && (
             <div
@@ -598,7 +579,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
           )}
 
           {/* ======================================================== */}
-          {/* DESKTOP MEGA MENU 2: WHO WE ARE (TCS Inspiro)            */}
+          {/* DESKTOP MEGA MENU 2: WHO WE ARE (TCS Inspo)              */}
           {/* ======================================================== */}
           {activeMegaMenu === 'who-we-are' && (
             <div
@@ -643,7 +624,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                   <button
                     onClick={() => {
                       setActiveMegaMenu(null);
-                      onNavigate('brand');
+                      onNavigate('about');
                     }}
                     className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
                   >
@@ -711,7 +692,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                   <button
                     onClick={() => {
                       setActiveMegaMenu(null);
-                      onNavigate('values');
+                      onNavigate('about');
                     }}
                     className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
                   >
@@ -860,7 +841,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                 <button
                   onClick={() => {
                     closeMenu();
-                    onNavigate('brand');
+                    onNavigate('about');
                   }}
                   className="w-full text-left text-xs py-2 px-2.5 hover:bg-slate-50 rounded-lg text-slate-700 flex items-center justify-between"
                 >
@@ -870,7 +851,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                 <button
                   onClick={() => {
                     closeMenu();
-                    onNavigate('values');
+                    onNavigate('about');
                   }}
                   className="w-full text-left text-xs py-2 px-2.5 hover:bg-slate-50 rounded-lg text-slate-700 flex items-center justify-between"
                 >
@@ -881,10 +862,24 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
             )}
           </div>
 
-          {/* Mobile FAQ Link */}
+          {/* Mobile About Us Link */}
           <button
             ref={(el) => {
               itemsRef.current[2] = el;
+            }}
+            onClick={() => {
+              closeMenu();
+              onNavigate('about');
+            }}
+            className="font-sans font-medium text-[20px] leading-[1.2] px-7 py-4 rounded-full w-auto self-end cursor-pointer active:scale-[0.96] transition-all bg-white text-[#0F172A] shadow-sm border border-slate-200"
+          >
+            About us
+          </button>
+
+          {/* Mobile FAQ Link */}
+          <button
+            ref={(el) => {
+              itemsRef.current[3] = el;
             }}
             onClick={() => {
               closeMenu();
@@ -898,7 +893,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
           {/* Contact Us CTA (Mobile) */}
           <button
             ref={(el) => {
-              itemsRef.current[3] = el;
+              itemsRef.current[4] = el;
             }}
             onClick={() => {
               closeMenu();
