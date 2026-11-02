@@ -8,7 +8,6 @@ import { GooglePaLM } from '@/components/ui/integrations-5-utils/google-palm'
 import { LogoIcon } from '@/components/ui/integrations-5-utils/logo'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 
 export default function IntegrationsSection() {
     return (
@@ -62,7 +61,7 @@ export default function IntegrationsSection() {
                             variant="outline"
                             size="sm"
                             asChild>
-                            <Link href="#contact">Get Started</Link>
+                            <a href="#contact">Get Started</a>
                         </Button>
                     </div>
                 </div>
