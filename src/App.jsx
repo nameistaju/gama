@@ -136,7 +136,8 @@ export default function App() {
         onNavigate={handleNavigate}
       />
 
-      {currentView === 'values' ? (
+      {/* Values Page View */}
+      {currentView === 'values' && (
         <main>
           <ValuesPage
             onOpenContact={handleOpenContact}
@@ -147,11 +148,12 @@ export default function App() {
             onNavigate={handleNavigate}
           />
         </main>
-      ) : (
-        /* Main Home Page Sections */
-        <main>
-          {/* 1. Hero Headline & Video Showcase (Fits in 1 Glance / 100vh) */}
-          <Hero onOpenContact={() => setContactOpen(true)} />
+      )}
+
+      {/* Main Home Page Sections (hidden when viewing dedicated pages to preserve GSAP pins and prevent DOM errors) */}
+      <main className={currentView === 'values' ? 'hidden' : 'block'}>
+        {/* 1. Hero Headline & Video Showcase (Fits in 1 Glance / 100vh) */}
+        <Hero onOpenContact={() => setContactOpen(true)} />
 
         {/* About Us Section: Inspired by TCS Who We Are (Brand & Values) */}
         <AboutUs onOpenContact={handleOpenContact} />
@@ -224,7 +226,6 @@ export default function App() {
           onNavigate={handleNavigate}
         />
       </main>
-      )}
 
       {/* Full-Screen "Let's Talk" Contact Experience */}
       {contactOpen && (

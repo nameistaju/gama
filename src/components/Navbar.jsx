@@ -276,186 +276,182 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
   return (
     <div ref={rootRef}>
       <header
-        className={`fixed top-0 left-0 w-full z-50 px-5 md:px-8 py-5 transition-all duration-300 ease-in-out pointer-events-none ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out pointer-events-none ${
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
-        <div ref={megaMenuContainerRef} className="relative max-w-7xl mx-auto">
-          <nav
-            className={`flex items-center justify-between transition-all duration-300 ${
-              isVisible ? 'pointer-events-auto' : 'pointer-events-none'
-            }`}
-          >
-            {/* Left Section: Wordmark Logo (gama_white_wordmark_transparent.png) + Desktop Nav Links */}
-            <div className="flex items-center gap-3 lg:gap-5">
-              {/* Left Brand Logo: gama_white_wordmark_transparent.png */}
-              <button
-                onClick={() => {
-                  setActiveMegaMenu(null);
-                  onNavigate('home');
-                }}
-                className="flex items-center shrink-0 cursor-pointer transition-transform duration-200 hover:scale-105"
-                aria-label="GAMA Technologies Home"
-              >
-                <img
-                  src="/gama_white_wordmark_transparent.png"
-                  alt="GAMA Technologies"
-                  className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto max-w-[170px] sm:max-w-[210px] md:max-w-[230px] object-contain select-none pointer-events-none"
-                />
-              </button>
-
-              {/* Desktop Nav Links: What we do, Who we are, About us, FAQ */}
-              <div className="hidden md:flex items-center gap-1.5 lg:gap-2.5">
-                {/* What We Do Trigger Pill */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => handleMegaMenuOpen('what-we-do')}
-                  onMouseLeave={handleMegaMenuClose}
-                >
-                  <button
-                    onClick={() => toggleMegaMenu('what-we-do')}
-                    className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                      activeMegaMenu === 'what-we-do'
-                        ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                        : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                    }`}
-                  >
-                    <span>What we do</span>
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeMegaMenu === 'what-we-do' ? 'rotate-180 text-white' : 'text-slate-500'
-                      }`}
-                    />
-                  </button>
-                </div>
-
-                {/* Who We Are Trigger Pill */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => handleMegaMenuOpen('who-we-are')}
-                  onMouseLeave={handleMegaMenuClose}
-                >
-                  <button
-                    onClick={() => toggleMegaMenu('who-we-are')}
-                    className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                      activeMegaMenu === 'who-we-are'
-                        ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                        : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                    }`}
-                  >
-                    <span>Who we are</span>
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeMegaMenu === 'who-we-are' ? 'rotate-180 text-white' : 'text-slate-500'
-                      }`}
-                    />
-                  </button>
-                </div>
-
-                {/* About Us Direct Anchor Pill */}
+        <div className="w-full bg-[#060913]/92 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.65)] px-5 md:px-8 py-3.5 sm:py-4 pointer-events-auto">
+          <div ref={megaMenuContainerRef} className="relative max-w-7xl mx-auto">
+            <nav className="flex items-center justify-between">
+              {/* Left Section: Wordmark Logo (gama_white_wordmark_transparent.png) + Desktop Nav Links */}
+              <div className="flex items-center gap-3 lg:gap-5">
+                {/* Left Brand Logo: gama_white_wordmark_transparent.png */}
                 <button
                   onClick={() => {
                     setActiveMegaMenu(null);
-                    onNavigate('about');
+                    onNavigate('home');
                   }}
-                  className={`px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    currentView === 'about'
-                      ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                      : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                  }`}
+                  className="flex items-center shrink-0 cursor-pointer transition-transform duration-200 hover:scale-105"
+                  aria-label="GAMA Technologies Home"
                 >
-                  About us
+                  <img
+                    src="/gama_white_wordmark_transparent.png"
+                    alt="GAMA Technologies"
+                    className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto max-w-[170px] sm:max-w-[210px] md:max-w-[230px] object-contain select-none pointer-events-none"
+                  />
                 </button>
 
-                {/* FAQ Direct Anchor Pill */}
+                {/* Desktop Nav Links: What we do, Who we are, About us, FAQ */}
+                <div className="hidden md:flex items-center gap-1.5 lg:gap-2.5">
+                  {/* What We Do Trigger Pill */}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => handleMegaMenuOpen('what-we-do')}
+                    onMouseLeave={handleMegaMenuClose}
+                  >
+                    <button
+                      onClick={() => toggleMegaMenu('what-we-do')}
+                      className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                        activeMegaMenu === 'what-we-do'
+                          ? 'bg-white/20 text-white shadow-sm ring-1 ring-white/30'
+                          : 'bg-white/[0.08] text-white/90 hover:bg-white/15 hover:text-white border border-white/10'
+                      }`}
+                    >
+                      <span>What we do</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          activeMegaMenu === 'what-we-do' ? 'rotate-180 text-white' : 'text-slate-400'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Who We Are Trigger Pill */}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => handleMegaMenuOpen('who-we-are')}
+                    onMouseLeave={handleMegaMenuClose}
+                  >
+                    <button
+                      onClick={() => toggleMegaMenu('who-we-are')}
+                      className={`inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                        activeMegaMenu === 'who-we-are'
+                          ? 'bg-white/20 text-white shadow-sm ring-1 ring-white/30'
+                          : 'bg-white/[0.08] text-white/90 hover:bg-white/15 hover:text-white border border-white/10'
+                      }`}
+                    >
+                      <span>Who we are</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          activeMegaMenu === 'who-we-are' ? 'rotate-180 text-white' : 'text-slate-400'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {/* About Us Direct Anchor Pill */}
+                  <button
+                    onClick={() => {
+                      setActiveMegaMenu(null);
+                      onNavigate('about');
+                    }}
+                    className={`px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                      currentView === 'about'
+                        ? 'bg-white/20 text-white shadow-sm ring-1 ring-white/30'
+                        : 'bg-white/[0.08] text-white/90 hover:bg-white/15 hover:text-white border border-white/10'
+                    }`}
+                  >
+                    About us
+                  </button>
+
+                  {/* FAQ Direct Anchor Pill */}
+                  <button
+                    onClick={() => {
+                      setActiveMegaMenu(null);
+                      onNavigate('faq');
+                    }}
+                    className={`px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                      currentView === 'faq'
+                        ? 'bg-white/20 text-white shadow-sm ring-1 ring-white/30'
+                        : 'bg-white/[0.08] text-white/90 hover:bg-white/15 hover:text-white border border-white/10'
+                    }`}
+                  >
+                    FAQ
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Section: Contact Us CTA + gama-logo.png (Desktop) + Mobile Menu Toggle */}
+              <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                {/* Contact Us CTA (Desktop Only) */}
                 <button
                   onClick={() => {
                     setActiveMegaMenu(null);
-                    onNavigate('faq');
+                    onOpenContact();
                   }}
-                  className={`px-3.5 lg:px-4 py-2 rounded-full font-sans text-xs lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    currentView === 'faq'
-                      ? 'bg-[#0F172A] text-white shadow-sm ring-1 ring-[#0457DF]/40'
-                      : 'bg-white/95 text-[#0F172A] hover:bg-[#0F172A] hover:text-white shadow-sm border border-[#E2E8F0] hover:border-[#0F172A]'
-                  }`}
+                  className="hidden md:inline-flex group relative items-center gap-2.5 pl-4 sm:pl-5 pr-2 py-1.5 rounded-full bg-white text-[#0F172A] hover:bg-[#38BDF8] hover:text-[#0F172A] transition-all font-sans text-sm font-semibold shadow-sm cursor-pointer border border-white hover:border-[#38BDF8]"
                 >
-                  FAQ
+                  <span>Contact Us</span>
+                  <span className="w-6 h-6 rounded-full bg-[#0457DF] text-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                    <Phone className="w-3.5 h-3.5 text-white" />
+                  </span>
+                </button>
+
+                {/* Right Brand Symbol Logo: gama-logo.png (Desktop Only) */}
+                <button
+                  onClick={() => {
+                    setActiveMegaMenu(null);
+                    onNavigate('home');
+                  }}
+                  className="hidden md:flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-200 hover:scale-110 ml-1"
+                  aria-label="GAMA Ribbon Symbol"
+                >
+                  <img
+                    src="/gama-logo.png"
+                    alt="GAMA Logo Symbol"
+                    className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none pointer-events-none drop-shadow-md"
+                  />
+                </button>
+
+                {/* Mobile Menu Toggle Button (<768px Only) */}
+                <button
+                  ref={toggleButtonRef}
+                  onClick={toggleMenu}
+                  type="button"
+                  aria-expanded={mobileMenuOpen}
+                  aria-controls="mobile-menu"
+                  aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                  className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 text-white transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0457DF]"
+                >
+                  <svg
+                    ref={svgRef}
+                    className="two26-toggle-svg w-6 h-6"
+                    viewBox="0 0 34 37"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      ref={stemRef}
+                      className="toggle-circle"
+                      d="M7.01247 34.0204C7.01247 34.0204 10.1314 34.0204 20.8246 34.0204C31.5179 34.0204 31.2364 16.0204 20.8246 16.0205C10.4128 16.0205 9.00975 16.0196 9.00975 16.0196C5.0415 16.0196 2 12.8812 2 9.00979C2 5.13839 5.13839 2 9.00979 2C12.8679 2.01076 15.9893 5.1363 16 8.98937V34.5196"
+                      stroke="#FFFFFF"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      style={{ strokeDasharray: '52.6, 111.029', strokeDashoffset: 0 }}
+                    />
+                    <path
+                      ref={crossRef}
+                      className="toggle-cross"
+                      d="M6 24.52H26"
+                      stroke="#FFFFFF"
+                      strokeWidth="0"
+                      strokeLinecap="round"
+                      style={{ strokeDasharray: '20, 20', strokeDashoffset: 20 }}
+                    />
+                  </svg>
                 </button>
               </div>
-            </div>
-
-            {/* Right Section: Contact Us CTA + gama-logo.png (Desktop) + Mobile Menu Toggle */}
-            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-              {/* Contact Us CTA (Desktop Only) */}
-              <button
-                onClick={() => {
-                  setActiveMegaMenu(null);
-                  onOpenContact();
-                }}
-                className="hidden md:inline-flex group relative items-center gap-2.5 pl-4 sm:pl-5 pr-2 py-1.5 rounded-full bg-[#0F172A] text-white hover:bg-black transition-all font-sans text-sm font-medium shadow-sm cursor-pointer border border-[#0F172A] hover:border-black ring-1 ring-transparent hover:ring-[#0457DF]/40"
-              >
-                <span>Contact Us</span>
-                <span className="w-6 h-6 rounded-full bg-[#0457DF] text-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-3.5 h-3.5" />
-                </span>
-              </button>
-
-              {/* Right Brand Symbol Logo: gama-logo.png (Desktop Only) */}
-              <button
-                onClick={() => {
-                  setActiveMegaMenu(null);
-                  onNavigate('home');
-                }}
-                className="hidden md:flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-200 hover:scale-110 ml-1"
-                aria-label="GAMA Ribbon Symbol"
-              >
-                <img
-                  src="/gama-logo.png"
-                  alt="GAMA Logo Symbol"
-                  className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none pointer-events-none drop-shadow-md"
-                />
-              </button>
-
-              {/* Mobile Menu Toggle Button (<768px Only) */}
-              <button
-                ref={toggleButtonRef}
-                onClick={toggleMenu}
-                type="button"
-                aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-menu"
-                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-                className="md:hidden two26-toggle-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0457DF]"
-              >
-                <svg
-                  ref={svgRef}
-                  className="w-full h-full"
-                  viewBox="-2 6.52 36 36"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ transformOrigin: '50% 50%' }}
-                >
-                  <path
-                    ref={stemRef}
-                    className="toggle-stem"
-                    d="M7.01247 34.0204C7.01247 34.0204 10.1314 34.0204 20.8246 34.0204C31.5179 34.0204 31.2364 16.0204 20.8246 16.0205C10.4128 16.0205 9.00975 16.0196 9.00975 16.0196C5.0415 16.0196 2 12.8812 2 9.00979C2 5.13839 5.13839 2 9.00979 2C12.8679 2.01076 15.9893 5.1363 16 8.98937V34.5196"
-                    stroke="#0F172A"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    style={{ strokeDasharray: '52.6, 111.029', strokeDashoffset: 0 }}
-                  />
-                  <path
-                    ref={crossRef}
-                    className="toggle-cross"
-                    d="M6 24.52H26"
-                    stroke="#0F172A"
-                    strokeWidth="0"
-                    strokeLinecap="round"
-                    style={{ strokeDasharray: '20, 20', strokeDashoffset: 20 }}
-                  />
-                </svg>
-              </button>
-            </div>
-          </nav>
+            </nav>
 
           {/* ======================================================== */}
           {/* DESKTOP MEGA MENU 1: WHAT WE DO (TCS Inspo)              */}
@@ -658,6 +654,7 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
             </div>
           )}
 
+          </div>
         </div>
       </header>
 

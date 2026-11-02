@@ -40,11 +40,11 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#0F172A] font-sans selection:bg-[#0F172A] selection:text-white pt-24 sm:pt-28">
+    <div className="min-h-screen bg-slate-950 text-[#0F172A] font-sans selection:bg-[#0F172A] selection:text-white">
       {/* ======================================================== */}
       {/* 1. HERO SECTION WITH values1.png BACKGROUND (TCS Way)     */}
       {/* ======================================================== */}
-      <section className="relative w-full min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] flex items-center overflow-hidden bg-slate-950">
+      <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden bg-slate-950 pt-28 sm:pt-32 pb-16 sm:pb-20">
         {/* Background Image: values1.png */}
         <div className="absolute inset-0 z-0">
           <img
