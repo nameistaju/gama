@@ -619,22 +619,22 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                   </button>
                 </div>
 
-                {/* Col 2: Brand, Leadership, Community, Sustainability, Inclusion, Values */}
-                <div className="col-span-7 pl-4 flex flex-col justify-center divide-y divide-white/10">
+                {/* Col 2: Brand and Values Only */}
+                <div className="col-span-7 pl-6 flex flex-col justify-center divide-y divide-white/10 gap-2">
                   <button
                     onClick={() => {
                       setActiveMegaMenu(null);
                       onNavigate('about');
                     }}
-                    className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
+                    className="group flex items-center justify-between p-4 rounded-2xl hover:bg-white/[0.06] transition-all cursor-pointer text-left"
                   >
                     <div>
-                      <div className="text-sm font-semibold text-white group-hover:text-[#38BDF8] transition-colors">
+                      <div className="text-base sm:text-lg font-semibold text-white group-hover:text-[#38BDF8] transition-colors mb-0.5">
                         Brand
                       </div>
-                      <div className="text-xs text-slate-400">Where human ingenuity meets machine precision</div>
+                      <div className="text-xs sm:text-sm text-slate-400">Where human ingenuity meets machine precision</div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-[#38BDF8] group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-[#38BDF8] group-hover:translate-x-1.5 transition-all" />
                   </button>
 
                   <button
@@ -642,67 +642,15 @@ export default function Navbar({ onOpenContact, currentView, onNavigate, experie
                       setActiveMegaMenu(null);
                       onNavigate('about');
                     }}
-                    className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="text-xs sm:text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
-                      Leadership
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setActiveMegaMenu(null);
-                      onNavigate('about');
-                    }}
-                    className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="text-xs sm:text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
-                      Community
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setActiveMegaMenu(null);
-                      onNavigate('about');
-                    }}
-                    className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="text-xs sm:text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
-                      Sustainability
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setActiveMegaMenu(null);
-                      onNavigate('about');
-                    }}
-                    className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
-                  >
-                    <div className="text-xs sm:text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
-                      Inclusion
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setActiveMegaMenu(null);
-                      onNavigate('about');
-                    }}
-                    className="group flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/[0.05] transition-all cursor-pointer text-left"
+                    className="group flex items-center justify-between p-4 rounded-2xl hover:bg-white/[0.06] transition-all cursor-pointer text-left pt-5"
                   >
                     <div>
-                      <div className="text-sm font-semibold text-white group-hover:text-[#34D399] transition-colors">
+                      <div className="text-base sm:text-lg font-semibold text-white group-hover:text-[#34D399] transition-colors mb-0.5">
                         Values
                       </div>
-                      <div className="text-xs text-slate-400">Architectural discipline and unwavering integrity</div>
+                      <div className="text-xs sm:text-sm text-slate-400">Architectural discipline and unwavering integrity</div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-[#34D399] group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-[#34D399] group-hover:translate-x-1.5 transition-all" />
                   </button>
                 </div>
 
