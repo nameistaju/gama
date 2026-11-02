@@ -119,7 +119,14 @@ export default function EditorialAbout() {
       tl.to({}, { duration: 0.1 }, 0.9);
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === sectionRef.current) {
+          st.kill(true);
+        }
+      });
+      ctx.revert();
+    };
   }, []);
 
   return (
