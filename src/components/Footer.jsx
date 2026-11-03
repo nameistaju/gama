@@ -31,21 +31,13 @@ export default function Footer({ onOpenContact, onNavigate }) {
           <div className="flex flex-col items-start max-w-md">
             <div
               onClick={() => (onNavigate ? onNavigate('home') : scrollToTop())}
-              className="inline-flex items-center gap-3 cursor-pointer group"
+              className="inline-flex items-center cursor-pointer group"
             >
               <img
-                src="/gama-logo.png"
+                src="/gama_white_wordmark_transparent.png"
                 alt="GAMA Technologies"
-                className="h-8 sm:h-9 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform"
+                className="h-9 sm:h-10 md:h-11 w-auto max-w-[220px] sm:max-w-[250px] object-contain group-hover:scale-105 transition-transform duration-200 select-none pointer-events-none"
               />
-              <div className="flex flex-col text-left leading-none">
-                <span className="font-sans font-black text-2xl sm:text-[26px] tracking-tight text-white leading-none">
-                  <GamaText />
-                </span>
-                <span className="text-[10px] sm:text-[11px] tracking-[0.24em] font-semibold text-slate-300 uppercase mt-1">
-                  TECHNOLOGIES
-                </span>
-              </div>
             </div>
 
             <p className="font-sans text-sm sm:text-[15px] text-slate-400 font-normal leading-relaxed mt-4 sm:mt-5">
