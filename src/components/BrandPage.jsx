@@ -167,14 +167,36 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Center / Left: Visual Brand Mark without box, text, or border */}
-            <div className="lg:col-span-5 flex items-center justify-center p-2 sm:p-4">
-              <img
-                src="/3dlogo.gif"
-                alt="The GAMA 3D Mark"
-                className="w-64 sm:w-72 md:w-80 lg:w-96 max-w-full h-auto object-contain select-none pointer-events-none drop-shadow-[0_16px_40px_rgba(0,0,0,0.7)]"
-                loading="eager"
-              />
+            {/* Center / Left: High-End 3D Video Mark with Soft Blended Edges & Ambient Backlight */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center p-2 sm:p-4">
+              <div className="relative w-64 sm:w-76 md:w-84 lg:w-96 aspect-square flex items-center justify-center">
+                {/* Subtle chromatic backlight glow matching GAMA brand colors */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0057EC]/20 via-[#00D4FF]/15 to-[#FCA602]/15 rounded-full blur-3xl opacity-70 pointer-events-none" />
+
+                {/* Seamlessly blended 3D video with radial fade and WebKit mask */}
+                <video
+                  src="/3dlogoo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 76%)',
+                    maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 76%)',
+                  }}
+                  className="w-full h-full object-contain select-none pointer-events-none relative z-10 mix-blend-screen"
+                />
+              </div>
+
+              {/* Subtitle text below the 3D logo mark */}
+              <div className="mt-4 sm:mt-6 text-center select-none relative z-10">
+                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-1.5 font-bold">
+                  The Continuous Fold
+                </span>
+                <p className="text-xs sm:text-sm text-slate-400 max-w-xs mx-auto leading-relaxed font-normal">
+                  Infinite resilience across sovereign cloud and edge
+                </p>
+              </div>
             </div>
 
             {/* Right: 4 Cards with 1:1 Logos at top, no background around them */}
