@@ -304,16 +304,25 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
       </section>
 
       {/* ======================================================== */}
-      {/* 6. DARK BOTTOM CTA SECTION (Matching TCS / Values style)  */}
+      {/* 6. DARK BOTTOM CTA SECTION (bg1.png Ribbon Background)   */}
       {/* ======================================================== */}
-      <section className="w-full bg-[#050810] text-white py-20 sm:py-28 px-6 sm:px-8 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#0457DF]/15 rounded-full blur-[120px] pointer-events-none" />
+      <section className="relative w-full text-white py-24 sm:py-32 px-6 sm:px-8 text-center overflow-hidden border-t border-white/10">
+        {/* Background Image: bg1.png with cinematic dark overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/bg1.png"
+            alt="GAMA Ribbon Core"
+            className="w-full h-full object-cover object-center opacity-45 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-[#050B14]/80 to-[#02050b]" />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 drop-shadow-lg">
             Build Tomorrow With GAMA
           </h3>
-          <p className="text-base sm:text-lg text-slate-300 font-normal mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-200 font-light mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed drop-shadow-md">
             Partner directly with our systems engineering team to architect modern, resilient enterprise platforms.
           </p>
 
@@ -326,7 +335,7 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
             </button>
             <button
               onClick={onBackHome}
-              className="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-medium text-sm border border-white/15 transition-colors cursor-pointer"
+              className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 backdrop-blur-md transition-colors cursor-pointer"
             >
               Explore Home
             </button>

@@ -493,12 +493,23 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           {/* ======================================================== */}
           {/* 5. ENTERPRISE CONSULTATION CALL-TO-ACTION                */}
           {/* ======================================================== */}
-          <section className="px-6 sm:px-12 md:px-16 py-16 sm:py-20 bg-gradient-to-t from-[#02050b] to-[#050B14]">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+          <section className="relative px-6 sm:px-12 md:px-16 py-20 sm:py-28 overflow-hidden border-t border-white/10 text-center">
+            {/* Background Image: bg1.png with cinematic dark overlay */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="/bg1.png"
+                alt="GAMA Ribbon Core"
+                className="w-full h-full object-cover object-center opacity-45 scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-[#050B14]/80 to-[#02050b]" />
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
+
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-lg">
                 Partner with GAMA on {data.name}
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+              <p className="text-slate-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light drop-shadow-md">
                 Connect directly with our engineering leadership to review system requirements, migration roadmaps, or distributed system designs.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -512,7 +523,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                 </button>
                 <button
                   onClick={onClose}
-                  className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-medium text-sm border border-white/15 transition-colors cursor-pointer"
+                  className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 backdrop-blur-md transition-colors cursor-pointer"
                 >
                   Close Specification
                 </button>

@@ -115,30 +115,38 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
       </section>
 
       {/* ======================================================== */}
-      {/* 3. DARK BOTTOM CTA SECTION (TCS Inspo)                   */}
+      {/* 3. DARK BOTTOM CTA SECTION (bg1.png Ribbon Background)   */}
       {/* ======================================================== */}
-      <section className="w-full bg-[#090D16] text-white py-20 sm:py-28 px-6 sm:px-8 text-center relative overflow-hidden">
-        {/* Subtle radial ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#0457DF]/10 rounded-full blur-[100px] pointer-events-none" />
+      <section className="relative w-full text-white py-24 sm:py-32 px-6 sm:px-8 text-center overflow-hidden border-t border-white/10">
+        {/* Background Image: bg1.png with cinematic dark overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/bg1.png"
+            alt="GAMA Ribbon Core"
+            className="w-full h-full object-cover object-center opacity-45 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-[#050B14]/80 to-[#02050b]" />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-3">
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3 drop-shadow-lg">
             Unlock Enterprise Intelligence
           </h3>
-          <p className="text-base sm:text-lg text-slate-400 font-normal mb-8 sm:mb-10">
+          <p className="text-base sm:text-lg text-slate-200 font-light mb-8 sm:mb-10 drop-shadow-md">
             Reimagine your future.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => onOpenContact('Enterprise Consultation')}
-              className="px-8 py-3 rounded-full border border-white/25 hover:border-white text-white font-medium text-sm transition-all duration-200 hover:bg-white hover:text-[#0F172A] cursor-pointer shadow-sm hover:scale-[1.02]"
+              className="px-8 py-3.5 rounded-full bg-white text-[#0F172A] hover:bg-slate-100 font-bold text-sm transition-all duration-200 shadow-xl cursor-pointer hover:scale-105 active:scale-95"
             >
               Connect with us
             </button>
             <button
               onClick={() => onOpenContact('Careers & Talent')}
-              className="px-8 py-3 rounded-full border border-white/25 hover:border-white text-white font-medium text-sm transition-all duration-200 hover:bg-white hover:text-[#0F172A] cursor-pointer shadow-sm hover:scale-[1.02]"
+              className="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 backdrop-blur-md transition-colors cursor-pointer"
             >
               Join our team
             </button>
