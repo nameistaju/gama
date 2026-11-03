@@ -232,26 +232,72 @@ export default function IndustryModal({ industryId, onClose, onOpenContact }) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Legacy Card */}
-                <div className="p-6 rounded-2xl bg-red-950/20 border border-red-500/20 text-left">
-                  <div className="flex items-center gap-2 mb-3 text-red-400 font-mono text-xs uppercase tracking-wider font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-red-500" />
-                    Traditional Bottleneck
+                {/* Legacy Bottleneck Card */}
+                <div className="group rounded-2xl bg-red-950/20 hover:bg-red-950/30 border border-red-500/20 hover:border-red-500/40 text-left overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-lg shadow-black/20">
+                  {/* Image Showcase */}
+                  {data.shift?.legacyImage && (
+                    <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-black/40 border-b border-red-500/20">
+                      <img
+                        src={data.shift.legacyImage}
+                        alt="Traditional Bottleneck"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 backdrop-blur-md border border-red-500/40 text-red-400 font-mono text-xs uppercase tracking-wider font-semibold shadow-md">
+                          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                          Traditional Bottleneck
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    {!data.shift?.legacyImage && (
+                      <div className="flex items-center gap-2 mb-3 text-red-400 font-mono text-xs uppercase tracking-wider font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-red-500" />
+                        Traditional Bottleneck
+                      </div>
+                    )}
+                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+                      {data.shift.legacy}
+                    </p>
                   </div>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                    {data.shift.legacy}
-                  </p>
                 </div>
 
-                {/* Modern GAMA Card */}
-                <div className="p-6 rounded-2xl bg-cyan-950/30 border border-cyan-500/30 text-left">
-                  <div className="flex items-center gap-2 mb-3 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                    GAMA Architectural Standard
+                {/* Modern GAMA Architectural Standard Card */}
+                <div className="group rounded-2xl bg-cyan-950/20 hover:bg-cyan-950/30 border border-cyan-500/30 hover:border-cyan-400/50 text-left overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-lg shadow-black/20">
+                  {/* Image Showcase */}
+                  {data.shift?.modernImage && (
+                    <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-black/40 border-b border-cyan-500/20">
+                      <img
+                        src={data.shift.modernImage}
+                        alt="GAMA Architectural Standard"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold shadow-md">
+                          <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                          GAMA Architectural Standard
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    {!data.shift?.modernImage && (
+                      <div className="flex items-center gap-2 mb-3 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                        GAMA Architectural Standard
+                      </div>
+                    )}
+                    <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-light">
+                      {data.shift.modern}
+                    </p>
                   </div>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                    {data.shift.modern}
-                  </p>
                 </div>
               </div>
             </div>

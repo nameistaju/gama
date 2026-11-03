@@ -32,7 +32,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Batch-oriented nightly reconciliations on COBOL mainframes with scheduled weekend downtime and fragile point-to-point connections.',
+      legacyImage: '/industries/1998 COBOL Backroom Operations.png',
       modern: 'Continuous 24/7/365 active-active event-driven ledger running distributed consensus across sovereign cloud availability zones.',
+      modernImage: '/industries/Digital Banking Control Room.png',
     },
   },
 
@@ -66,7 +68,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Over-bloated message brokers with unpredictable garbage collection pauses and uncoordinated post-trade reconciliation delays.',
+      legacyImage: '/industries/Trading Floor Execution Lag.png',
       modern: 'Zero-allocation memory pipelines, hardware-aligned data structures, and continuous streaming risk surfaces.',
+      modernImage: '/industries/Quant Trading Collaboration Workspace.png',
     },
   },
 
@@ -100,7 +104,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Manual paper adjustments, weeks-long claim investigation cycles, rigid actuarial tables, and fragmented legacy policy databases.',
+      legacyImage: '/industries/Clerk Amid Mountains of Paperwork.png',
       modern: 'Instant digital claim adjudication, sub-minute payout dispatch, dynamic telematics risk pricing, and automated compliance.',
+      modernImage: '/industries/Collaborative Telematics Claims Review.png',
     },
   },
 
@@ -134,7 +140,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'High-latency satellite downlinks, 30-second CDN broadcast lag, brittle license servers, and delayed billing reconciliations.',
+      legacyImage: '/industries/Broadcast Rack Room_ No Signal.png',
       modern: 'Sub-second global edge distribution, instant cryptographic licensing, and continuous quality-of-experience optimization.',
+      modernImage: '/industries/Edge Streaming Operations Center.png',
     },
   },
 
@@ -168,7 +176,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Weekly batch inventory updates, spreadsheet-driven replenishment planning, and siloed B2B and retail systems.',
+      legacyImage: '/industries/Warehouse Clerk Amid Paperwork.png',
       modern: 'Real-time telemetry event streaming, automated fulfillment routing, and unified omni-channel customer visibility.',
+      modernImage: '/industries/High-Tech Warehouse Operations Dashboard.png',
     },
   },
 
@@ -202,7 +212,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Clunky, outdated LMS software with static PDF downloads, rigid grading rubrics, and fragile exam servers.',
+      legacyImage: '/industries/Frustrated Student Facing Portal Error.png',
       modern: 'Fluid interactive web applications, real-time collaborative sandboxes, and personalized adaptive curriculum graphs.',
+      modernImage: '/industries/Collaborative Learning in a Bright Tech Hub.png',
     },
   },
 
@@ -236,7 +248,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Manual meter reading, centralized fossil-fuel baseload assumptions, and reactive blackout troubleshooting.',
+      legacyImage: '/industries/Inspecting the Aging Control Panel.png',
       modern: 'Automated 15-minute smart meter settlement, bidirectional renewable orchestration, and AI-driven predictive grid self-healing.',
+      modernImage: '/industries/Renewable Grid Control Center at Sunrise.png',
     },
   },
 
@@ -270,7 +284,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Siloed on-premise compute clusters, manual CSV data transfers between lab instruments, and fragmented audit spreadsheets.',
+      legacyImage: '/industries/Molecular Biology Lab Data Transfer.png',
       modern: 'Cloud-native reproducible bio-pipelines, cryptographically validated audit trails, and unified laboratory knowledge graphs.',
+      modernImage: '/industries/Genomics Workflow in the Sequencing Lab.png',
     },
   },
 
@@ -304,7 +320,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Fax-machine referrals, siloed incompatible hospital systems, manual chart review, and delayed diagnosis communication.',
+      legacyImage: '/industries/Busy Hospital Nurse Station.png',
       modern: 'Instant FHIR API interoperability, real-time bedside alerts, secure mobile physician workflows, and automated triage.',
+      modernImage: '/industries/Doctors Reviewing FHIR Patient Monitoring Dashboard.png',
     },
   },
 
@@ -338,7 +356,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Monolithic single-database architectures running in a single region, vulnerable to outages and slow deployments.',
+      legacyImage: '/industries/Midnight Database Outage War Room.png',
       modern: 'Modular microservice meshes running across multiple cloud regions with zero-downtime blue/green deployments.',
+      modernImage: '/industries/Engineering Team Celebrates Healthy Deployment.png',
     },
   },
 
@@ -372,7 +392,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Slow monolithic e-commerce platforms, batch inventory syncing that causes cancelled orders, and clunky checkout forms.',
+      legacyImage: '/industries/Warehouse Scanner Synchronization Error.png',
       modern: 'Microservices headless commerce, sub-second 1-click checkout, and instantaneous inventory reconciliation across physical and online stores.',
+      modernImage: '/industries/Retail Associate Managing Inventory in Modern Store.png',
     },
   },
 
@@ -406,7 +428,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Unconnected standalone machines, manual clipboard quality checks, unexpected line downtime, and post-shift incident analysis.',
+      legacyImage: '/industries/Factory Breakdown Inspection.png',
       modern: 'Interconnected edge compute mesh, sub-millisecond automated quality vision, and proactive predictive maintenance scheduling.',
+      modernImage: '/industries/Industrial Technician Monitoring Robotic Automation.png',
     },
   },
 
@@ -440,7 +464,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'In-person paper applications, long bureaucratic queues, fragile legacy state databases, and inaccessible web portals.',
+      legacyImage: '/industries/Busy Indian Civic Service Waiting Room.png',
       modern: 'Mobile-first, fully accessible citizen self-service, instant identity verification, and automated inter-agency digital workflows.',
+      modernImage: '/industries/Guided Biometric Verification at Civic Service Hub.png',
     },
   },
 
@@ -474,7 +500,9 @@ export const industriesData = {
     ],
     shift: {
       legacy: 'Manual dispatch calls, paper bills of lading, delayed satellite tracking updates, and fragmented regional logistics software.',
+      legacyImage: '/industries/Rainy Day Freight Dispatch.png',
       modern: 'Continuous real-time GPS telemetry, automated dynamic route recalculation, and transparent global supply chain dashboards.',
+      modernImage: '/industries/Twilight Logistics Control Center.png',
     },
   },
 };
