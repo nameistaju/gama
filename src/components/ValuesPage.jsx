@@ -96,7 +96,7 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
       {/* ======================================================== */}
       {/* 2. MAIN VALUES MANIFESTO & LIST SECTION (Clean White)   */}
       {/* ======================================================== */}
-      <section className="w-full bg-white py-16 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-12 border-b border-slate-100">
+      <section className="w-full bg-white pt-16 sm:pt-24 lg:pt-28 pb-0 px-6 sm:px-8 lg:px-12 border-b border-slate-100 overflow-hidden">
         <div className="max-w-4xl mx-auto">
           {/* Big Editorial Lead Paragraph */}
           <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-normal text-slate-900 leading-[1.35] tracking-tight mb-14 sm:mb-20">
@@ -161,6 +161,16 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
               );
             })}
           </div>
+        </div>
+
+        {/* Collaborative Vision and Delivery Puzzle - Touching the bottom boundary of the section */}
+        <div className="w-full max-w-5xl mx-auto mt-14 sm:mt-20 flex justify-center items-end leading-none">
+          <img
+            src="/Collaborative Vision and Delivery Puzzle.png"
+            alt="Collaborative Vision and Delivery Puzzle"
+            className="w-full max-w-4xl h-auto object-contain object-bottom block select-none pointer-events-none"
+            loading="lazy"
+          />
         </div>
       </section>
 
