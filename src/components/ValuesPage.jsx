@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ShieldCheck, Zap, Users, Award, BookOpen } from 'lucide-react';
 import GamaText from './GamaText';
+import TextHighlight from './ui/text-highlight';
 
 export default function ValuesPage({ onOpenContact, onBackHome }) {
   useEffect(() => {
@@ -88,7 +89,11 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl font-light leading-relaxed">
-            Where human ingenuity meets machine precision. Our values define how we build tomorrow, together.
+            Where human ingenuity meets{' '}
+            <TextHighlight color="#fde047" delay={0.2}>
+              machine precision
+            </TextHighlight>
+            . Our values define how we build tomorrow, together.
           </p>
         </div>
       </section>
@@ -115,12 +120,17 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
                   <div className="text-base sm:text-lg leading-relaxed text-slate-700 font-normal">
                     {/* Interactive Title with Popover Hover Image */}
                     <div
-                      className="relative inline-block group/val cursor-pointer"
+                      className="relative inline-block group/val cursor-pointer mr-2 align-baseline"
                       onMouseEnter={() => setHoveredIdx(idx)}
                       onMouseLeave={() => setHoveredIdx(null)}
                     >
-                      <span className="text-slate-950 font-bold text-lg sm:text-xl inline-block mr-2 group-hover/val:text-[#0057EC] transition-colors underline decoration-slate-300 decoration-dotted underline-offset-4 group-hover/val:decoration-[#0057EC]">
-                        {item.title}:
+                      <TextHighlight color="#fde047" delay={idx * 0.1}>
+                        <span className="text-slate-950 font-bold text-lg sm:text-xl group-hover/val:text-[#0057EC] transition-colors">
+                          {item.title}
+                        </span>
+                      </TextHighlight>
+                      <span className="text-slate-950 font-bold text-lg sm:text-xl group-hover/val:text-[#0057EC] transition-colors">
+                        :
                       </span>
 
                       {/* Floating image preview positioned above the text */}
