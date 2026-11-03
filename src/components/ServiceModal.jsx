@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Maximize2, Minimize2, ArrowRight, ShieldCheck, Cpu, Database, Activity, Layers, Terminal } from 'lucide-react';
+import { X, ArrowRight, ShieldCheck, Database, Activity, Layers, Terminal } from 'lucide-react';
 import { getServiceBySlugOrName } from '../data/servicesData';
 
 export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
   const [data, setData] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0); // 0 (modal) to 1 (full page)
-  const [isForcedFull, setIsForcedFull] = useState(false);
   const containerRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -14,7 +13,6 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
     const found = getServiceBySlugOrName(serviceId);
     setData(found);
     setScrollProgress(0);
-    setIsForcedFull(false);
     if (contentRef.current) {
       contentRef.current.scrollTop = 0;
     }
@@ -45,18 +43,17 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
 
   // Handle scroll to smoothly expand to full page
   const handleScroll = (e) => {
-    if (isForcedFull) return;
     const st = e.currentTarget.scrollTop;
     // Over the first 140px of scrolling, transition from 0 to 1
     const p = Math.min(1, Math.max(0, st / 140));
     setScrollProgress(p);
   };
 
-  const effectiveProgress = isForcedFull ? 1 : scrollProgress;
-
   // Interpolated styles for smooth expansion
-  const modalRadius = Math.round(28 * (1 - effectiveProgress));
-  const modalPadding = Math.round(16 * (1 - effectiveProgress));
+  // At p = 0: floating modal (rounded-3xl, centered with padding/inset, max-w-5xl, 86vh)
+  // At p = 1: full page (rounded-none, inset-0, 100vw, 100vh)
+  const modalRadius = Math.round(28 * (1 - scrollProgress));
+  const modalPadding = Math.round(16 * (1 - scrollProgress));
 
   return (
     <div
@@ -67,13 +64,13 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
       {/* Backdrop with Blur */}
       <div
         onClick={() => {
-          if (effectiveProgress < 0.2) onClose?.();
+          if (scrollProgress < 0.2) onClose?.();
         }}
         className="absolute inset-0 bg-black/85 backdrop-blur-md transition-opacity duration-300"
         aria-hidden="true"
       />
 
-      {/* Floating Minimal Close Button */}
+      {/* Floating Minimal Close Button (Replaces entire top navbar) */}
       <button
         onClick={onClose}
         className="fixed top-5 right-5 sm:top-7 sm:right-7 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-white/25 text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xl hover:scale-105 active:scale-95 group"
@@ -87,9 +84,9 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
         ref={containerRef}
         style={{
           borderRadius: `${modalRadius}px`,
-          width: effectiveProgress === 1 ? '100vw' : `calc(100vw - ${modalPadding * 2}px)`,
-          maxWidth: effectiveProgress === 1 ? '100vw' : '1160px',
-          height: effectiveProgress === 1 ? '100vh' : '86vh',
+          width: scrollProgress === 1 ? '100vw' : `calc(100vw - ${modalPadding * 2}px)`,
+          maxWidth: scrollProgress === 1 ? '100vw' : '1160px',
+          height: scrollProgress === 1 ? '100vh' : '86vh',
           maxHeight: '100vh',
         }}
         className="relative z-10 flex flex-col bg-[#050B14] text-white border border-white/15 shadow-[0_25px_90px_rgba(0,0,0,0.95)] overflow-hidden transition-[width,height,border-radius,max-width] duration-200 ease-out"
@@ -100,54 +97,49 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           onScroll={handleScroll}
           className="flex-1 overflow-y-auto overflow-x-hidden text-left scroll-smooth"
         >
-          {/* Hero Section */}
-          <section className="relative px-6 sm:px-12 md:px-16 pt-12 sm:pt-16 pb-14 bg-gradient-to-b from-[#0a1526] via-[#050B14] to-[#050B14] border-b border-white/10">
-            {/* Background Glow */}
-            <div
-              className="absolute top-0 right-1/4 w-[450px] h-[300px] bg-gradient-to-tr from-cyan-500/20 to-blue-600/10 blur-[130px] pointer-events-none"
-              aria-hidden="true"
-            />
+          {/* ======================================================== */}
+          {/* 1. HERO SECTION WITH IMAGE BACKGROUND (TCS Inspo)         */}
+          {/* ======================================================== */}
+          <section className="relative w-full min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] flex items-center px-6 sm:px-12 md:px-16 pt-16 sm:pt-20 pb-16 sm:pb-20 overflow-hidden border-b border-white/10">
+            {/* Background Photography Image */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src={data.heroImage || `/services_bg/${data.id}.png`}
+                alt={data.name}
+                className="w-full h-full object-cover object-center transform scale-[1.02] filter brightness-[0.82] contrast-[1.05]"
+                loading="eager"
+              />
+              {/* High-end cinematic dark overlays for optimal readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-transparent to-black/40" />
+            </div>
 
-            <div className="relative max-w-4xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan-400">
-                <Cpu className="w-3.5 h-3.5" />
-                <span>ENTERPRISE SPECIFICATION</span>
+            {/* Clean Minimal Hero Content matching Reference Image */}
+            <div className="relative z-10 max-w-3xl drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+              {/* Breadcrumb matching TCS: SERVICE / CLOUD */}
+              <div className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-slate-300 mb-4 sm:mb-6">
+                SERVICE / {data.name.toUpperCase()}
               </div>
 
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-5">
-                {data.name}
+              {/* Bold Headline matching TCS */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-5 sm:mb-6">
+                {data.heroTitle || `${data.name} next: Cloud-native, distributed, multi-region`}
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl text-cyan-200/90 font-light leading-relaxed mb-6">
-                {data.headline}
-              </p>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-3xl">
+              {/* Concise 2-line Subtitle */}
+              <p className="text-base sm:text-lg lg:text-xl text-slate-200 font-light leading-relaxed max-w-2xl mb-8">
                 {data.overview}
               </p>
 
-              {/* Tech Stack Chips */}
-              <div className="flex flex-wrap items-center gap-2 mb-10">
-                <span className="text-xs uppercase font-mono text-slate-400 mr-2">Core Stack:</span>
-                {data.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs font-mono font-medium rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
+              {/* Action Trigger */}
               <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => {
                     onOpenContact?.(data.name);
                   }}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0457DF] hover:bg-[#00D4FF] text-white hover:text-[#0F172A] font-semibold text-sm transition-all duration-200 shadow-lg cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0457DF] hover:bg-[#00D4FF] text-white hover:text-[#0F172A] font-semibold text-sm transition-all duration-200 shadow-xl cursor-pointer hover:scale-105 active:scale-95"
                 >
-                  <span>Consult with a Systems Architect</span>
+                  <span>Consult with an Architect</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
@@ -155,15 +147,17 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                     const el = document.getElementById('service-pillars');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 hover:bg-white/10 text-white font-medium text-sm border border-white/10 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm backdrop-blur-md border border-white/15 transition-colors cursor-pointer"
                 >
-                  <span>View Technical Pillars</span>
+                  <span>Explore Architecture</span>
                 </button>
               </div>
             </div>
           </section>
 
-          {/* Section 1: The Architectural Paradigm Shift */}
+          {/* ======================================================== */}
+          {/* 2. THE MODERNIZATION PARADIGM                            */}
+          {/* ======================================================== */}
           <section className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10 bg-[#070e1a]/60">
             <div className="max-w-5xl">
               <div className="mb-8">
@@ -204,7 +198,9 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
             </div>
           </section>
 
-          {/* Section 2: Core Engineering Pillars */}
+          {/* ======================================================== */}
+          {/* 3. CORE ENGINEERING PILLARS                              */}
+          {/* ======================================================== */}
           <section id="service-pillars" className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10">
             <div className="max-w-5xl">
               <div className="mb-10">
@@ -257,7 +253,9 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
             </div>
           </section>
 
-          {/* Section 3: Technical Blueprint & Infrastructure */}
+          {/* ======================================================== */}
+          {/* 4. REFERENCE TECHNOLOGY STACK                            */}
+          {/* ======================================================== */}
           <section className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10 bg-[#040810]">
             <div className="max-w-5xl">
               <div className="mb-8">
@@ -272,7 +270,8 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Categorized Stack Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
                   <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
                     <Terminal className="w-3.5 h-3.5" />
@@ -309,10 +308,25 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                   <div className="text-xs text-slate-400 mt-1">Zero-trust cryptographic isolation and strict micro-segmentation</div>
                 </div>
               </div>
+
+              {/* Core Stack Chips */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs uppercase font-mono text-slate-400 mr-2">Specific Stack:</span>
+                {data.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-xs font-mono font-medium rounded-lg bg-white/5 border border-white/10 text-slate-200"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </section>
 
-          {/* Section 4: Enterprise Consultation Call-to-Action */}
+          {/* ======================================================== */}
+          {/* 5. ENTERPRISE CONSULTATION CALL-TO-ACTION                */}
+          {/* ======================================================== */}
           <section className="px-6 sm:px-12 md:px-16 py-16 sm:py-20 bg-gradient-to-t from-[#02050b] to-[#050B14]">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mb-4">

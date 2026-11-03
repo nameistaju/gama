@@ -5,10 +5,12 @@ export const servicesData = {
   'artificial-intelligence-and-data-analytics': {
     id: 'artificial-intelligence-and-data-analytics',
     name: 'Artificial Intelligence and Data & Analytics',
+    heroTitle: 'AI & Analytics next: Deterministic, low-latency, private',
+    heroImage: '/services_bg/artificial-intelligence-and-data-analytics.png',
     headline: 'Deterministic LLM Pipelines, Vector Retrieval & Real-Time Analytics',
     tagline: 'Bridging raw enterprise telemetry to low-latency inference engines and autonomous agents.',
     overview:
-      'Enterprise AI requires far more than generic API wrappers. We architect end-to-end data processing fabrics, hybrid semantic retrieval pipelines, and low-latency inference microservices designed to run securely within your private VPC boundary.',
+      'We architect end-to-end data processing fabrics, hybrid semantic retrieval pipelines, and low-latency inference microservices designed to run securely within your private VPC boundary.',
     techStack: ['Python', 'PyTorch', 'vLLM', 'Apache Iceberg', 'ClickHouse', 'pgvector', 'Ray.io'],
     pillars: [
       {
@@ -37,10 +39,12 @@ export const servicesData = {
   'ai-led-data-centres': {
     id: 'ai-led-data-centres',
     name: 'AI-led Data Centres',
+    heroTitle: 'Data Centres next: Autonomous, high-density, green',
+    heroImage: '/services_bg/ai-led-data-centres.png',
     headline: 'High-Density Thermal Modeling, Dynamic Workload Placement & Power Optimization',
     tagline: 'Engineering autonomous compute facilities built for multi-megawatt AI clusters.',
     overview:
-      'Modern GPU clusters consume unprecedented power and generate extreme heat density. We build telemetry collection platforms, predictive liquid cooling control loops, and dynamic Slurm/Kubernetes schedulers that optimize compute power usage effectiveness (PUE) in real time.',
+      'We build real-time telemetry collection platforms, predictive liquid cooling control loops, and dynamic Slurm/Kubernetes schedulers that optimize compute power usage effectiveness in real time.',
     techStack: ['Rust', 'eBPF', 'Prometheus', 'TimescaleDB', 'Kubernetes / Slurm', 'MQTT', 'RoCEv2'],
     pillars: [
       {
@@ -69,10 +73,12 @@ export const servicesData = {
   cloud: {
     id: 'cloud',
     name: 'Cloud',
+    heroTitle: 'Cloud next: Cloud-native, distributed, multi-region',
+    heroImage: '/services_bg/cloud.png',
     headline: 'Cloud-Native Distributed Systems, Immutable Infrastructure & Multi-Region Resilience',
     tagline: 'Architecting zero-downtime microservices and sovereign cloud foundations built to withstand regional outages.',
     overview:
-      'Cloud modernization is not about lifting and shifting legacy monoliths into expensive VMs. We engineer cloud-native, auto-healing platforms with zero-trust network boundaries, GitOps continuous delivery, and active-active cross-region failover.',
+      'We engineer cloud-native, auto-healing platforms with zero-trust network boundaries, declarative GitOps continuous delivery, and active-active cross-region failover.',
     techStack: ['Kubernetes', 'Terraform', 'Go', 'Envoy', 'Istio', 'AWS / GCP / Azure', 'ArgoCD'],
     pillars: [
       {
@@ -101,10 +107,12 @@ export const servicesData = {
   consulting: {
     id: 'consulting',
     name: 'Consulting',
+    heroTitle: 'Consulting next: First-principles, runnable, transformative',
+    heroImage: '/services_bg/consulting.png',
     headline: 'First-Principles Systems Architecture, Technical Auditing & Modernization Roadmaps',
     tagline: 'Direct access to senior distributed systems engineers who write production code, not slide decks.',
     overview:
-      'Traditional IT consulting delivers hundreds of slides with zero working software. GAMA Consulting pairs your leadership with battle-tested systems architects who analyze codebases, profile database bottlenecks, redesign distributed architectures, and build working proof-of-concept prototypes.',
+      'We pair your leadership with battle-tested systems architects who analyze codebases, profile database bottlenecks, redesign distributed architectures, and build working production prototypes.',
     techStack: ['Distributed Systems Architecture', 'Domain-Driven Design', 'Chaos Engineering', 'Database Profiling', 'RFC-driven Design'],
     pillars: [
       {
@@ -133,10 +141,12 @@ export const servicesData = {
   'industrial-autonomy-and-engineering': {
     id: 'industrial-autonomy-and-engineering',
     name: 'Industrial Autonomy & Engineering',
+    heroTitle: 'Industrial Autonomy next: Edge-native, deterministic, synchronized',
+    heroImage: '/services_bg/industrial-autonomy-and-engineering.png',
     headline: 'Edge Compute, Deterministic Real-Time Control & Cyber-Physical Telemetry',
     tagline: 'Bringing high-throughput sensor fusion, computer vision, and industrial robotics to the factory edge.',
     overview:
-      'Industrial operations require real-time determinism where a 10ms latency spike can disrupt physical assembly. We engineer embedded edge compute runtimes, ROS2-based robotic control nodes, and sensor fusion pipelines connecting physical hardware to enterprise digital twins.',
+      'We engineer embedded edge compute runtimes, ROS2-based robotic control nodes, and sensor fusion pipelines connecting physical hardware to enterprise digital twins.',
     techStack: ['C++20', 'Rust', 'ROS 2', 'OPC UA', 'MQTT-SN', 'CUDA Edge', 'RT-Linux'],
     pillars: [
       {
@@ -165,10 +175,12 @@ export const servicesData = {
   'network-solutions-and-services': {
     id: 'network-solutions-and-services',
     name: 'Network Solutions and Services',
+    heroTitle: 'Networks next: Programmable, zero-trust, line-rate',
+    heroImage: '/services_bg/network-solutions-and-services.png',
     headline: 'Software-Defined Wide Area Networking (SD-WAN), eBPF Mesh & Zero-Trust Interconnect',
     tagline: 'High-performance programmable networks engineered for multi-cloud telemetry and microsecond routing.',
     overview:
-      'Modern enterprise networks must securely interconnect branch offices, edge devices, and multi-cloud VPCs without routing bottlenecks or manual firewall configuration. We design programmable networks utilizing eBPF, WireGuard meshes, and automated BGP route propagation.',
+      'We design high-performance programmable networks utilizing eBPF, encrypted WireGuard overlay meshes, and automated BGP route propagation across hybrid clouds.',
     techStack: ['eBPF / XDP', 'WireGuard', 'Cilium', 'BGP / FRRouting', 'P4', 'gNMI / OpenConfig'],
     pillars: [
       {
