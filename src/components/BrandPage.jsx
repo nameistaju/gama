@@ -40,29 +40,29 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
 
   const colorMeanings = [
     {
-      color: 'bg-blue-500',
-      border: 'border-blue-500/30',
+      icon: '/architectural-integrity.png',
+      border: 'border-blue-500/30 hover:border-blue-500/50',
       text: 'text-blue-400',
       title: 'Architectural Integrity',
       desc: 'Sovereign cloud resilience, active-active consensus, and deterministic SLAs that enterprises rely upon 24/7/365.',
     },
     {
-      color: 'bg-amber-500',
-      border: 'border-amber-500/30',
+      icon: '/velocity-and-dynamism.png',
+      border: 'border-amber-500/30 hover:border-amber-500/50',
       text: 'text-amber-400',
       title: 'Velocity & Dynamism',
       desc: 'Rapid iteration, kernel-level low-latency execution, and relentless drive to outperform legacy benchmarks.',
     },
     {
-      color: 'bg-emerald-500',
-      border: 'border-emerald-500/30',
+      icon: '/autonomous-systems.png',
+      border: 'border-emerald-500/30 hover:border-emerald-500/50',
       text: 'text-emerald-400',
       title: 'Autonomous Systems',
       desc: 'Sustainable edge computing, predictive industrial telemetry, and self-healing cyber-physical workflows.',
     },
     {
-      color: 'bg-cyan-400',
-      border: 'border-cyan-400/30',
+      icon: '/cognitive-precision.png',
+      border: 'border-cyan-400/30 hover:border-cyan-400/50',
       text: 'text-cyan-300',
       title: 'Cognitive Precision',
       desc: 'Stream intelligence, private-boundary LLM orchestration, and high-throughput vector retrieval without data leakage.',
@@ -163,37 +163,32 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Center / Left: Visual Brand Mark */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 sm:p-12 rounded-3xl bg-white/[0.02] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-blue-500/10 to-emerald-500/10 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity" />
+            {/* Center / Left: Visual Brand Mark without box, text, or border */}
+            <div className="lg:col-span-5 flex items-center justify-center p-2 sm:p-4">
               <img
-                src="/Colorful Folded Ribbon GAMMA Logo.png"
-                alt="The GAMA Prism Mark"
-                className="w-56 sm:w-64 h-auto object-contain relative z-10 transform group-hover:scale-105 transition-transform duration-500"
+                src="/3dlogo.gif"
+                alt="The GAMA 3D Mark"
+                className="w-64 sm:w-72 md:w-80 lg:w-96 max-w-full h-auto object-contain select-none pointer-events-none drop-shadow-[0_16px_40px_rgba(0,0,0,0.7)]"
+                loading="eager"
               />
-              <div className="mt-8 text-center relative z-10">
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-1">
-                  The Continuous Fold
-                </span>
-                <span className="text-sm text-slate-300">
-                  Infinite resilience across sovereign cloud and edge
-                </span>
-              </div>
             </div>
 
-            {/* Right: Chromatic Breakdown */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+            {/* Right: 4 Cards with 1:1 Logos at top, no background around them */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 text-left">
               {colorMeanings.map((item) => (
                 <div
                   key={item.title}
-                  className={`p-6 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] border ${item.border} transition-all duration-300`}
+                  className={`p-6 sm:p-7 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] border ${item.border} transition-all duration-300 flex flex-col justify-start`}
                 >
-                  <div className="flex items-center gap-2.5 mb-3">
-                    <span className={`w-3 h-3 rounded-full ${item.color} shadow-sm`} />
-                    <h3 className={`font-semibold text-base ${item.text}`}>
-                      {item.title}
-                    </h3>
-                  </div>
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="w-12 h-12 sm:w-14 sm:h-14 object-contain mb-4 select-none pointer-events-none"
+                    loading="lazy"
+                  />
+                  <h3 className={`font-bold text-base sm:text-lg mb-2 ${item.text}`}>
+                    {item.title}
+                  </h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                     {item.desc}
                   </p>
