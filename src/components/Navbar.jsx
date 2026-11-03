@@ -98,9 +98,11 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
     };
   }, []);
 
-  // Smart hide on scroll down, reveal on scroll up + transparent on hero vs dark fill below
+  // Smart hide on scroll down (becomes full-screen on mobile like BookMyShow), reveal on scroll up
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateScroll = () => {
       const currentScrollY = window.scrollY;
 
       // Transparent on hero section (<= 20px), solid dark filled background when scrolled below
@@ -108,6 +110,7 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
 
       if (mobileMenuOpen) {
         setIsVisible(true);
+        ticking = false;
         return;
       }
 
@@ -115,17 +118,27 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
 
       if (currentScrollY <= 40) {
         setIsVisible(true);
-      } else if (delta > 6) {
+      } else if (delta > 8) {
+        // Scrolling down: become full screen (smoothly slide navbar up and out of view)
         setIsVisible(false);
         setActiveMegaMenu(null);
-      } else if (delta < -6) {
+      } else if (delta < -8) {
+        // Scrolling up: reveal navbar
         setIsVisible(true);
       }
 
       lastScrollYRef.current = currentScrollY <= 0 ? 0 : currentScrollY;
+      ticking = false;
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+
+    updateScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen]);

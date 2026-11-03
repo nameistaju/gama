@@ -243,7 +243,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#0F172A] selection:text-white overflow-x-clip font-sans">
+    <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#0F172A] selection:text-white font-sans">
       {/* Step 1: Animated Logo Loader (Fast snappy 1.85x speed) */}
       {introStep === 'loader' && (
         <GamaLoader onComplete={() => setIntroStep('video')} />
