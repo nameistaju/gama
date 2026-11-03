@@ -216,21 +216,23 @@ export default function GamaLoader({ onComplete }) {
 
     function loop(now) {
       const elapsed = (now - t0) / 1000;
-      frame(elapsed);
+      // High-performance energetic 1.85x speed multiplier
+      const SPEED = 1.85;
+      frame(elapsed * SPEED);
 
-      // Allow the full logo and accents to completely assemble (~5.3s) plus 1.2s extra hold time (~6.5s)
-      if (elapsed >= 6.5 && !hasTriggeredFade) {
+      // Logo fully completes assembly in ~2.8s. Quick 0.2s hold, then snappy fade
+      if (elapsed >= 3.0 && !hasTriggeredFade) {
         hasTriggeredFade = true;
         setFading(true);
         setTimeout(() => {
           setMounted(false);
           if (onComplete) onComplete();
-        }, 600);
+        }, 350);
       }
 
-      if (elapsed < 7.5 && !hasTriggeredFade) {
+      if (elapsed < 3.6 && !hasTriggeredFade) {
         animId = requestAnimationFrame(loop);
-      } else if (elapsed < 7.2) {
+      } else if (elapsed < 3.5) {
         animId = requestAnimationFrame(loop);
       }
     }

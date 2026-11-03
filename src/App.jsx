@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
-import ValuesPage from './components/ValuesPage';
-import BrandPage from './components/BrandPage';
 import SolutionsSection from './components/SolutionsSection';
-import CurvedMarquee from './components/CurvedMarquee';
 import EditorialAbout from './components/EditorialAbout';
 import ScrollExpand from './components/ScrollExpand';
 import AIWorkforceSection from './components/AIWorkforceSection';
@@ -14,22 +11,31 @@ import FeaturesWithPanel from './components/ui/features-with-panel';
 import Integrations from './components/ui/integrations-4-2';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import ContactModal from './components/ContactModal';
 import GamaLoader from './components/GamaLoader';
 import VideoIntro from './components/VideoIntro';
 import GlobeSection from './components/GlobeSection';
 import TangibleOutcomes from './components/TangibleOutcomes';
 import TextHighlight from './components/ui/text-highlight';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import IndustryModal from './components/IndustryModal';
-import ServiceModal from './components/ServiceModal';
+
+// Code-split heavy routes and interactive modals to keep initial bundle ultra-fast
+const ValuesPage = lazy(() => import('./components/ValuesPage'));
+const BrandPage = lazy(() => import('./components/BrandPage'));
+const IndustryModal = lazy(() => import('./components/IndustryModal'));
+const ServiceModal = lazy(() => import('./components/ServiceModal'));
+const ContactModal = lazy(() => import('./components/ContactModal'));
 
 export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
-  // Intro sequence: 'loader' -> 'video' -> 'ready' (skip if direct deep link hash is present)
+  // Intro sequence: 'loader' -> 'video' -> 'ready' (skip if direct deep link hash or already viewed this session)
   const [introStep, setIntroStep] = useState(() => {
-    if (typeof window !== 'undefined' && window.location.hash) {
-      return 'ready';
+    if (typeof window !== 'undefined') {
+      if (window.location.hash) return 'ready';
+      try {
+        if (sessionStorage.getItem('gama_intro_viewed') === 'true') {
+          return 'ready';
+        }
+      } catch (e) {}
     }
     return 'loader';
   });
@@ -229,16 +235,23 @@ export default function App() {
     }
   };
 
+  const handleFinishIntro = () => {
+    try {
+      sessionStorage.setItem('gama_intro_viewed', 'true');
+    } catch (e) {}
+    setIntroStep('ready');
+  };
+
   return (
     <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#0F172A] selection:text-white overflow-x-clip font-sans">
-      {/* Step 1: Animated Logo Loader (Full animation + 1.2s extra hold) */}
+      {/* Step 1: Animated Logo Loader (Fast snappy 1.85x speed) */}
       {introStep === 'loader' && (
         <GamaLoader onComplete={() => setIntroStep('video')} />
       )}
 
       {/* Step 2: Cinematic Video Intro (intro.mp4 with Mute & Skip) */}
       {introStep === 'video' && (
-        <VideoIntro onComplete={() => setIntroStep('ready')} />
+        <VideoIntro onComplete={handleFinishIntro} />
       )}
 
       {/* Top Header & Navigation Bar */}
@@ -252,30 +265,34 @@ export default function App() {
 
       {/* Values Page View */}
       {currentView === 'values' && (
-        <main>
-          <ValuesPage
-            onOpenContact={handleOpenContact}
-            onBackHome={() => handleNavigate('home')}
-          />
-          <Footer
-            onOpenContact={() => setContactOpen(true)}
-            onNavigate={handleNavigate}
-          />
-        </main>
+        <Suspense fallback={<div className="min-h-screen bg-[#050B14]" />}>
+          <main>
+            <ValuesPage
+              onOpenContact={handleOpenContact}
+              onBackHome={() => handleNavigate('home')}
+            />
+            <Footer
+              onOpenContact={() => setContactOpen(true)}
+              onNavigate={handleNavigate}
+            />
+          </main>
+        </Suspense>
       )}
 
       {/* Brand Page View */}
       {currentView === 'brand' && (
-        <main>
-          <BrandPage
-            onOpenContact={handleOpenContact}
-            onBackHome={() => handleNavigate('home')}
-          />
-          <Footer
-            onOpenContact={() => setContactOpen(true)}
-            onNavigate={handleNavigate}
-          />
-        </main>
+        <Suspense fallback={<div className="min-h-screen bg-[#050B14]" />}>
+          <main>
+            <BrandPage
+              onOpenContact={handleOpenContact}
+              onBackHome={() => handleNavigate('home')}
+            />
+            <Footer
+              onOpenContact={() => setContactOpen(true)}
+              onNavigate={handleNavigate}
+            />
+          </main>
+        </Suspense>
       )}
 
       {/* Main Home Page Sections (hidden when viewing dedicated pages to preserve GSAP pins and prevent DOM errors) */}
@@ -361,29 +378,35 @@ export default function App() {
 
       {/* Dedicated Industry Specification Modal with Scroll-to-Full-Page Experience */}
       {selectedIndustry && (
-        <IndustryModal
-          industryId={selectedIndustry}
-          onClose={handleCloseIndustry}
-          onOpenContact={handleOpenContact}
-        />
+        <Suspense fallback={null}>
+          <IndustryModal
+            industryId={selectedIndustry}
+            onClose={handleCloseIndustry}
+            onOpenContact={handleOpenContact}
+          />
+        </Suspense>
       )}
 
       {/* Dedicated Service Specification Modal with Scroll-to-Full-Page Experience */}
       {selectedServiceModal && (
-        <ServiceModal
-          serviceId={selectedServiceModal}
-          onClose={handleCloseService}
-          onOpenContact={handleOpenContact}
-        />
+        <Suspense fallback={null}>
+          <ServiceModal
+            serviceId={selectedServiceModal}
+            onClose={handleCloseService}
+            onOpenContact={handleOpenContact}
+          />
+        </Suspense>
       )}
 
       {/* Full-Screen "Let's Talk" Contact Experience */}
       {contactOpen && (
-        <ContactModal
-          isOpen={contactOpen}
-          onClose={() => setContactOpen(false)}
-          initialService={selectedService}
-        />
+        <Suspense fallback={null}>
+          <ContactModal
+            isOpen={contactOpen}
+            onClose={() => setContactOpen(false)}
+            initialService={selectedService}
+          />
+        </Suspense>
       )}
     </div>
   );

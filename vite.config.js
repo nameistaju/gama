@@ -14,6 +14,21 @@ export default defineConfig({
       '/assests': path.resolve(__dirname, './public/assets'),
     },
   },
+  build: {
+    target: 'esnext',
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-motion': ['gsap', 'motion'],
+          'vendor-icons': ['lucide-react', '@hugeicons/react'],
+        },
+      },
+    },
+  },
   server: {
     port: 5174,
     host: true,

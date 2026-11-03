@@ -170,6 +170,8 @@ export default function EditorialAbout() {
                       src={segment.image}
                       alt={segment.alt || ''}
                       className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover/badge:scale-125 group-hover/badge:rotate-6 pointer-events-auto"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </span>
                 )}

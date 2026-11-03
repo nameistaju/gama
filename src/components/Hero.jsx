@@ -46,6 +46,8 @@ export default function Hero({ onOpenContact }) {
           alt="Human and AI hands reaching together"
           className="w-[120%] max-w-none sm:w-full md:w-[108%] lg:w-[104%] min-w-full h-auto max-h-[42vh] sm:max-h-[75vh] md:max-h-[85vh] translate-y-[10%] sm:translate-y-0 object-contain object-center pointer-events-none select-none drop-shadow-2xl"
           onError={(e) => { e.currentTarget.src = '/heroo.png'; }}
+          loading="eager"
+          decoding="async"
         />
       </div>
 
