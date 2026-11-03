@@ -32,7 +32,9 @@ export const servicesData = {
     ],
     shift: {
       legacy: 'Brittle batch scripts, fragmented data silos, and unmonitored third-party closed API calls that leak sensitive enterprise telemetry.',
+      legacyImage: '/bigServices/Late-Night Memory Error Crisis.png',
       modern: 'Unified streaming Lakehouse architecture with self-hosted private VPC inference pipelines and sub-second semantic caching.',
+      modernImage: '/bigServices/Engineer Mapping a Private Streaming Lakehouse.png',
     },
   },
 
@@ -66,7 +68,9 @@ export const servicesData = {
     ],
     shift: {
       legacy: 'Static HVAC setpoints, reactive manual power throttling during outages, and unmonitored hot spots triggering emergency GPU throttling.',
+      legacyImage: '/bigServices/Thermal Inspection in the Server Room.png',
       modern: 'Sensor-rich closed-loop automation with predictive cooling and dynamic thermal-aware workload steering.',
+      modernImage: '/bigServices/Technician in a High-Tech Data Center (1).png',
     },
   },
 
@@ -100,7 +104,9 @@ export const servicesData = {
     ],
     shift: {
       legacy: 'Brittle click-ops cloud deployments, single-region vulnerability, manual disaster recovery runbooks, and runaway monthly bills.',
+      legacyImage: '/bigServices/Enterprise Transformation Roadmap Meeting.png',
       modern: 'Fully declarative multi-region infrastructure with automated chaos engineering resilience and algorithmic autoscaling.',
+      modernImage: '/bigServices/Thoughtful DevOps Engineer at Work.png',
     },
   },
 
@@ -134,7 +140,9 @@ export const servicesData = {
     ],
     shift: {
       legacy: 'Theoretical PowerPoint decks by generalist analysts with no code experience, leading to stalled transformation initiatives.',
+      legacyImage: '/bigServices/Strategic Transformation Meeting.png',
       modern: 'Rigorous architectural specifications, runnable benchmarks, and hands-on system modernization led by veteran engineers.',
+      modernImage: '/bigServices/System Migration Strategy Meeting.png',
     },
   },
 
@@ -168,7 +176,9 @@ export const servicesData = {
     ],
     shift: {
       legacy: 'Isolated proprietary PLCs, manual visual inspection stations, uncoordinated AGVs, and fragmented SCADA silos.',
+      legacyImage: '/bigServices/Technician Inspecting Industrial Control Panel.png',
       modern: 'Synchronized edge compute fabric, automated microsecond defect detection, and unified OPC UA telemetry streams.',
+      modernImage: '/bigServices/Industrial Robot Sorting Cell in Operation.png',
     },
   },
 
@@ -202,7 +212,9 @@ export const servicesData = {
     ],
     shift: {
       legacy: 'Rigid MPLS circuits, manual CLI configuration of hardware switches, static IPsec tunnels, and slow manual change approval boards.',
+      legacyImage: '/bigServices/After-Hours Network Troubleshooting.png',
       modern: 'Programmable software-defined network fabric, instant automated peering, cryptographic micro-segmentation, and line-rate eBPF routing.',
+      modernImage: '/bigServices/Network Operations Control Center.png',
     },
   },
 };
