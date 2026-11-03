@@ -13,28 +13,32 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
       title: 'First-Principles Architecture',
       description:
         'We never build on fragile abstractions or superficial wrapper layers when sub-millisecond determinism and reliability are at stake. Every digital backbone is engineered from first principles.',
-      icon: Terminal,
+      icon: '/01-first-principles-architecture.png',
+      image: '/pillar-first-principles.png',
     },
     {
       number: '02',
       title: 'Radical Transparency',
       description:
         'Code-level accountability and unvarnished honesty. Our enterprise partners have direct access to senior systems architects who write production code, with zero opaque middle management.',
-      icon: ShieldCheck,
+      icon: '/02-radical-transparency.png',
+      image: '/pillar-radical-transparency.png',
     },
     {
       number: '03',
       title: 'Engineered for Durability',
       description:
         'Software built to run for decades without architectural collapse. We design active-active distributed topologies, zero-trust cryptographic enclaves, and self-healing cloud fabrics.',
-      icon: Layers,
+      icon: '/03-engineered-for-durability.png',
+      image: '/pillar-engineered-durability.png',
     },
     {
       number: '04',
       title: 'Compounding Partnership',
       description:
         'We do not engage in one-off transactional consulting. We co-engineer alongside forward-looking enterprise leadership, building enduring institutional muscle and proprietary software advantages.',
-      icon: Compass,
+      icon: '/04-compounding-partnership.png',
+      image: '/pillar-compounding-partnership.png',
     },
   ];
 
@@ -249,39 +253,59 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 text-left">
-            {brandPillars.map((pillar) => {
-              const IconComp = pillar.icon;
-              return (
-                <div
-                  key={pillar.title}
-                  className="p-8 sm:p-10 rounded-3xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/10 hover:border-cyan-500/30 transition-all duration-300 flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-3xl font-mono font-bold text-white/30 group-hover:text-cyan-400 transition-colors">
-                        {pillar.number}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                    </div>
+            {brandPillars.map((pillar) => (
+              <div
+                key={pillar.title}
+                className="rounded-3xl bg-[#0B101D] border border-white/10 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between overflow-hidden group shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+              >
+                {/* 1. Realistic Photography Showcase Header */}
+                <div className="relative w-full h-52 sm:h-64 overflow-hidden bg-slate-950 border-b border-white/10">
+                  <img
+                    src={pillar.image}
+                    alt={pillar.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B101D] via-transparent to-black/35" />
+                  
+                  {/* Top Floating Number Pill */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white font-mono text-xs font-bold tracking-widest shadow-lg">
+                      <span className="text-cyan-400">PILLAR</span> {pillar.number}
+                    </span>
+                  </div>
+                </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-cyan-200 transition-colors">
-                      {pillar.title}
-                    </h3>
+                {/* 2. Content with 3D Icon and Description */}
+                <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center gap-3.5 sm:gap-4 mb-3.5">
+                      <img
+                        src={pillar.icon}
+                        alt={`${pillar.title} 3D icon`}
+                        className="w-11 h-11 sm:w-13 sm:h-13 object-contain shrink-0 select-none group-hover:scale-110 transition-transform duration-300 drop-shadow-md pointer-events-none"
+                        loading="lazy"
+                      />
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
+                        {pillar.title}
+                      </h3>
+                    </div>
 
                     <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                       {pillar.description}
                     </p>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-mono text-cyan-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                    <span>Non-Negotiable Baseline</span>
+                  <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-cyan-400">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      <span>Non-Negotiable Baseline</span>
+                    </div>
+                    <span className="text-slate-500 uppercase tracking-wider font-semibold">GAMA STANDARD</span>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
