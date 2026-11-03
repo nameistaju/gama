@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, ShieldCheck, Database, Activity, Layers, Terminal } from 'lucide-react';
 import { getIndustryBySlugOrName } from '../data/industriesData';
+import { TechChip, TechLogo } from './TechLogo';
 
 export default function IndustryModal({ industryId, onClose, onOpenContact }) {
   const [data, setData] = useState(null);
@@ -272,53 +273,73 @@ export default function IndustryModal({ industryId, onClose, onOpenContact }) {
 
               {/* Categorized Stack Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <Terminal className="w-3.5 h-3.5" />
                     Runtime & Logic
                   </div>
-                  <div className="text-sm font-semibold text-white">Rust / Go / TypeScript</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="Rust" className="w-4 h-4" />
+                      <TechLogo name="Go" className="w-4 h-4 ml-1" />
+                      <TechLogo name="TypeScript" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>Rust / Go / TS</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Memory safety, zero-copy serialization, high concurrency</div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <Activity className="w-3.5 h-3.5" />
                     Stream Ingestion
                   </div>
-                  <div className="text-sm font-semibold text-white">Apache Kafka / WebSockets</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="Apache Kafka" className="w-4 h-4" />
+                      <TechLogo name="WebSockets" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>Kafka / WebSockets</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Sub-second event propagation with low system overhead</div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <Database className="w-3.5 h-3.5" />
                     Storage & Ledger
                   </div>
-                  <div className="text-sm font-semibold text-white">PostgreSQL / ClickHouse</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="PostgreSQL" className="w-4 h-4" />
+                      <TechLogo name="ClickHouse" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>Postgres / ClickHouse</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Columnar analytics and ACID transactional guarantees</div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     Security & Enclave
                   </div>
-                  <div className="text-sm font-semibold text-white">eBPF / Zero-Trust Mesh</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="eBPF" className="w-4 h-4" />
+                      <TechLogo name="WireGuard" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>eBPF / Zero-Trust</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Kernel-level observability & cryptographic non-repudiation</div>
                 </div>
               </div>
 
               {/* Core Stack Chips */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs uppercase font-mono text-slate-400 mr-2">Specific Stack:</span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="text-xs uppercase font-mono text-slate-400 mr-2 tracking-wider">Specific Stack:</span>
                 {data.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs font-mono font-medium rounded-lg bg-white/5 border border-white/10 text-slate-200"
-                  >
-                    {tech}
-                  </span>
+                  <TechChip key={tech} name={tech} />
                 ))}
               </div>
             </div>

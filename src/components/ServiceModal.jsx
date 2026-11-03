@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, ShieldCheck, Database, Activity, Layers, Terminal } from 'lucide-react';
 import { getServiceBySlugOrName } from '../data/servicesData';
+import { TechChip, TechLogo } from './TechLogo';
 
 export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
   const [data, setData] = useState(null);
@@ -272,53 +273,75 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
 
               {/* Categorized Stack Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <Terminal className="w-3.5 h-3.5" />
                     Runtime & Logic
                   </div>
-                  <div className="text-sm font-semibold text-white">Rust / Go / Python</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="Rust" className="w-4 h-4" />
+                      <TechLogo name="Go" className="w-4 h-4 ml-1" />
+                      <TechLogo name="Python" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>Rust / Go / Python</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Memory safety, zero-copy serialization, high concurrency</div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <Activity className="w-3.5 h-3.5" />
                     Data & Telemetry
                   </div>
-                  <div className="text-sm font-semibold text-white">Kafka / Prometheus / eBPF</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="Apache Kafka" className="w-4 h-4" />
+                      <TechLogo name="Prometheus" className="w-4 h-4 ml-1" />
+                      <TechLogo name="eBPF" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>Kafka / Prometheus / eBPF</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Sub-second event propagation with low system overhead</div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <Database className="w-3.5 h-3.5" />
                     Storage & Lakehouse
                   </div>
-                  <div className="text-sm font-semibold text-white">ClickHouse / Iceberg / PG</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="ClickHouse" className="w-4 h-4" />
+                      <TechLogo name="Apache Iceberg" className="w-4 h-4 ml-1" />
+                      <TechLogo name="PostgreSQL" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>ClickHouse / Iceberg / PG</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Columnar analytics and ACID transactional guarantees</div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     Security & Mesh
                   </div>
-                  <div className="text-sm font-semibold text-white">mTLS / WireGuard / SPIFFE</div>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
+                    <div className="flex items-center -space-x-1">
+                      <TechLogo name="WireGuard" className="w-4 h-4" />
+                      <TechLogo name="Istio" className="w-4 h-4 ml-1" />
+                    </div>
+                    <span>mTLS / WireGuard / Istio</span>
+                  </div>
                   <div className="text-xs text-slate-400 mt-1">Zero-trust cryptographic isolation and strict micro-segmentation</div>
                 </div>
               </div>
 
               {/* Core Stack Chips */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs uppercase font-mono text-slate-400 mr-2">Specific Stack:</span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="text-xs uppercase font-mono text-slate-400 mr-2 tracking-wider">Specific Stack:</span>
                 {data.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs font-mono font-medium rounded-lg bg-white/5 border border-white/10 text-slate-200"
-                  >
-                    {tech}
-                  </span>
+                  <TechChip key={tech} name={tech} />
                 ))}
               </div>
             </div>
