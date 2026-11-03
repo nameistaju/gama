@@ -20,6 +20,7 @@ import VideoIntro from './components/VideoIntro';
 import GlobeSection from './components/GlobeSection';
 import TangibleOutcomes from './components/TangibleOutcomes';
 import TextHighlight from './components/ui/text-highlight';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import IndustryModal from './components/IndustryModal';
 import ServiceModal from './components/ServiceModal';
 
@@ -83,6 +84,15 @@ export default function App() {
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
+
+  useEffect(() => {
+    // Whenever intro sequence finishes or view changes back to home, recalibrate ScrollTrigger & layout
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+      window.dispatchEvent(new Event('resize'));
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [introStep, currentView]);
 
   const handleSelectIndustry = (industryNameOrSlug) => {
     setSelectedIndustry(industryNameOrSlug);

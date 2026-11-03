@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EditorialAbout() {
-  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
   const textRef = useRef(null);
 
   // Statement segments styled using GAMA logo brand colors and aesthetic 1:1 transparent sticker assets
@@ -48,7 +48,7 @@ export default function EditorialAbout() {
   ];
 
   useEffect(() => {
-    if (!sectionRef.current || !textRef.current) return;
+    if (!trackRef.current || !textRef.current) return;
 
     const chars = textRef.current.querySelectorAll('.about-char');
     const badges = textRef.current.querySelectorAll('.about-badge');
@@ -69,17 +69,12 @@ export default function EditorialAbout() {
     });
 
     const ctx = gsap.context(() => {
-      const isMobile = window.innerWidth < 768;
-
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: trackRef.current,
           start: 'top top',
-          end: isMobile ? '+=1200' : '+=1600',
-          pin: true,
-          pinSpacing: true,
-          scrub: 0.8,
-          anticipatePin: 1,
+          end: 'bottom bottom',
+          scrub: 0.7,
           invalidateOnRefresh: true,
         },
       });
@@ -90,7 +85,7 @@ export default function EditorialAbout() {
         {
           opacity: 1,
           stagger: {
-            amount: 0.85,
+            amount: 0.82,
             from: 'start',
           },
           duration: 0.15,
@@ -106,7 +101,7 @@ export default function EditorialAbout() {
           opacity: 1,
           scale: 1,
           stagger: {
-            amount: 0.85,
+            amount: 0.82,
             from: 'start',
           },
           duration: 0.22,
@@ -117,26 +112,26 @@ export default function EditorialAbout() {
 
       // Hold pause before unpinning so user can read complete statement
       tl.to({}, { duration: 0.1 }, 0.9);
-    }, sectionRef);
+    }, trackRef);
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === sectionRef.current) {
-          st.kill(true);
-        }
-      });
       ctx.revert();
     };
   }, []);
 
   return (
-    <section
+    <div
       id="editorial"
-      ref={sectionRef}
-      className="relative w-full bg-[#F8FAFC] h-[100dvh] min-h-[100dvh] px-4 sm:px-8 md:px-12 overflow-hidden flex flex-col items-center justify-center z-10"
+      ref={trackRef}
+      className="relative w-full bg-[#F8FAFC]"
+      style={{ height: '240vh' }}
     >
-      {/* Editorial Statement styled with GAMA logo chromatic palette */}
-      <div className="relative w-full max-w-5xl mx-auto text-left sm:text-center px-2 sm:px-6">
+      {/* CSS Sticky Viewport Stage: Naturally pins while inside trackRef, impossible to escape or overlap other sections */}
+      <div
+        className="sticky top-0 w-full h-[100dvh] min-h-[100dvh] px-4 sm:px-8 md:px-12 overflow-hidden flex flex-col items-center justify-center z-10 bg-[#F8FAFC]"
+      >
+        {/* Editorial Statement styled with GAMA logo chromatic palette */}
+        <div className="relative w-full max-w-5xl mx-auto text-left sm:text-center px-2 sm:px-6">
         <p
           ref={textRef}
           className="font-sans text-[17px] xs:text-[19px] sm:text-[22px] md:text-[36px] lg:text-[44px] font-semibold text-[#0F172A] leading-[1.68] sm:leading-[1.5] md:leading-[1.38] tracking-normal md:tracking-[-0.025em] select-none"
@@ -183,6 +178,7 @@ export default function EditorialAbout() {
           })}
         </p>
       </div>
-    </section>
+    </div>
+  </div>
   );
 }
