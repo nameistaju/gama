@@ -5,6 +5,7 @@ import { Phone, ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
 export default function Navbar({ onOpenContact, onSelectIndustry, onSelectService, currentView, onNavigate, experienceProgress = 0 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Mega Menu State
   const [activeMegaMenu, setActiveMegaMenu] = useState(null); // 'what-we-do' | 'who-we-are' | null
@@ -96,15 +97,19 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
     };
   }, []);
 
-  // Smart hide on scroll down, reveal on scroll up
+  // Smart hide on scroll down, reveal on scroll up + transparent on hero vs dark fill below
   useEffect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Transparent on hero section (<= 20px), solid dark filled background when scrolled below
+      setIsScrolled(currentScrollY > 20);
+
       if (mobileMenuOpen) {
         setIsVisible(true);
         return;
       }
 
-      const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollYRef.current;
 
       if (currentScrollY <= 40) {
@@ -119,6 +124,7 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
       lastScrollYRef.current = currentScrollY <= 0 ? 0 : currentScrollY;
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen]);
@@ -274,7 +280,13 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
-        <div className="w-full bg-[#060913]/92 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.65)] px-5 md:px-8 py-3.5 sm:py-4 pointer-events-auto">
+        <div
+          className={`w-full px-5 md:px-8 py-3.5 sm:py-4 pointer-events-auto transition-all duration-300 ${
+            isScrolled
+              ? 'bg-[#060913]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.65)]'
+              : 'bg-transparent border-b border-transparent shadow-none backdrop-blur-none'
+          }`}
+        >
           <div ref={megaMenuContainerRef} className="relative max-w-7xl mx-auto">
             <nav className="flex items-center justify-between">
               {/* Left Section: Wordmark Logo (gama_white_wordmark_transparent.png) + Desktop Nav Links */}
