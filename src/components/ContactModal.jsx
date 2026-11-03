@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Copy, Check, Phone, Mail, MapPin, X, ArrowRight } from 'lucide-react';
 import GamaText from './GamaText';
 import TextHighlight from './ui/text-highlight';
+import Grainient from './ui/Grainient';
 
 const serviceOptions = [
   'Website Design & Development',
@@ -331,21 +332,43 @@ export default function ContactModal({ isOpen, onClose, initialService = '' }) {
                     />
                   </div>
 
-                  {/* Submit Button with 4-Color GAMA Brand Gradient */}
+                  {/* Submit Button with Dynamic WebGL Grainient Background */}
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="group relative inline-flex items-center gap-3 px-9 sm:px-11 py-4 sm:py-4.5 rounded-full text-white font-sans text-xs sm:text-sm font-bold tracking-widest uppercase cursor-pointer shadow-xl transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,87,236,0.45)] hover:scale-[1.02] active:scale-[0.98] overflow-hidden border border-white/20"
+                      className="group relative inline-flex items-center gap-3 px-9 sm:px-11 py-4 sm:py-4.5 rounded-full text-white font-sans text-xs sm:text-sm font-bold tracking-widest uppercase cursor-pointer shadow-xl transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,87,236,0.5)] hover:scale-[1.02] active:scale-[0.98] overflow-hidden border border-white/20"
                       style={{
-                        background: 'linear-gradient(135deg, #0057EC 0%, #E01119 33%, #FCA602 66%, #04CE7A 100%)',
+                        background: 'linear-gradient(135deg, #120f17 0%, #0057ec 25%, #e01119 50%, #04ce7a 75%, #fca602 100%)',
                       }}
                     >
+                      {/* WebGL Grainient Canvas as Background */}
+                      <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-full z-0">
+                        <Grainient
+                          colors={['#120f17', '#0057ec', '#e01119', '#04ce7a', '#fca602']}
+                          angle={55}
+                          flow={0.8}
+                          silk={0.35}
+                          grainAmount={0.08}
+                          grainSize={1.2}
+                          speed={1}
+                          softness={1}
+                          scale={1}
+                          contrast={1}
+                          saturation={1}
+                          interactive={false}
+                          clickSwirl={false}
+                          intro={false}
+                        />
+                      </div>
+
                       {/* Subtle hover shimmer */}
-                      <span className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 pointer-events-none" />
-                      <span className="relative z-10 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+                      <span className="absolute inset-0 bg-white/0 group-hover:bg-white/15 transition-colors duration-300 pointer-events-none z-[1]" />
+
+                      {/* Button Label & Icon */}
+                      <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-bold">
                         SEND MESSAGE
                       </span>
-                      <span className="relative z-10 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-bold text-sm drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+                      <span className="relative z-10 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-bold text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                         ↗
                       </span>
                     </button>
