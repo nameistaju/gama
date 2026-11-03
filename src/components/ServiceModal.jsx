@@ -3,9 +3,66 @@ import { X, ArrowRight, ShieldCheck, Database, Activity, Layers, Terminal } from
 import { getServiceBySlugOrName } from '../data/servicesData';
 import { TechChip, TechLogo } from './TechLogo';
 
+// Exact brand colors from GAMA logo: Blue, Red, Green, Orange/Yellow
+const PILLAR_STYLES = [
+  {
+    name: 'Blue',
+    hex: '#0057EC',
+    activeBg: 'bg-[#0057EC]',
+    collapsedBg: 'bg-[#0057EC]/85',
+    hoverBg: 'hover:bg-[#0057EC]',
+    activeText: 'text-white',
+    descText: 'text-white/90',
+    dividerBorder: 'border-white/20',
+    arrowColor: 'text-white',
+    slaLabel: 'text-white/70',
+    slaValue: 'text-white',
+  },
+  {
+    name: 'Red',
+    hex: '#E01119',
+    activeBg: 'bg-[#E01119]',
+    collapsedBg: 'bg-[#E01119]/85',
+    hoverBg: 'hover:bg-[#E01119]',
+    activeText: 'text-white',
+    descText: 'text-white/90',
+    dividerBorder: 'border-white/20',
+    arrowColor: 'text-white',
+    slaLabel: 'text-white/70',
+    slaValue: 'text-white',
+  },
+  {
+    name: 'Green',
+    hex: '#04CE7A',
+    activeBg: 'bg-[#04CE7A]',
+    collapsedBg: 'bg-[#04CE7A]/85',
+    hoverBg: 'hover:bg-[#04CE7A]',
+    activeText: 'text-[#032313]',
+    descText: 'text-[#032313]/90',
+    dividerBorder: 'border-[#032313]/20',
+    arrowColor: 'text-[#032313]',
+    slaLabel: 'text-[#032313]/70',
+    slaValue: 'text-[#032313]',
+  },
+  {
+    name: 'Orange / Yellow',
+    hex: '#FCA602',
+    activeBg: 'bg-[#FCA602]',
+    collapsedBg: 'bg-[#FCA602]/85',
+    hoverBg: 'hover:bg-[#FCA602]',
+    activeText: 'text-[#1E1302]',
+    descText: 'text-[#1E1302]/90',
+    dividerBorder: 'border-[#1E1302]/20',
+    arrowColor: 'text-[#1E1302]',
+    slaLabel: 'text-[#1E1302]/70',
+    slaValue: 'text-[#1E1302]',
+  },
+];
+
 export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
   const [data, setData] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0); // 0 (modal) to 1 (full page)
+  const [activePillarIndex, setActivePillarIndex] = useState(0);
   const containerRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -14,6 +71,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
     const found = getServiceBySlugOrName(serviceId);
     setData(found);
     setScrollProgress(0);
+    setActivePillarIndex(0);
     if (contentRef.current) {
       contentRef.current.scrollTop = 0;
     }
@@ -200,56 +258,95 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           </section>
 
           {/* ======================================================== */}
-          {/* 3. CORE ENGINEERING PILLARS                              */}
+          {/* 3. CORE ENGINEERING PILLARS (WHAT WE DO ACCORDION UI)    */}
           {/* ======================================================== */}
           <section id="service-pillars" className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10">
             <div className="max-w-5xl">
-              <div className="mb-10">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-                  TECHNICAL ARCHITECTURE
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-                  Core Engineering Pillars
-                </h2>
-                <p className="text-sm text-slate-400 mt-2">
-                  Four foundational technical capabilities engineered for deterministic reliability and scale.
-                </p>
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-8 sm:mb-10 pb-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0057EC] font-bold">
+                    TECHNICAL ARCHITECTURE
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+                    Core Engineering Pillars
+                  </h2>
+                  <p className="text-sm text-slate-400 mt-2">
+                    Four foundational technical capabilities engineered for deterministic reliability and scale.
+                  </p>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {data.pillars.map((pillar, idx) => (
-                  <div
-                    key={pillar.title}
-                    className="p-6 sm:p-7 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-cyan-500/30 transition-all duration-300 text-left flex flex-col justify-between group"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-mono font-bold text-white/30 group-hover:text-cyan-400 transition-colors">
-                          0{idx + 1}
-                        </span>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400">
-                          {idx === 0 && <Database className="w-4 h-4" />}
-                          {idx === 1 && <Activity className="w-4 h-4" />}
-                          {idx === 2 && <Layers className="w-4 h-4" />}
-                          {idx === 3 && <ShieldCheck className="w-4 h-4" />}
+              {/* Stacked Accordion with GAMA Logo Colors (Blue, Red, Green, Orange/Yellow) */}
+              <div className="flex flex-col gap-2">
+                {data.pillars.map((pillar, idx) => {
+                  const isActive = activePillarIndex === idx;
+                  const style = PILLAR_STYLES[idx % PILLAR_STYLES.length];
+
+                  return (
+                    <div
+                      key={pillar.title}
+                      onMouseEnter={() => setActivePillarIndex(idx)}
+                      onClick={() => setActivePillarIndex(idx)}
+                      className={`relative overflow-hidden cursor-pointer transition-all duration-300 ease-out select-none rounded-lg ${
+                        isActive
+                          ? `${style.activeBg} ${style.activeText} shadow-lg shadow-black/30`
+                          : `${style.collapsedBg} ${style.hoverBg} ${style.activeText} opacity-85 hover:opacity-100`
+                      }`}
+                      style={{
+                        minHeight: isActive ? '230px' : '54px',
+                      }}
+                    >
+                      {/* Collapsed State Bar */}
+                      {!isActive && (
+                        <div className="h-[54px] px-6 sm:px-8 flex items-center justify-between">
+                          <div className="flex items-center gap-3 font-mono font-medium text-xs sm:text-sm tracking-wider uppercase">
+                            <span className="font-bold opacity-80">0{idx + 1}</span>
+                            <span className="opacity-60">→</span>
+                            <span className="font-sans font-bold tracking-wide">{pillar.title}</span>
+                          </div>
+                          <ArrowRight className="w-4 h-4 opacity-70 transition-transform duration-200" />
                         </div>
-                      </div>
+                      )}
 
-                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2.5 tracking-tight group-hover:text-cyan-200 transition-colors">
-                        {pillar.title}
-                      </h3>
+                      {/* Expanded State Card (Left Content + Divider + SLA Badge & Arrow) */}
+                      {isActive && (
+                        <div className="flex flex-col md:flex-row items-stretch justify-between h-full min-h-[230px]">
+                          {/* Left: Top ID & Title + Bottom Description */}
+                          <div className="flex-1 p-6 sm:p-8 md:p-10 flex flex-col justify-between">
+                            {/* Top Label */}
+                            <div className="flex items-center gap-3 font-normal text-xs sm:text-sm tracking-wider uppercase">
+                              <span className="font-mono text-base font-bold">0{idx + 1}</span>
+                              <span>→</span>
+                              <span className="font-sans text-base sm:text-lg font-bold tracking-wide">{pillar.title}</span>
+                            </div>
 
-                      <p className="text-sm text-slate-300 leading-relaxed">
-                        {pillar.desc}
-                      </p>
+                            {/* Bottom Description */}
+                            <p className={`mt-6 text-sm sm:text-base font-normal leading-relaxed max-w-2xl ${style.descText}`}>
+                              {pillar.desc}
+                            </p>
+                          </div>
+
+                          {/* Right: Thin Vertical Divider + SLA & Arrow */}
+                          <div
+                            className={`md:w-64 lg:w-72 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l ${style.dividerBorder} p-6 md:p-0 gap-3`}
+                          >
+                            <div className="text-center">
+                              <div className={`text-[11px] font-mono uppercase tracking-widest ${style.slaLabel}`}>
+                                Deterministic SLA
+                              </div>
+                              <div className={`text-sm font-mono font-bold mt-0.5 ${style.slaValue}`}>
+                                99.999% Design Target
+                              </div>
+                            </div>
+                            <div className="transform transition-transform duration-300 hover:translate-x-1.5 mt-1">
+                              <ArrowRight className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.8]" />
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-
-                    <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-mono">
-                      <span>Deterministic SLA</span>
-                      <span className="text-cyan-400">99.999% Design Target</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </section>
