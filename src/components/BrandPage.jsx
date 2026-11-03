@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, ArrowRight, ShieldCheck, Cpu, Sparkles, Layers, Terminal, Compass } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ShieldCheck, Cpu, Layers, Terminal, Compass } from 'lucide-react';
 
 export default function BrandPage({ onOpenContact, onBackHome }) {
   useEffect(() => {
@@ -73,22 +73,18 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
       {/* ======================================================== */}
       {/* 1. CINEMATIC HERO SECTION                                 */}
       {/* ======================================================== */}
-      <section className="relative w-full min-h-[500px] sm:min-h-[560px] lg:min-h-[620px] flex items-center overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20 border-b border-white/10">
-        {/* Background Multi-Color Prismatic Glow */}
-        <div
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[750px] h-[380px] rounded-full blur-[160px] pointer-events-none opacity-25 bg-gradient-to-r from-[#0457DF] via-[#00D4FF] to-[#10B981]"
-          aria-hidden="true"
-        />
-
-        {/* Subtle grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-          }}
-          aria-hidden="true"
-        />
+      <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20 border-b border-white/10 bg-[#070B12]">
+        {/* Background Image: brandhero.png */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/brandhero.png"
+            alt="GAMA Autonomous Engineering & Precision Robotics"
+            className="w-full h-full object-cover object-right lg:object-center transform scale-105"
+          />
+          {/* Subtle Dark Vignette & Gradient Overlays for optimal text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070B12] via-[#070B12]/85 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070B12] via-transparent to-[#070B12]/60" />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full text-left">
           {/* Breadcrumbs & Back Home */}
@@ -106,22 +102,13 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
             <span className="text-[#38BDF8]">Our Brand</span>
           </div>
 
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan-400">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>BRAND PHILOSOPHY & IDENTITY</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-md">
               Our Brand
             </h1>
 
-            <p className="text-xl sm:text-2xl lg:text-3xl text-cyan-200/90 font-light leading-relaxed max-w-3xl mb-8">
+            <p className="text-xl sm:text-2xl lg:text-3xl text-slate-200 font-light leading-relaxed drop-shadow">
               Where human ingenuity meets machine precision. Engineering the digital spine of tomorrow.
-            </p>
-
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
-              At GAMA, our brand is not a marketing campaign. It is an engineering oath: to build critical digital systems with unrelenting discipline, transparent architecture, and uncompromising technical integrity.
             </p>
           </div>
         </div>
