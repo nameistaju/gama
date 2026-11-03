@@ -73,67 +73,27 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
         aria-hidden="true"
       />
 
+      {/* Floating Minimal Close Button */}
+      <button
+        onClick={onClose}
+        className="fixed top-5 right-5 sm:top-7 sm:right-7 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-white/25 text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xl hover:scale-105 active:scale-95 group"
+        aria-label="Close"
+      >
+        <X className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />
+      </button>
+
       {/* The Morphing Modal Card */}
       <div
         ref={containerRef}
         style={{
           borderRadius: `${modalRadius}px`,
           width: effectiveProgress === 1 ? '100vw' : `calc(100vw - ${modalPadding * 2}px)`,
-          maxWidth: effectiveProgress === 1 ? '100vw' : '1120px',
-          height: effectiveProgress === 1 ? '100vh' : '84vh',
+          maxWidth: effectiveProgress === 1 ? '100vw' : '1160px',
+          height: effectiveProgress === 1 ? '100vh' : '86vh',
           maxHeight: '100vh',
         }}
         className="relative z-10 flex flex-col bg-[#050B14] text-white border border-white/15 shadow-[0_25px_90px_rgba(0,0,0,0.95)] overflow-hidden transition-[width,height,border-radius,max-width] duration-200 ease-out"
       >
-        {/* Sticky Control Bar */}
-        <header className="sticky top-0 z-40 flex items-center justify-between px-6 py-4 bg-[#050B14]/90 backdrop-blur-lg border-b border-white/10 shrink-0">
-          <div className="flex items-center gap-3">
-            <span className="px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider text-[#38BDF8] bg-[#38BDF8]/10 rounded border border-[#38BDF8]/20">
-              Service Capability
-            </span>
-            <span className="text-white/40 text-sm hidden sm:inline">/</span>
-            <span className="text-white font-medium text-sm hidden sm:inline">{data.name}</span>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Scroll-to-expand Indicator */}
-            {effectiveProgress < 0.95 ? (
-              <span className="text-xs text-slate-400 font-mono hidden md:inline-flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                Scroll down to expand full page
-              </span>
-            ) : (
-              <span className="text-xs text-emerald-400 font-mono hidden md:inline-flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                Full Page View
-              </span>
-            )}
-
-            {/* Toggle Full Screen Button */}
-            <button
-              onClick={() => setIsForcedFull((prev) => !prev)}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
-              title={effectiveProgress === 1 ? 'Collapse View' : 'Expand to Full Page'}
-              aria-label="Toggle Full Screen"
-            >
-              {effectiveProgress === 1 ? (
-                <Minimize2 className="w-4 h-4" />
-              ) : (
-                <Maximize2 className="w-4 h-4" />
-              )}
-            </button>
-
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 transition-colors cursor-pointer"
-              aria-label="Close"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        </header>
-
         {/* Scrollable Content Container */}
         <div
           ref={contentRef}

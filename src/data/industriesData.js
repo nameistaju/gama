@@ -5,10 +5,12 @@ export const industriesData = {
   banking: {
     id: 'banking',
     name: 'Banking',
+    heroTitle: 'Banking next: Boundaryless, real-time, resilient',
+    heroImage: '/industries/banking.png',
     headline: 'Real-Time Event Streaming & Zero-Trust Core Banking',
     tagline: 'Moving beyond rigid legacy mainframes with event-driven ledger architectures and sub-second settlement.',
     overview:
-      'Modern banking demands high-throughput transaction processing with deterministic latency, cryptographic auditability, and instant fraud telemetry. We engineer modern core banking platforms and microservices that deliver continuous availability without maintenance windows.',
+      'We partner with modern financial institutions to engineer high-throughput transaction ledgers, sub-second settlement fabrics, and zero-trust banking architectures.',
     techStack: ['Apache Kafka', 'Rust', 'PostgreSQL', 'eBPF Security', 'Kubernetes', 'Redis Cluster'],
     pillars: [
       {
@@ -37,10 +39,12 @@ export const industriesData = {
   'capital-markets': {
     id: 'capital-markets',
     name: 'Capital Markets',
+    heroTitle: 'Capital markets next: Ultra-low latency, intelligent, deterministic',
+    heroImage: '/industries/capital-markets.png',
     headline: 'Deterministic Low-Latency Trading & Risk Telemetry',
     tagline: 'High-frequency order routing, market data normalization, and continuous portfolio stress-testing.',
     overview:
-      'In institutional trading, every microsecond dictates execution quality. We design ultra-low-latency market connectivity layers, FIX/FAST protocol parsers, and distributed Monte Carlo risk calculation engines built to handle extreme market volatility bursts.',
+      'We engineer ultra-low-latency market connectivity layers, FIX/FAST protocol parsers, and distributed risk calculation engines built to navigate extreme market volatility.',
     techStack: ['C++', 'Rust', 'Linux Kernel Bypass', 'ClickHouse', 'gRPC', 'WebSockets'],
     pillars: [
       {
@@ -57,7 +61,7 @@ export const industriesData = {
       },
       {
         title: 'Algorithmic Compliance & Audit Telemetry',
-        desc: 'Deterministic trade playback and MiFID II clock-synchronization logging ensuring nanosecond audit fidelity without execution penalty.',
+        desc: 'Deterministic trade playback and clock-synchronization logging ensuring nanosecond audit fidelity without execution penalty.',
       },
     ],
     shift: {
@@ -69,10 +73,12 @@ export const industriesData = {
   insurance: {
     id: 'insurance',
     name: 'Insurance',
+    heroTitle: 'Insurance next: Predictive, algorithmic, instant',
+    heroImage: '/industries/insurance.png',
     headline: 'Parametric Underwriting & Instant Claims Automation',
     tagline: 'Replacing manual actuarial bureaucracy with dynamic risk scoring and automated digital claims settlement.',
     overview:
-      'Insurance is transitioning from backward-looking loss compensation to real-time risk mitigation. We build modular policy administration engines, automated claims validation pipelines, and parametric insurance infrastructure integrated with IoT and real-time data feeds.',
+      'We build modular policy administration engines, automated claims validation pipelines, and parametric insurance infrastructure integrated with real-time risk data feeds.',
     techStack: ['TypeScript', 'Python', 'Go', 'PostgreSQL', 'Temporal.io', 'AWS Nitro'],
     pillars: [
       {
@@ -80,80 +86,84 @@ export const industriesData = {
         desc: 'Durable execution state machines (Temporal) orchestrating document extraction, policy validation, fraud scoring, and instant payment dispatch.',
       },
       {
+        title: 'Parametric Smart Contract Settlement',
+        desc: 'Automated, event-triggered claims settlements governed by deterministic oracles (weather feeds, flight telemetry, seismic sensors).',
+      },
+      {
         title: 'Dynamic Actuarial Risk Scoring',
-        desc: 'Real-time telemetry ingestion from smart assets, telematics, and weather APIs dynamically recalibrating policy premiums.',
+        desc: 'Machine learning feature pipelines that continuously recalculate policyholder risk based on connected telematics and live environmental data.',
       },
       {
-        title: 'Parametric Smart Settlement',
-        desc: 'Event-triggered payouts executing automatically when trusted oracle parameters (flight cancellation, weather thresholds) are met.',
-      },
-      {
-        title: 'Headless Policy Administration APIs',
-        desc: 'Composable insurance-as-a-service APIs enabling embedded insurance checkout flows across partner merchant ecosystems.',
+        title: 'Unified Omni-Channel Policy Portal',
+        desc: 'High-performance GraphQL layer connecting customer mobile apps, broker portals, and legacy core systems into a singular real-time API.',
       },
     ],
     shift: {
-      legacy: 'Paper-intensive 30-day claims review cycles and disconnected legacy ERP systems requiring human manual data entry.',
-      modern: 'Real-time claims adjudication with automated OCR document verification, sub-second policy generation, and instant payouts.',
+      legacy: 'Manual paper adjustments, weeks-long claim investigation cycles, rigid actuarial tables, and fragmented legacy policy databases.',
+      modern: 'Instant digital claim adjudication, sub-minute payout dispatch, dynamic telematics risk pricing, and automated compliance.',
     },
   },
 
   'communications-media-and-information-services': {
     id: 'communications-media-and-information-services',
     name: 'Communications, Media, and Information Services',
-    headline: 'Edge Content Delivery & Sub-Second Media Ingestion',
-    tagline: 'Architecting ultra-low latency streaming, decentralized asset pipelines, and multi-tenant publishing networks.',
+    heroTitle: 'Communications & Media next: High-throughput, global, connected',
+    heroImage: '/industries/communications-media-and-information-services.png',
+    headline: 'Ultra-Low Latency Streaming & Scalable Content Fabrics',
+    tagline: 'Engineering edge video delivery, DRM distribution, and real-time subscriber telemetry at global scale.',
     overview:
-      'Digital media platforms require immense throughput to serve millions of concurrent streams without buffering. We engineer edge-accelerated CDN distribution, dynamic WebRTC streaming topologies, and high-concurrency editorial publishing systems.',
-    techStack: ['WebRTC', 'Go', 'HLS/DASH', 'Cloudflare Workers', 'GraphQL', 'CockroachDB'],
+      'We collaborate with media providers and telecom operators to build real-time streaming backbones, distributed DRM validation, and high-concurrency subscriber portals.',
+    techStack: ['Go', 'Rust', 'WebRTC', 'FFmpeg', 'Redis', 'AWS CloudFront / Fastly'],
     pillars: [
       {
-        title: 'Sub-Second Interactive Video Delivery',
-        desc: 'WebRTC and Low-Latency HLS video pipelines delivering synchronous interactive streams for live sports, auctions, and live commerce.',
+        title: 'Sub-Second WebRTC & HLS Edge Streaming',
+        desc: 'Global edge-distributed video pipelines delivering ultra-low-latency live broadcasts and interactive video experiences with adaptive bitrate.',
       },
       {
-        title: 'Edge-Rendered Content & Dynamic Ad Injection',
-        desc: 'Server-side ad insertion (SSAI) running on globally distributed edge workers ensuring zero client-side ad blocker interruptions.',
+        title: 'Dynamic DRM & Digital Rights Interconnect',
+        desc: 'High-throughput license servers issuing millions of hardware-backed PlayReady, Widevine, and FairPlay decryption tokens per second.',
       },
       {
-        title: 'Decentralized Digital Asset Management',
-        desc: 'High-speed parallel transcoding pipelines transforming raw 4K video files into multi-bitrate profiles in fractions of real-time.',
+        title: 'Unified Subscriber & Entitlement Mesh',
+        desc: 'Distributed in-memory entitlement caches validating content access permissions across multi-tenant partner catalogs in under 2ms.',
       },
       {
-        title: 'High-Throughput Global Subscription Gateways',
-        desc: 'Geographically partitioned billing engines handling massive concurrent entitlement verifications during peak traffic spikes.',
+        title: 'Real-Time Edge Telemetry & QoE Analytics',
+        desc: 'Streaming player telemetry detecting buffer stalls, CDN degradation, and bitrate fluctuations to dynamically re-route traffic.',
       },
     ],
     shift: {
-      legacy: 'Centralized origin video servers with 30-second broadcast lag, static paywalls, and brittle monolithic content management systems.',
-      modern: 'Global edge compute routing, instantaneous live streaming, and composable headless publishing architectures.',
+      legacy: 'High-latency satellite downlinks, 30-second CDN broadcast lag, brittle license servers, and delayed billing reconciliations.',
+      modern: 'Sub-second global edge distribution, instant cryptographic licensing, and continuous quality-of-experience optimization.',
     },
   },
 
   'consumer-packaged-goods-and-distribution': {
     id: 'consumer-packaged-goods-and-distribution',
     name: 'Consumer Packaged Goods and Distribution',
-    headline: 'Predictive Demand Sensing & Real-Time Logistics Mesh',
-    tagline: 'Bridging manufacturer production floors with dynamic consumer channels through unified inventory intelligence.',
+    heroTitle: 'CPG & Distribution next: Demand-sensing, automated, unified',
+    heroImage: '/industries/consumer-packaged-goods-and-distribution.png',
+    headline: 'Predictive Demand Sensing & Autonomous Supply Chain Orchestration',
+    tagline: 'Synchronizing factory floors, distribution centers, and retail shelves with real-time event streaming.',
     overview:
-      'Fast-moving consumer goods require instantaneous visibility into SKU velocity, shelf availability, and supplier bottlenecks. We engineer unified multi-channel inventory engines, automated dispatch algorithms, and direct-to-consumer digital commerce platforms.',
-    techStack: ['Node.js', 'Go', 'Kafka', 'Elasticsearch', 'PostgreSQL', 'Docker'],
+      'We build high-velocity inventory tracking platforms, demand forecasting pipelines, and automated fulfillment networks that eliminate stockouts across global supply chains.',
+    techStack: ['Python', 'PostgreSQL', 'Kafka', 'Redis', 'Docker', 'Google Cloud BigQuery'],
     pillars: [
       {
-        title: 'Unified Omni-Channel Inventory Mesh',
-        desc: 'Single source of truth inventory state synchronized in real time across physical retail distribution centers and digital marketplaces.',
+        title: 'Real-Time IoT Warehouse Telematics',
+        desc: 'Sub-second tracking of pallet RFID scans, cold-chain temperature monitors, and automated guided vehicles (AGVs) on active warehouse floors.',
       },
       {
-        title: 'Automated Replenishment Workflows',
-        desc: 'Event-driven order placement triggers based on real-time sell-through telemetry, warehouse capacity, and transit lead times.',
+        title: 'Algorithmic Demand Sensing & Replenishment',
+        desc: 'Time-series forecasting models ingesting live POS terminal data, weather forecasts, and regional events to optimize safety stock.',
       },
       {
-        title: 'Direct-to-Consumer (D2C) Commerce Engine',
-        desc: 'Headless, micro-service e-commerce foundations capable of processing thousands of flash-sale checkouts per second with sub-50ms latency.',
+        title: 'Multi-Echelon Inventory Optimization',
+        desc: 'Dynamic graph routing allocating factory batches to regional distribution hubs to minimize transport mileage and delivery lead time.',
       },
       {
-        title: 'Traceability & Provenance Verification',
-        desc: 'Cryptographic batch tracking and barcode serialization verifying ingredient sourcing and regulatory compliance from farm to shelf.',
+        title: 'B2B EDI & Modern API Bridge',
+        desc: 'Bi-directional translators converting legacy EDI formats into clean, validated JSON/gRPC events for instant distributor coordination.',
       },
     ],
     shift: {
@@ -165,10 +175,12 @@ export const industriesData = {
   education: {
     id: 'education',
     name: 'Education',
+    heroTitle: 'Education next: Immersive, personalized, connected',
+    heroImage: '/industries/education.png',
     headline: 'Adaptive Learning Engines & Scalable Campus Infrastructure',
     tagline: 'Powering personalized curriculum progression, real-time assessment, and seamless institutional portals.',
     overview:
-      'Modern education technology demands interactive, responsive environments that adapt to individual learner pacing. We build high-concurrency learning management platforms, real-time code execution sandboxes, and secure institutional credentialing networks.',
+      'We collaborate with institutions to transform education with innovative digital solutions, real-time collaborative sandboxes, and modern technology.',
     techStack: ['React', 'Next.js', 'Node.js', 'WebSockets', 'PostgreSQL', 'Firecracker MicroVMs'],
     pillars: [
       {
@@ -197,215 +209,229 @@ export const industriesData = {
   'energy-resources-and-utilities': {
     id: 'energy-resources-and-utilities',
     name: 'Energy, Resources, and Utilities',
+    heroTitle: 'Energy & Utilities next: Autonomous, distributed, clean',
+    heroImage: '/industries/energy-resources-and-utilities.png',
     headline: 'Smart Grid Telemetry & Distributed Energy Orchestration',
-    tagline: 'Managing bi-directional power distribution, SCADA integration, and sub-second asset telemetry.',
+    tagline: 'Balancing renewable intermittent generation, storage dispatch, and high-frequency meter ingestion.',
     overview:
-      'The transition to renewable energy requires balancing decentralized generation from solar, wind, and storage with real-time grid consumption. We engineer industrial IoT ingestion pipelines, virtual power plant dispatch controllers, and predictive asset maintenance systems.',
-    techStack: ['Rust', 'TimescaleDB', 'MQTT', 'Go', 'Apache Pulsar', 'Grafana'],
+      'We architect high-frequency smart meter ingestion fabrics, predictive grid load balancing, and distributed renewable energy dispatch platforms for utility operators.',
+    techStack: ['Rust', 'Go', 'TimescaleDB', 'MQTT', 'Kafka', 'eBPF'],
     pillars: [
       {
-        title: 'High-Volume SCADA & IoT Telemetry Ingestion',
-        desc: 'MQTT/Pulsar streaming pipelines absorbing millions of sensor readings per second from substations, turbines, and smart meters.',
+        title: 'Sub-Second Smart Meter Ingestion',
+        desc: 'High-concurrency time-series pipelines processing millions of telemetry points per second from AMI smart meters and grid substations.',
       },
       {
-        title: 'Virtual Power Plant (VPP) Dispatch Controllers',
-        desc: 'Real-time optimization algorithms coordinating distributed batteries, micro-grids, and solar arrays for load shedding and grid stability.',
+        title: 'Virtual Power Plant (VPP) Dispatch',
+        desc: 'Distributed optimization algorithms coordinating residential solar batteries, EV chargers, and commercial HVAC to shave peak grid demand.',
       },
       {
-        title: 'Predictive Turbine & Asset Health Analytics',
-        desc: 'Acoustic and vibration time-series anomaly detection alerting maintenance crews before mechanical failure occurs.',
+        title: 'Predictive Infrastructure Failure Isolation',
+        desc: 'Early anomaly detection on transformer phase balance, oil temperatures, and harmonic distortion to prevent catastrophic grid failures.',
       },
       {
-        title: 'Dynamic Time-of-Use Billing Engines',
-        desc: 'Complex tariff calculators processing continuous consumption streams to compute hourly spot-market energy settlement.',
+        title: 'Critical Infrastructure Cyber Perimeter',
+        desc: 'Zero-trust network segmentation and cryptographically authenticated SCADA/IEC 61850 protocol enforcement defending against cyber intrusion.',
       },
     ],
     shift: {
-      legacy: 'Manual monthly meter readings, centralized fossil generation models, and siloed legacy SCADA consoles with zero cloud connectivity.',
-      modern: 'High-frequency telemetry time-series analytics, decentralized grid orchestration, and automated energy trading gateways.',
+      legacy: 'Manual meter reading, centralized fossil-fuel baseload assumptions, and reactive blackout troubleshooting.',
+      modern: 'Automated 15-minute smart meter settlement, bidirectional renewable orchestration, and AI-driven predictive grid self-healing.',
     },
   },
 
   'life-sciences': {
     id: 'life-sciences',
     name: 'Life Sciences',
-    headline: 'High-Throughput Genomic Pipelines & Clinical Trial Orchestration',
-    tagline: 'Accelerating bioinformatic discovery with parallelized compute workflows and compliant data enclaves.',
+    heroTitle: 'Life Sciences next: Accelerated, verifiable, compliant',
+    heroImage: '/industries/life-sciences.png',
+    headline: 'High-Throughput Genomic Pipelines & Clinical Trial Telemetry',
+    tagline: 'Bridging bio-computational research, regulatory data integrity, and laboratory automation.',
     overview:
-      'Biotech and pharmaceutical engineering require petabyte-scale data processing under strict FDA 21 CFR Part 11 and HIPAA compliance. We architect distributed bioinformatic workflow engines, decentralized clinical trial registries, and tamper-proof electronic lab notebooks.',
-    techStack: ['Python', 'Nextflow', 'Rust', 'PostgreSQL', 'AWS Batch', 'OpenTelemetry'],
+      'We engineer high-performance genomic processing pipelines, secure electronic lab notebooks, and FDA 21 CFR Part 11 compliant clinical trial telemetry platforms.',
+    techStack: ['Python', 'Nextflow', 'PostgreSQL', 'ClickHouse', 'AWS HealthOmics', 'Rust'],
     pillars: [
       {
-        title: 'Distributed Bioinformatic Pipelines',
-        desc: 'Parallelized Nextflow and containerized genomic alignment workflows processing raw sequencing FASTQ files in hours rather than weeks.',
+        title: 'Distributed Bioinformatics Workflows',
+        desc: 'Scalable cloud workflows orchestrating sequence alignment, variant calling, and molecular dynamics across thousands of GPU worker nodes.',
       },
       {
-        title: 'Decentralized Clinical Trial Data Capture',
-        desc: 'Secure mobile and web electronic data capture (EDC) portals with cryptographic audit trails for patient-reported outcomes.',
+        title: 'FDA 21 CFR Part 11 Audit Fabrics',
+        desc: 'Tamper-evident append-only audit trails tracking every data modification, electronic signature, and pipeline execution.',
       },
       {
-        title: 'HIPAA & FDA 21 CFR Part 11 Compliance Frameworks',
-        desc: 'Immutable audit logs, cryptographically enforced electronic signatures, and role-based data isolation at the hardware level.',
+        title: 'Clinical Trial Decentralized Ingestion',
+        desc: 'Secure mobile and wearable telemetry bridges gathering real-world evidence (RWE) from clinical study cohorts with automated pseudonymization.',
       },
       {
-        title: 'Compound Screening & Assay Management',
-        desc: 'High-speed chemical similarity search algorithms and automated assay result ingestion for molecular discovery teams.',
+        title: 'High-Content Imaging Analytics',
+        desc: 'Computer vision pipelines automatically segmenting cellular phenotypes and screening compound libraries from multi-well plate microscopes.',
       },
     ],
     shift: {
-      legacy: 'Manual paper case report forms, fragmented server hard drives with unversioned bioinformatics scripts, and delayed trial audits.',
-      modern: 'Fully auditable cloud-native compute pipelines, unified clinical trial registries, and sub-second molecular search indices.',
+      legacy: 'Siloed on-premise compute clusters, manual CSV data transfers between lab instruments, and fragmented audit spreadsheets.',
+      modern: 'Cloud-native reproducible bio-pipelines, cryptographically validated audit trails, and unified laboratory knowledge graphs.',
     },
   },
 
   healthcare: {
     id: 'healthcare',
     name: 'Healthcare',
+    heroTitle: 'Healthcare next: Interoperable, proactive, patient-centric',
+    heroImage: '/industries/healthcare.png',
     headline: 'Interoperable FHIR Data Exchange & Clinical Decision Systems',
-    tagline: 'Bridging fragmented EHR silos with real-time patient telemetry and compliant telehealth infrastructure.',
+    tagline: 'Unifying electronic health records, continuous patient telemetry, and secure clinical workflows.',
     overview:
-      'Healthcare delivery is hindered by siloed electronic health record (EHR) systems that cannot communicate. We engineer HL7/FHIR compliant data exchange bridges, real-time patient monitoring pipelines, and enterprise telehealth platforms with zero data leakage.',
+      'We build HL7/FHIR compliant data exchange bridges, real-time patient monitoring pipelines, and enterprise telehealth platforms with zero data leakage.',
     techStack: ['TypeScript', 'HL7/FHIR', 'Go', 'PostgreSQL', 'WebRTC', 'AWS HealthLake'],
     pillars: [
       {
-        title: 'Unified FHIR R4 Interoperability Gateways',
-        desc: 'Bi-directional EHR synchronization parsing HL7 and FHIR resources to provide a single, real-time patient longitudinal record.',
+        title: 'Universal FHIR API Integration Layer',
+        desc: 'High-performance bidirectional bridges translating proprietary legacy hospital EHR formats into standardized HL7/FHIR resources.',
       },
       {
-        title: 'Real-Time Bedside & Remote Patient Monitoring',
-        desc: 'Sub-second vitals ingestion from wearable devices and ICU monitors triggering immediate clinical escalation alerts.',
+        title: 'Real-Time ICU & Bedside Telemetry',
+        desc: 'Sub-second streaming of vitals (ECG, SpO2, blood pressure) triggering immediate automated alerts to nursing clinical stations.',
       },
       {
-        title: 'Zero-Latency Telehealth & Clinical Collaboration',
-        desc: 'End-to-end encrypted WebRTC audio/video consultations with integrated medical record overlays and prescription dispatch.',
+        title: 'HIPAA-Compliant Zero-Knowledge Telehealth',
+        desc: 'End-to-end encrypted WebRTC audio/video consultations paired with ephemeral clinical note transcription that never logs patient PII.',
       },
       {
-        title: 'Automated Prior Authorization Engines',
-        desc: 'Rule-based algorithmic claim submission comparing clinical chart documentation against payer guidelines to eliminate authorization delays.',
+        title: 'Federated Clinical Research Enclaves',
+        desc: 'Privacy-preserving query interfaces enabling medical researchers to run statistical analyses across hospital datasets without moving patient data.',
       },
     ],
     shift: {
-      legacy: 'Fax-machine referrals, incompatible legacy EHR databases, manual charting, and delayed clinical communication.',
-      modern: 'Instant FHIR API interoperability, automated clinical documentation workflows, and secure mobile doctor-patient communication.',
+      legacy: 'Fax-machine referrals, siloed incompatible hospital systems, manual chart review, and delayed diagnosis communication.',
+      modern: 'Instant FHIR API interoperability, real-time bedside alerts, secure mobile physician workflows, and automated triage.',
     },
   },
 
   'high-tech': {
     id: 'high-tech',
     name: 'High Tech',
-    headline: 'Developer Platform Engineering & Distributed Cloud Systems',
-    tagline: 'Building developer infrastructure, cloud-native control planes, and high-velocity SaaS engines.',
+    heroTitle: 'High Tech next: Hyper-scale, modular, developer-first',
+    heroImage: '/industries/high-tech.png',
+    headline: 'Cloud-Native Distributed Systems & High-Velocity Platforms',
+    tagline: 'Architecting multi-tenant SaaS engines, developer platforms, and global microservice meshes.',
     overview:
-      'Technology companies require software that scales smoothly from thousands to millions of requests without architectural redesign. We build internal developer platforms, multi-tenant billing engines, distributed caching meshes, and zero-downtime CI/CD deployment control planes.',
-    techStack: ['Go', 'Rust', 'Kubernetes', 'gRPC', 'PostgreSQL', 'Redis', 'OpenTelemetry'],
+      'We partner with ambitious tech companies to architect planetary-scale microservices, multi-region database fabrics, and developer-first cloud infrastructure.',
+    techStack: ['Go', 'Rust', 'Kubernetes', 'gRPC', 'PostgreSQL', 'ClickHouse'],
     pillars: [
       {
-        title: 'Multi-Tenant Control Planes & Microservices',
-        desc: 'Horizontally scalable application backends with strict tenant isolation, dynamic rate-limiting, and distributed circuit breaking.',
+        title: 'Multi-Tenant Isolation Architecture',
+        desc: 'Rigorous database and compute multi-tenancy models with automated schema isolation, noisy-neighbor rate limiting, and RBAC.',
       },
       {
-        title: 'Internal Developer Platforms (IDP)',
-        desc: 'Self-service environment provisioning, declarative GitOps workflows, and automated preview deployments across cloud clusters.',
+        title: 'Global Event-Driven Message Backbones',
+        desc: 'Low-latency, partitioned event streaming architectures capable of processing millions of webhooks and API triggers with guaranteed ordering.',
       },
       {
-        title: 'High-Throughput Event Ingestion & Webhooks',
-        desc: 'Fault-tolerant webhook delivery engines with exponential backoff retries and cryptographic signature verification.',
+        title: 'Developer Platform Infrastructure',
+        desc: 'High-speed CI/CD runners, preview environment orchestrators, and automated infrastructure-as-code modules for rapid shipping.',
       },
       {
-        title: 'Distributed Tracing & Telemetry Mesh',
-        desc: 'End-to-end OpenTelemetry instrumentation tracking request lifecycles across hundreds of microservices with sub-millisecond trace latency.',
+        title: 'Active-Active Multi-Region Database Fabrics',
+        desc: 'CockroachDB and Spanner distributed SQL topologies delivering single-digit millisecond reads across continents with consistent transactions.',
       },
     ],
     shift: {
-      legacy: 'Monolithic codebases requiring manual server updates, fragile staging environments, and poor multi-tenant data separation.',
-      modern: 'Modular micro-services, automated container orchestration, declarative infrastructure-as-code, and instant rollbacks.',
+      legacy: 'Monolithic single-database architectures running in a single region, vulnerable to outages and slow deployments.',
+      modern: 'Modular microservice meshes running across multiple cloud regions with zero-downtime blue/green deployments.',
     },
   },
 
   retail: {
     id: 'retail',
     name: 'Retail',
-    headline: 'Headless Omni-Channel Commerce & Edge Inventory Engines',
-    tagline: 'Sub-100ms global storefronts, unified cart architectures, and synchronized point-of-sale data meshes.',
+    heroTitle: 'Retail next: Omnichannel, hyper-personalized, fluid',
+    heroImage: '/industries/retail.png',
+    headline: 'Omnichannel Commerce Engines & Sub-Second Checkout Systems',
+    tagline: 'Synchronizing store POS terminals, digital storefronts, and automated fulfillment centers in real time.',
     overview:
-      'Modern retail success depends on millisecond page loads and continuous inventory synchronization across digital apps and physical stores. We build headless commerce architectures, dynamic pricing algorithms, and resilient point-of-sale (POS) synchronization engines.',
-    techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'Algolia/Elasticsearch', 'Stripe'],
+      'We engineer headless e-commerce architectures, real-time inventory allocation backbones, and sub-second checkout pipelines designed for flash-sale peak traffic.',
+    techStack: ['Next.js', 'Go', 'GraphQL', 'Redis', 'PostgreSQL', 'Stripe'],
     pillars: [
       {
-        title: 'Headless Multi-Tenant Storefronts',
-        desc: 'Sub-100ms globally edge-rendered commerce storefronts optimized for Core Web Vitals, maximum mobile conversion, and SEO superiority.',
+        title: 'Headless E-Commerce Backbones',
+        desc: 'Decoupled API-first commerce backends powering mobile apps, web stores, and in-store kiosks with sub-50ms catalog render times.',
       },
       {
-        title: 'Real-Time Point-of-Sale (POS) Sync',
-        desc: 'Offline-capable edge POS gateways synchronizing local checkout registers with global inventory ledgers the moment connectivity returns.',
+        title: 'High-Throughput Inventory Locks',
+        desc: 'Distributed atomic inventory reservation algorithms preventing double-selling during massive seasonal flash sales.',
       },
       {
-        title: 'Sub-Millisecond Search & Merchandising',
-        desc: 'Typo-tolerant instant search with personalized category sorting and live promotional pricing engines handling millions of SKUs.',
+        title: 'Universal POS & Digital Storefront Sync',
+        desc: 'Bi-directional synchronization ensuring in-store purchases immediately reflect in online stock availability across all channels.',
       },
       {
-        title: 'Universal Cart & Checkout Services',
-        desc: 'Resilient checkout pipelines supporting local currencies, buy-now-pay-later (BNPL), and automated fraud scoring with zero checkout drop-off.',
+        title: 'Instant Personalized Search & Recommendations',
+        desc: 'In-memory semantic vector search engines surfacing relevant product recommendations based on real-time browsing behavior.',
       },
     ],
     shift: {
-      legacy: 'Slow monolithic e-commerce platforms with 4-second page loads, inventory overselling, and disconnected retail stores.',
-      modern: 'Headless edge-rendered storefronts, real-time omni-channel inventory sync, and seamless 1-click checkout experiences.',
+      legacy: 'Slow monolithic e-commerce platforms, batch inventory syncing that causes cancelled orders, and clunky checkout forms.',
+      modern: 'Microservices headless commerce, sub-second 1-click checkout, and instantaneous inventory reconciliation across physical and online stores.',
     },
   },
 
   manufacturing: {
     id: 'manufacturing',
     name: 'Manufacturing',
-    headline: 'Industrial Autonomy & Factory Floor Telemetry',
-    tagline: 'Bridging operational technology (OT) with cloud analytics for zero-downtime smart production lines.',
+    heroTitle: 'Manufacturing next: Autonomous, predictive, synchronized',
+    heroImage: '/industries/manufacturing.png',
+    headline: 'Industrial Edge Compute & Cyber-Physical Telemetry',
+    tagline: 'Integrating shop floor PLC controllers, robotic arms, and predictive maintenance digital twins.',
     overview:
-      'Smart factories demand real-time integration between PLC controllers, robotic assembly arms, and enterprise planning systems. We engineer industrial edge gateways, automated visual quality inspection pipelines, and overall equipment effectiveness (OEE) telemetry dashboards.',
-    techStack: ['Rust', 'Python', 'OpenCV', 'MQTT', 'InfluxDB', 'Kafka'],
+      'We bring software engineering discipline to the plant floor, developing embedded edge compute nodes, OPC UA telemetry bridges, and computer vision quality inspection.',
+    techStack: ['C++', 'Rust', 'OPC UA', 'ROS 2', 'MQTT', 'TensorRT'],
     pillars: [
       {
-        title: 'Industrial Edge IoT Gateway Telemetry',
-        desc: 'Low-footprint edge runtimes translating legacy Modbus, Profinet, and OPC-UA protocol messages into structured real-time JSON event streams.',
+        title: 'Sub-Millisecond Edge Telemetry Ingestion',
+        desc: 'Deterministic edge daemon processes acquiring vibration, temperature, and torque metrics from thousands of plant sensors simultaneously.',
       },
       {
-        title: 'Automated Computer Vision Quality Inspection',
-        desc: 'High-speed camera feeds processed at the edge using lightweight inference models detecting micro-defects on assembly lines in real time.',
+        title: 'Predictive Bearing & Tooling Failure Models',
+        desc: 'Time-series vibration analysis algorithms identifying bearing micro-fractures 72 hours before catastrophic spindle breakdown.',
       },
       {
-        title: 'Overall Equipment Effectiveness (OEE) Engines',
-        desc: 'Continuous tracking of machine availability, performance rate, and quality yield alerting floor managers to micro-stoppages instantly.',
+        title: 'High-Speed Automated Vision Quality Inspection',
+        desc: 'Embedded edge GPU inference inspecting assembly parts on conveyor lines at 120 frames per second with sub-millimeter precision.',
       },
       {
-        title: 'Digital Twin Assembly Line Orchestration',
-        desc: 'Physics-informed simulation engines validating production schedule adjustments and tooling reconfigurations before physical changeover.',
+        title: 'Shop-Floor Digital Twin Synchronizers',
+        desc: 'Real-time 3D plant floor dashboards reflecting live machine status, scrap rates, and overall equipment effectiveness (OEE).',
       },
     ],
     shift: {
-      legacy: 'Isolated factory machines recording data to local proprietary memory cards, manual paper clipboards, and reactive maintenance.',
-      modern: 'Unified industrial IoT edge gateways, continuous cloud telemetry, automated visual inspection, and predictive maintenance.',
+      legacy: 'Unconnected standalone machines, manual clipboard quality checks, unexpected line downtime, and post-shift incident analysis.',
+      modern: 'Interconnected edge compute mesh, sub-millisecond automated quality vision, and proactive predictive maintenance scheduling.',
     },
   },
 
   'public-services': {
     id: 'public-services',
     name: 'Public Services',
-    headline: 'Citizen-Centric Digital Infrastructure & Accessible Portals',
-    tagline: 'Modernizing government digital services with uncompromising accessibility, security, and cloud elasticity.',
+    heroTitle: 'Public Services next: Citizen-first, accessible, sovereign',
+    heroImage: '/industries/public-services.png',
+    headline: 'Sovereign Digital Identity & Automated Citizen Services',
+    tagline: 'Delivering secure, accessible, zero-trust digital infrastructure for government agencies and civic portals.',
     overview:
-      'Public sector software must be reliable under sudden massive citizen demand while maintaining strict accessibility (WCAG AAA) and data sovereignty. We build resilient citizen identity gateways, automated permit processing workflows, and high-concurrency public benefit distribution platforms.',
-    techStack: ['React', 'TypeScript', 'PostgreSQL', 'Go', 'Docker', 'OpenPolicyAgent'],
+      'We engineer high-availability citizen service platforms, cryptographic identity verification networks, and automated inter-agency digital workflows.',
+    techStack: ['TypeScript', 'Go', 'PostgreSQL', 'WebAuthn', 'Kubernetes', 'Temporal.io'],
     pillars: [
       {
-        title: 'High-Concurrency Citizen Portals',
-        desc: 'Resilient web and mobile self-service portals handling sudden tax filing and disaster relief traffic surges without server timeouts.',
+        title: 'Cryptographic Citizen Identity & WebAuthn',
+        desc: 'FIDO2/WebAuthn passwordless citizen authentication integrated with decentralized identity protocols and biometric verification.',
       },
       {
-        title: 'Universal Accessibility (WCAG 2.1 AAA)',
-        desc: 'Every interface is engineered from the ground up for full screen-reader compatibility, high contrast modes, and keyboard navigation.',
+        title: 'Automated Inter-Agency Workflow Orchestration',
+        desc: 'Durable execution workflows (Temporal) coordinating multi-department approvals, permit issuance, and background checks without paperwork.',
       },
       {
-        title: 'Automated Permitting & Licensing Pipelines',
-        desc: 'Digital document intake with automated verification, department routing, and status telemetry reducing processing times from months to days.',
+        title: 'WCAG 2.1 AAA Compliant Design Systems',
+        desc: 'Universal web interfaces tested rigorously with screen readers, high-contrast modes, and low-bandwidth mobile connections.',
       },
       {
         title: 'Sovereign Zero-Trust Security & RBAC',
@@ -421,10 +447,12 @@ export const industriesData = {
   'travel-and-logistics': {
     id: 'travel-and-logistics',
     name: 'Travel and Logistics',
+    heroTitle: 'Travel & Logistics next: Synchronized, multi-modal, dynamic',
+    heroImage: '/industries/travel-and-logistics.png',
     headline: 'Dynamic Route Optimization & Global Fleet Telemetry',
     tagline: 'Synchronizing multi-modal freight, flight scheduling, and automated warehouse dispatch in real time.',
     overview:
-      'Global logistics requires navigating dynamic customs regulations, unpredictable weather, and tight delivery windows. We build real-time GPS fleet tracking systems, multi-modal container tracking pipelines, and high-throughput passenger booking reservation engines.',
+      'We build real-time GPS fleet tracking systems, multi-modal container tracking pipelines, and high-throughput passenger booking reservation engines.',
     techStack: ['Go', 'Rust', 'PostGIS', 'Kafka', 'Redis', 'WebSockets'],
     pillars: [
       {
@@ -453,12 +481,21 @@ export const industriesData = {
 
 export const getIndustryBySlugOrName = (input) => {
   if (!input) return null;
-  const normalized = input.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const normalized = input
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
   if (industriesData[normalized]) return industriesData[normalized];
+
   return (
     Object.values(industriesData).find(
-      (item) => item.name.toLowerCase() === input.toLowerCase() || item.id === normalized
+      (item) =>
+        item.name.toLowerCase() === input.toLowerCase() ||
+        item.id === normalized ||
+        item.name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-') === normalized
     ) || null
   );
 };
-
