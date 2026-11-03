@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, ShieldCheck, Database, Activity, Layers, Terminal } from 'lucide-react';
 import { getIndustryBySlugOrName } from '../data/industriesData';
 import { TechChip, TechLogo } from './TechLogo';
+import GamaText from './GamaText';
 
 // Exact brand colors from GAMA logo: Blue, Red, Green, Orange/Yellow
 const PILLAR_STYLES = [
@@ -281,7 +282,7 @@ export default function IndustryModal({ industryId, onClose, onOpenContact }) {
                       <div className="absolute top-3 left-3">
                         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold shadow-md">
                           <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                          GAMA Architectural Standard
+                          <GamaText className="mr-1" /> Architectural Standard
                         </span>
                       </div>
                     </div>
@@ -291,7 +292,7 @@ export default function IndustryModal({ industryId, onClose, onOpenContact }) {
                     {!data.shift?.modernImage && (
                       <div className="flex items-center gap-2 mb-3 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold">
                         <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                        GAMA Architectural Standard
+                        <GamaText className="mr-1" /> Architectural Standard
                       </div>
                     )}
                     <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-light">

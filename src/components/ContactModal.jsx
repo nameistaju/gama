@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Copy, Check, Phone, Mail, MapPin, X, ArrowRight } from 'lucide-react';
+import GamaText from './GamaText';
 
 const serviceOptions = [
   'Website Design & Development',
@@ -113,7 +114,7 @@ export default function ContactModal({ isOpen, onClose, initialService = '' }) {
               className="h-8 sm:h-9 w-auto object-contain"
             />
             <span className="font-black text-lg tracking-tight text-white hidden sm:inline-block">
-              GAMA <span className="text-slate-400 font-normal">TECHNOLOGIES</span>
+              <GamaText /> <span className="text-slate-400 font-normal">TECHNOLOGIES</span>
             </span>
           </div>
 
@@ -483,7 +484,7 @@ export default function ContactModal({ isOpen, onClose, initialService = '' }) {
             ========================================================================= */}
         <footer className="pt-8 pb-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
           <div>
-            © 2026 GAMA Technologies. All rights reserved.
+            © 2026 <GamaText /> Technologies. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
             <button type="button" onClick={() => {}} className="hover:text-slate-300 transition-colors">

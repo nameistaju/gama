@@ -1,39 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ShieldCheck, Zap, Users, Award, BookOpen } from 'lucide-react';
+import GamaText from './GamaText';
 
 export default function ValuesPage({ onOpenContact, onBackHome }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+
   const valuesList = [
     {
       title: 'Leading Change',
       icon: Zap,
+      image: '/Leading Change.png',
       description:
         'Embrace innovation and adapt rapidly to frontiers in technology, AI, and distributed business systems — leading our organization and our customers to outperform and achieve sustainable, compounding growth.',
     },
     {
       title: 'Integrity',
       icon: ShieldCheck,
+      image: '/Integrity.png',
       description:
         'Be authentic, honest, and uncompromisingly transparent in all our interactions and architectures — building lasting trust and enterprise credibility through every commitment we make.',
     },
     {
       title: 'Respect for Individual',
       icon: Users,
+      image: '/Respect for Individual.png',
       description:
         'Value the contribution of each and every team member and client partner — fostering a collaborative atmosphere, honoring diverse perspectives, and celebrating collective success as one unified team.',
     },
     {
       title: 'Excellence',
       icon: Award,
+      image: '/Excellence.png',
       description:
         'Be passionate in striving for the highest architectural and design standards in everything we build — taking full accountability for exceeding expectations in reliability, speed, and durability.',
     },
     {
       title: 'Learning and Sharing',
       icon: BookOpen,
+      image: '/Learning and Sharing.png',
       description:
         'The technology landscape evolves at lightning speed. We continuously learn, seek frontier challenges, take determined action to stay ahead, and generously share our collective engineering knowledge.',
     },
@@ -71,12 +79,12 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
             <span className="text-slate-500">/</span>
             <span className="text-slate-400">Who We Are</span>
             <span className="text-slate-500">/</span>
-            <span className="text-[#38BDF8]">The GAMA Way</span>
+            <span className="text-[#38BDF8]">The <GamaText /> Way</span>
           </div>
 
           {/* Hero Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] max-w-3xl mb-6">
-            Driving Innovation and Success, the GAMA Way
+            Driving Innovation and Success, the <GamaText /> Way
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl font-light leading-relaxed">
@@ -90,26 +98,68 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
       {/* ======================================================== */}
       <section className="w-full bg-white py-16 sm:py-24 lg:py-28 px-6 sm:px-8 lg:px-12 border-b border-slate-100">
         <div className="max-w-4xl mx-auto">
-          {/* Big Editorial Lead Paragraph (matching TCS exact phrasing) */}
+          {/* Big Editorial Lead Paragraph */}
           <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-normal text-slate-900 leading-[1.35] tracking-tight mb-14 sm:mb-20">
-            At GAMA, our values guide our decisions, shape our culture, and inspire us to achieve our shared vision. The GAMA Values are integral to the GAMA Way.
+            At <GamaText />, our values guide our decisions, shape our culture, and inspire us to achieve our shared vision. The <GamaText /> Values are integral to the <GamaText /> Way.
           </h2>
 
-          {/* Values List */}
+          {/* Values List with Interactive Hover Image Preview */}
           <div className="space-y-8 sm:space-y-10">
-            {valuesList.map((item, idx) => (
-              <div
-                key={idx}
-                className="group pb-8 sm:pb-10 border-b border-slate-100 last:border-b-0 transition-colors"
-              >
-                <div className="text-base sm:text-lg leading-relaxed text-slate-700 font-normal">
-                  <span className="text-slate-950 font-bold text-lg sm:text-xl inline-block mr-2 group-hover:text-[#0457DF] transition-colors">
-                    {item.title}:
-                  </span>
-                  <span>{item.description}</span>
+            {valuesList.map((item, idx) => {
+              const isHovered = hoveredIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  className="relative pb-8 sm:pb-10 border-b border-slate-100 last:border-b-0 transition-colors"
+                >
+                  <div className="text-base sm:text-lg leading-relaxed text-slate-700 font-normal">
+                    {/* Interactive Title with Popover Hover Image */}
+                    <div
+                      className="relative inline-block group/val cursor-pointer"
+                      onMouseEnter={() => setHoveredIdx(idx)}
+                      onMouseLeave={() => setHoveredIdx(null)}
+                    >
+                      <span className="text-slate-950 font-bold text-lg sm:text-xl inline-block mr-2 group-hover/val:text-[#0057EC] transition-colors underline decoration-slate-300 decoration-dotted underline-offset-4 group-hover/val:decoration-[#0057EC]">
+                        {item.title}:
+                      </span>
+
+                      {/* Floating image preview positioned above the text */}
+                      <div
+                        className={`pointer-events-none absolute bottom-full left-0 mb-4 z-40 w-72 sm:w-84 p-2 bg-white rounded-2xl shadow-2xl border border-slate-200/90 transition-all duration-300 ease-out origin-bottom-left ${
+                          isHovered
+                            ? 'opacity-100 scale-100 translate-y-0 visible'
+                            : 'opacity-0 scale-95 translate-y-2 invisible'
+                        }`}
+                        style={{
+                          filter: 'drop-shadow(0 20px 25px rgba(15, 23, 42, 0.25))',
+                        }}
+                      >
+                        <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-950">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover object-center"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                          <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                            <span className="text-xs font-bold tracking-wide drop-shadow">
+                              {item.title}
+                            </span>
+                            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-slate-100">
+                              Core Value
+                            </span>
+                          </div>
+                        </div>
+                        {/* Caret pointing down */}
+                        <div className="absolute -bottom-1.5 left-8 w-3.5 h-3.5 bg-white border-r border-b border-slate-200/90 transform rotate-45" />
+                      </div>
+                    </div>
+
+                    <span>{item.description}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

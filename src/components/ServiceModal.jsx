@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, ShieldCheck, Database, Activity, Layers, Terminal } from 'lucide-react';
 import { getServiceBySlugOrName } from '../data/servicesData';
 import { TechChip, TechLogo } from './TechLogo';
+import GamaText from './GamaText';
 
 // Exact brand colors from GAMA logo: Blue, Red, Green, Orange/Yellow
 const PILLAR_STYLES = [
@@ -281,7 +282,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                       <div className="absolute top-3 left-3">
                         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold shadow-md">
                           <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                          GAMA Architectural Standard
+                          <GamaText className="mr-1" /> Architectural Standard
                         </span>
                       </div>
                     </div>
@@ -291,7 +292,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                     {!data.shift?.modernImage && (
                       <div className="flex items-center gap-2 mb-3 text-cyan-300 font-mono text-xs uppercase tracking-wider font-semibold">
                         <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                        GAMA Architectural Standard
+                        <GamaText className="mr-1" /> Architectural Standard
                       </div>
                     )}
                     <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-light">
@@ -509,7 +510,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
 
             <div className="relative z-10 max-w-4xl mx-auto">
               <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-                Partner with GAMA on {data.name}
+                Partner with <GamaText /> on {data.name}
               </h2>
               <p className="text-slate-100 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-normal drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]">
                 Connect directly with our engineering leadership to review system requirements, migration roadmaps, or distributed system designs.

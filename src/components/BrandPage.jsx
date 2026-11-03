@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, ArrowRight, ShieldCheck, Cpu, Layers, Terminal, Compass } from 'lucide-react';
+import GamaText from './GamaText';
 
 export default function BrandPage({ onOpenContact, onBackHome }) {
   useEffect(() => {
@@ -131,13 +132,13 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
 
             <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
               <p>
-                In an era dominated by superficial technological fads and brittle software wrappers, GAMA was established with a singular, resolute conviction: <strong className="text-white font-semibold">great digital systems are built to endure.</strong>
+                In an era dominated by superficial technological fads and brittle software wrappers, <GamaText /> was established with a singular, resolute conviction: <strong className="text-white font-semibold">great digital systems are built to endure.</strong>
               </p>
               <p>
                 Whether modernizing high-frequency financial ledgers, orchestrating private-boundary artificial intelligence, or automating multi-modal supply chains, we engineer from the kernel up. We believe software architecture is a long-term civic trust — where milliseconds matter, downtime is unacceptable, and failure is not an option.
               </p>
               <p>
-                To our partners, GAMA is not a transactional IT contractor. We are co-architects who stand beside you through explosive scale, regulatory shifts, and technical transformations — building proprietary technology assets that compound in value for decades to come.
+                To our partners, <GamaText /> is not a transactional IT contractor. We are co-architects who stand beside you through explosive scale, regulatory shifts, and technical transformations — building proprietary technology assets that compound in value for decades to come.
               </p>
             </div>
           </div>
@@ -157,7 +158,7 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
               The Symbol of Convergence
             </h2>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-              The GAMA mark represents the convergence of complex enterprise realities into coherent, deterministic, and elegant software systems.
+              The <GamaText /> mark represents the convergence of complex enterprise realities into coherent, deterministic, and elegant software systems.
             </p>
           </div>
 
@@ -214,7 +215,7 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
           </div>
 
           <blockquote className="text-xl sm:text-2xl lg:text-3xl text-white font-light leading-relaxed tracking-tight mb-8">
-            Building software for enterprise scale is not about chasing the loudest buzzwords. It is about understanding the physics of distributed data, respecting hardware boundaries, and delivering deterministic performance when millions of transactions depend on it. That is the GAMA promise.
+            Building software for enterprise scale is not about chasing the loudest buzzwords. It is about understanding the physics of distributed data, respecting hardware boundaries, and delivering deterministic performance when millions of transactions depend on it. That is the <GamaText /> promise.
           </blockquote>
 
           <div className="flex items-center gap-4 pt-6 border-t border-white/10">
@@ -225,7 +226,7 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
             </div>
             <div>
               <div className="text-base font-bold text-white tracking-wide">
-                GAMA Systems Engineering
+                <GamaText /> Systems Engineering
               </div>
               <div className="text-xs sm:text-sm text-slate-400">
                 Architectural Leadership & Founding Team
@@ -245,7 +246,7 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
               OUR COMMITMENTS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-              The GAMA Engineering Standard
+              The <GamaText /> Engineering Standard
             </h2>
             <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
               Four non-negotiable operational principles that govern every platform we architect and every partnership we form.
@@ -309,7 +310,7 @@ export default function BrandPage({ onOpenContact, onBackHome }) {
 
         <div className="relative z-10 max-w-3xl mx-auto">
           <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-            Build Tomorrow With GAMA
+            Build Tomorrow With <GamaText />
           </h3>
           <p className="text-base sm:text-lg text-slate-100 font-normal mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]">
             Partner directly with our systems engineering team to architect modern, resilient enterprise platforms.

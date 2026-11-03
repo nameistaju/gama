@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { Phone, ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
+import GamaText from './GamaText';
 
 export default function Navbar({ onOpenContact, onSelectIndustry, onSelectService, currentView, onNavigate, experienceProgress = 0 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -485,7 +486,7 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
                       Infrastructure to Intelligence
                     </h3>
                     <p className="text-xs lg:text-[13px] text-slate-300 font-normal leading-relaxed mb-6">
-                      Navigate the AI era with confidence. GAMA helps you turn AI into a strategic partner that empowers talent, reimagines processes, and accelerates business transformation.
+                      Navigate the AI era with confidence. <GamaText /> helps you turn AI into a strategic partner that empowers talent, reimagines processes, and accelerates business transformation.
                     </p>
                   </div>
                   <button

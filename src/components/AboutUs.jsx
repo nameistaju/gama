@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import TextHighlight from './ui/text-highlight';
+import GamaText from './GamaText';
 
 export default function AboutUs({ onOpenContact }) {
   const scrollToContact = () => {
@@ -57,7 +58,7 @@ export default function AboutUs({ onOpenContact }) {
             </p>
 
             <p className="text-sm sm:text-base text-slate-400 font-normal leading-relaxed mb-8 max-w-xl">
-              Founded on the belief that software should be engineered with architectural discipline and artistic precision, GAMA partners with ambitious enterprises to build platforms that withstand tomorrow's scale.
+              Founded on the belief that software should be engineered with architectural discipline and artistic precision, <GamaText /> partners with ambitious enterprises to build platforms that withstand tomorrow's scale.
             </p>
 
             {/* Discover the Difference CTA Button */}

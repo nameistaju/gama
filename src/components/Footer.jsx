@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Phone } from 'lucide-react';
+import GamaText from './GamaText';
 
 export default function Footer({ onOpenContact, onNavigate }) {
   const scrollToTop = () => {
@@ -39,7 +40,7 @@ export default function Footer({ onOpenContact, onNavigate }) {
               />
               <div className="flex flex-col text-left leading-none">
                 <span className="font-sans font-black text-2xl sm:text-[26px] tracking-tight text-white leading-none">
-                  GAMA
+                  <GamaText />
                 </span>
                 <span className="text-[10px] sm:text-[11px] tracking-[0.24em] font-semibold text-slate-300 uppercase mt-1">
                   TECHNOLOGIES
@@ -96,7 +97,7 @@ export default function Footer({ onOpenContact, onNavigate }) {
 
         {/* Bottom Bar: Divider, Copyright & Back to Top */}
         <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400 font-sans">
-          <span>© 2026 GAMA Technologies. All rights reserved.</span>
+          <span>© 2026 <GamaText /> Technologies. All rights reserved.</span>
           <button
             onClick={scrollToTop}
             className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors cursor-pointer group"

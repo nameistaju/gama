@@ -13,6 +13,7 @@ import {
   Activity,
   Zap
 } from "lucide-react";
+import GamaText from "./GamaText";
 
 // ==========================================
 // Circle Node Component for Magic UI Beams (Light Theme)
@@ -516,7 +517,7 @@ export default function AIWorkforceSection({ onOpenContact }) {
               }}
             />
             <p className="text-xs sm:text-sm text-slate-500 max-w-md">
-              GAMA natively interconnects with your preferred tools, data warehouses, and messaging services.
+              <GamaText /> natively interconnects with your preferred tools, data warehouses, and messaging services.
             </p>
           </div>
           <div className="w-full mt-auto">
@@ -644,7 +645,7 @@ export default function AIWorkforceSection({ onOpenContact }) {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="font-sans text-xs xs:text-sm sm:text-lg text-slate-600 max-w-2xl mt-2.5 xs:mt-3 sm:mt-5 leading-relaxed font-normal"
           >
-            GAMA empowers organizations to tackle data bottlenecks, orchestrate autonomous multi-agent pipelines, and build resilient digital products with ease.
+            <GamaText /> empowers organizations to tackle data bottlenecks, orchestrate autonomous multi-agent pipelines, and build resilient digital products with ease.
           </motion.p>
         </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import GamaText from './GamaText';
 
 /**
  * GAMA Brand Logo & Wordmark
@@ -67,9 +68,10 @@ export default function GamaLogo({
       <div className="flex flex-col text-left leading-none">
         <span
           className="font-display font-black tracking-tight text-xl sm:text-2xl md:text-[26px] leading-[0.9]"
-          style={{ color: color === 'currentColor' ? 'inherit' : color }}
         >
-          GAMA
+          {color === 'currentColor' ? <GamaText /> : (
+            <span style={{ color }}>GAMA</span>
+          )}
         </span>
         {showTagline && (
           <span
