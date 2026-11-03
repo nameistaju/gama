@@ -160,7 +160,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           {/* ======================================================== */}
           {/* 1. HERO SECTION WITH IMAGE BACKGROUND (TCS Inspo)         */}
           {/* ======================================================== */}
-          <section className="relative w-full min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] flex items-center px-6 sm:px-12 md:px-16 pt-16 sm:pt-20 pb-16 sm:pb-20 overflow-hidden border-b border-white/10">
+          <section className="relative w-full min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] flex items-center justify-center px-6 sm:px-12 md:px-16 pt-16 sm:pt-20 pb-16 sm:pb-20 overflow-hidden border-b border-white/10 text-center">
             {/* Background Photography Image */}
             <div className="absolute inset-0 z-0">
               <img
@@ -170,19 +170,19 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                 loading="eager"
               />
               {/* High-end cinematic dark overlays for optimal readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-transparent to-black/40" />
+              <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-black/40 to-black/60" />
             </div>
 
             {/* Clean Minimal Hero Content matching Reference Image */}
-            <div className="relative z-10 max-w-3xl drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+            <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
               {/* Breadcrumb matching TCS: SERVICE / CLOUD */}
               <div className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-slate-300 mb-4 sm:mb-6">
                 SERVICE / {data.name.toUpperCase()}
               </div>
 
               {/* Bold Headline matching TCS */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-5 sm:mb-6">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-5 sm:mb-6 max-w-3xl">
                 {data.heroTitle || `${data.name} next: Cloud-native, distributed, multi-region`}
               </h1>
 
@@ -192,7 +192,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
               </p>
 
               {/* Action Trigger */}
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-4">
                 <button
                   onClick={() => {
                     onOpenContact?.(data.name);
@@ -219,8 +219,8 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           {/* 2. THE MODERNIZATION PARADIGM                            */}
           {/* ======================================================== */}
           <section className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10 bg-[#070e1a]/60">
-            <div className="max-w-5xl">
-              <div className="mb-8">
+            <div className="max-w-5xl mx-auto">
+              <div className="mb-10 text-center max-w-2xl mx-auto">
                 <span className="text-xs font-mono uppercase tracking-widest text-cyan-400">
                   SYSTEM EVOLUTION
                 </span>
@@ -308,19 +308,17 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           {/* 3. CORE ENGINEERING PILLARS (WHAT WE DO ACCORDION UI)    */}
           {/* ======================================================== */}
           <section id="service-pillars" className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10">
-            <div className="max-w-5xl">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-8 sm:mb-10 pb-4">
-                <div>
-                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0057EC] font-bold">
-                    TECHNICAL ARCHITECTURE
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-                    Core Engineering Pillars
-                  </h2>
-                  <p className="text-sm text-slate-400 mt-2">
-                    Four foundational technical capabilities engineered for deterministic reliability and scale.
-                  </p>
-                </div>
+            <div className="max-w-5xl mx-auto">
+              <div className="mb-10 text-center max-w-2xl mx-auto">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0057EC] font-bold">
+                  TECHNICAL ARCHITECTURE
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+                  Core Engineering Pillars
+                </h2>
+                <p className="text-sm text-slate-400 mt-2">
+                  Four foundational technical capabilities engineered for deterministic reliability and scale.
+                </p>
               </div>
 
               {/* Stacked Accordion with GAMA Logo Colors (Blue, Red, Green, Orange/Yellow) */}
@@ -402,8 +400,8 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           {/* 4. REFERENCE TECHNOLOGY STACK                            */}
           {/* ======================================================== */}
           <section className="px-6 sm:px-12 md:px-16 py-14 sm:py-16 border-b border-white/10 bg-[#040810]">
-            <div className="max-w-5xl">
-              <div className="mb-8">
+            <div className="max-w-5xl mx-auto">
+              <div className="mb-10 text-center max-w-2xl mx-auto">
                 <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">
                   SYSTEM FOUNDATION
                 </span>
@@ -482,7 +480,7 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
               </div>
 
               {/* Core Stack Chips */}
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <span className="text-xs uppercase font-mono text-slate-400 mr-2 tracking-wider">Specific Stack:</span>
                 {data.techStack.map((tech) => (
                   <TechChip key={tech} name={tech} />
