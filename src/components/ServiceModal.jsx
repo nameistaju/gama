@@ -371,71 +371,71 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
               {/* Categorized Stack Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-3">
                     <Terminal className="w-3.5 h-3.5" />
                     Runtime & Logic
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
-                    <div className="flex items-center -space-x-1">
-                      <TechLogo name="Rust" className="w-4 h-4" />
-                      <TechLogo name="Go" className="w-4 h-4 ml-1" />
-                      <TechLogo name="Python" className="w-4 h-4 ml-1" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg bg-white/[0.04] border border-white/10 shrink-0">
+                      <TechLogo name="Rust" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="Go" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="Python" className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span>Rust / Go / Python</span>
+                    <span className="text-sm font-semibold text-white">Rust / Go / Python</span>
                   </div>
                   <div className="text-xs text-slate-400 mt-1">Memory safety, zero-copy serialization, high concurrency</div>
                 </div>
 
                 <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-3">
                     <Activity className="w-3.5 h-3.5" />
                     Data & Telemetry
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
-                    <div className="flex items-center -space-x-1">
-                      <TechLogo name="Apache Kafka" className="w-4 h-4" />
-                      <TechLogo name="Prometheus" className="w-4 h-4 ml-1" />
-                      <TechLogo name="eBPF" className="w-4 h-4 ml-1" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg bg-white/[0.04] border border-white/10 shrink-0">
+                      <TechLogo name="Apache Kafka" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="Prometheus" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="eBPF" className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span>Kafka / Prometheus / eBPF</span>
+                    <span className="text-sm font-semibold text-white">Kafka / Prom / eBPF</span>
                   </div>
                   <div className="text-xs text-slate-400 mt-1">Sub-second event propagation with low system overhead</div>
                 </div>
 
                 <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-3">
                     <Database className="w-3.5 h-3.5" />
                     Storage & Lakehouse
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
-                    <div className="flex items-center -space-x-1">
-                      <TechLogo name="ClickHouse" className="w-4 h-4" />
-                      <TechLogo name="Apache Iceberg" className="w-4 h-4 ml-1" />
-                      <TechLogo name="PostgreSQL" className="w-4 h-4 ml-1" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg bg-white/[0.04] border border-white/10 shrink-0">
+                      <TechLogo name="ClickHouse" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="Apache Iceberg" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="PostgreSQL" className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span>ClickHouse / Iceberg / PG</span>
+                    <span className="text-sm font-semibold text-white">ClickHouse / Iceberg</span>
                   </div>
                   <div className="text-xs text-slate-400 mt-1">Columnar analytics and ACID transactional guarantees</div>
                 </div>
 
                 <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-colors">
-                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-2.5">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase mb-3">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     Security & Mesh
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white mb-1">
-                    <div className="flex items-center -space-x-1">
-                      <TechLogo name="WireGuard" className="w-4 h-4" />
-                      <TechLogo name="Istio" className="w-4 h-4 ml-1" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-2 p-1.5 px-2.5 rounded-lg bg-white/[0.04] border border-white/10 shrink-0">
+                      <TechLogo name="WireGuard" className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <TechLogo name="Istio" className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span>mTLS / WireGuard / Istio</span>
+                    <span className="text-sm font-semibold text-white">WireGuard / Istio</span>
                   </div>
                   <div className="text-xs text-slate-400 mt-1">Zero-trust cryptographic isolation and strict micro-segmentation</div>
                 </div>
               </div>
 
               {/* Core Stack Chips */}
-              <div className="flex flex-wrap items-center gap-2.5">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs uppercase font-mono text-slate-400 mr-2 tracking-wider">Specific Stack:</span>
                 {data.techStack.map((tech) => (
                   <TechChip key={tech} name={tech} />

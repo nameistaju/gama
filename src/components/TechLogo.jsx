@@ -782,9 +782,9 @@ export function TechLogo({ name, className = 'w-4 h-4' }) {
 export function TechChip({ name, className = '' }) {
   return (
     <span
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.09] border border-white/10 hover:border-cyan-500/30 text-xs font-mono font-medium text-slate-200 transition-all duration-200 shadow-sm group ${className}`}
+      className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-cyan-500/40 text-xs sm:text-sm font-mono font-medium text-slate-100 transition-all duration-200 shadow-sm group hover:-translate-y-0.5 ${className}`}
     >
-      <TechLogo name={name} className="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" />
+      <TechLogo name={name} className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 transition-transform duration-200 group-hover:scale-115" />
       <span>{name}</span>
     </span>
   );
