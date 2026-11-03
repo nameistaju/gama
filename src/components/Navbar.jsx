@@ -283,10 +283,11 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
       >
         <div
           className={`w-full px-5 md:px-8 py-3.5 sm:py-4 pointer-events-auto transition-all duration-300 ${
-            isScrolled
-              ? 'bg-[#060913]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.65)]'
+            isScrolled || activeMegaMenu !== null
+              ? 'bg-[#060913] backdrop-blur-xl border-b border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.85)]'
               : 'bg-transparent border-b border-transparent shadow-none backdrop-blur-none'
           }`}
+          style={isScrolled || activeMegaMenu !== null ? { backgroundColor: '#060913' } : undefined}
         >
           <div ref={megaMenuContainerRef} className="relative max-w-7xl mx-auto">
             <nav className="flex items-center justify-between">
@@ -474,7 +475,10 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
               }}
               onMouseLeave={handleMegaMenuClose}
             >
-              <div className="w-full rounded-3xl bg-[#090D16]/98 border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.85)] backdrop-blur-2xl p-7 lg:p-8 text-white grid grid-cols-12 gap-6 lg:gap-8 animate-fadeIn">
+              <div
+                className="w-full rounded-3xl bg-[#060913] border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.95)] p-7 lg:p-8 text-white grid grid-cols-12 gap-6 lg:gap-8 animate-fadeIn"
+                style={{ backgroundColor: '#060913' }}
+              >
                 
                 {/* Col 1: Infrastructure to Intelligence overview */}
                 <div className="col-span-4 flex flex-col justify-between border-r border-white/10 pr-6">
@@ -603,7 +607,10 @@ export default function Navbar({ onOpenContact, onSelectIndustry, onSelectServic
               }}
               onMouseLeave={handleMegaMenuClose}
             >
-              <div className="w-full rounded-3xl bg-[#090D16]/98 border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.85)] backdrop-blur-2xl p-7 lg:p-8 text-white grid grid-cols-12 gap-8 animate-fadeIn">
+              <div
+                className="w-full rounded-3xl bg-[#060913] border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.95)] p-7 lg:p-8 text-white grid grid-cols-12 gap-8 animate-fadeIn"
+                style={{ backgroundColor: '#060913' }}
+              >
                 
                 {/* Col 1: About Us Manifesto */}
                 <div className="col-span-5 flex flex-col justify-between border-r border-white/10 pr-6">
