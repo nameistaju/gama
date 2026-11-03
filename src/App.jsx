@@ -26,7 +26,12 @@ const ServiceModal = lazy(() => import('./components/ServiceModal'));
 const ContactModal = lazy(() => import('./components/ContactModal'));
 
 export default function App() {
-  const [contactOpen, setContactOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#contact') {
+      return true;
+    }
+    return false;
+  });
   // Intro sequence: 'loader' -> 'video' -> 'ready' (skip if direct deep link hash or already viewed this session)
   const [introStep, setIntroStep] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -81,6 +86,8 @@ export default function App() {
         const slug = hash.replace('#service/', '');
         setSelectedServiceModal(slug);
         setSelectedIndustry(null);
+      } else if (hash === '#contact') {
+        setContactOpen(true);
       } else if (hash === '' || hash === '#home') {
         setCurrentView('home');
         setSelectedIndustry(null);
@@ -403,7 +410,12 @@ export default function App() {
         <Suspense fallback={null}>
           <ContactModal
             isOpen={contactOpen}
-            onClose={() => setContactOpen(false)}
+            onClose={() => {
+              setContactOpen(false);
+              if (window.location.hash === '#contact') {
+                window.history.pushState(null, '', window.location.pathname);
+              }
+            }}
             initialService={selectedService}
           />
         </Suspense>

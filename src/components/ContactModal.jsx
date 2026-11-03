@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Copy, Check, Phone, Mail, MapPin, X, ArrowRight } from 'lucide-react';
 import GamaText from './GamaText';
+import TextHighlight from './ui/text-highlight';
 
 const serviceOptions = [
   'Website Design & Development',
@@ -107,15 +108,12 @@ export default function ContactModal({ isOpen, onClose, initialService = '' }) {
             TOP NAVBAR: BRAND LOGO + CLOSE BUTTON
             ========================================================================= */}
         <header className="flex items-center justify-between pb-8 sm:pb-12 border-b border-slate-800/80">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center">
             <img
-              src="/gama-logo.png"
-              alt="GAMA Logo"
-              className="h-8 sm:h-9 w-auto object-contain"
+              src="/gama_white_wordmark_transparent.png"
+              alt="GAMA Technologies"
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none"
             />
-            <span className="font-black text-lg tracking-tight text-white hidden sm:inline-block">
-              <GamaText /> <span className="text-slate-400 font-normal">TECHNOLOGIES</span>
-            </span>
           </div>
 
           <button
@@ -137,7 +135,9 @@ export default function ContactModal({ isOpen, onClose, initialService = '' }) {
             <div className="max-w-3xl pb-8 sm:pb-12">
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.0] sm:leading-[0.96]">
                 Let&apos;s work <br />
-                <span className="text-white">together!</span>
+                <TextHighlight color="#fde047" delay={0.2}>
+                  <span className="text-white">together!</span>
+                </TextHighlight>
               </h1>
               <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-slate-400 font-normal leading-relaxed max-w-xl">
                 Let us help you become even greater at what you do. Fill out the following form and we will get back to you in the next 24 hours.
@@ -331,14 +331,21 @@ export default function ContactModal({ isOpen, onClose, initialService = '' }) {
                     />
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Submit Button with 4-Color GAMA Brand Gradient */}
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="group inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full border border-slate-600 hover:border-white text-white hover:bg-white hover:text-[#0A0E1A] transition-all duration-300 font-sans text-xs sm:text-sm font-bold tracking-widest uppercase cursor-pointer shadow-xl hover:shadow-[#0457DF]/20 active:scale-[0.98]"
+                      className="group relative inline-flex items-center gap-3 px-9 sm:px-11 py-4 sm:py-4.5 rounded-full text-white font-sans text-xs sm:text-sm font-bold tracking-widest uppercase cursor-pointer shadow-xl transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,87,236,0.45)] hover:scale-[1.02] active:scale-[0.98] overflow-hidden border border-white/20"
+                      style={{
+                        background: 'linear-gradient(135deg, #0057EC 0%, #E01119 33%, #FCA602 66%, #04CE7A 100%)',
+                      }}
                     >
-                      <span>SEND MESSAGE</span>
-                      <span className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-bold text-sm">
+                      {/* Subtle hover shimmer */}
+                      <span className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300 pointer-events-none" />
+                      <span className="relative z-10 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+                        SEND MESSAGE
+                      </span>
+                      <span className="relative z-10 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform font-bold text-sm drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
                         ↗
                       </span>
                     </button>
