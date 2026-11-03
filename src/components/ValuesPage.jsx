@@ -117,36 +117,38 @@ export default function ValuesPage({ onOpenContact, onBackHome }) {
       {/* ======================================================== */}
       {/* 3. DARK BOTTOM CTA SECTION (bg1.png Ribbon Background)   */}
       {/* ======================================================== */}
-      <section className="relative w-full text-white py-24 sm:py-32 px-6 sm:px-8 text-center overflow-hidden border-t border-white/10">
-        {/* Background Image: bg1.png with cinematic dark overlay */}
-        <div className="absolute inset-0 z-0">
+      <section className="relative w-full text-white py-28 sm:py-36 px-6 sm:px-8 text-center overflow-hidden border-t border-white/10 bg-[#02050b] min-h-[460px] flex items-center justify-center">
+        {/* Background Image: bg1.png with full logo visibility */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none">
           <img
             src="/bg1.png"
             alt="GAMA Ribbon Core"
-            className="w-full h-full object-cover object-center opacity-45 scale-105"
+            className="w-full h-full max-w-[1200px] object-contain object-center opacity-90 scale-105 sm:scale-115"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-[#050B14]/80 to-[#02050b]" />
-          <div className="absolute inset-0 bg-black/30" />
+          {/* Subtle edge blend into section bg */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-transparent to-[#02050b]/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#02050b] via-transparent to-[#02050b]" />
+          <div className="absolute inset-0 bg-black/35" />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3 drop-shadow-lg">
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
             Unlock Enterprise Intelligence
           </h3>
-          <p className="text-base sm:text-lg text-slate-200 font-light mb-8 sm:mb-10 drop-shadow-md">
+          <p className="text-base sm:text-lg text-slate-100 font-normal mb-8 sm:mb-10 drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]">
             Reimagine your future.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => onOpenContact('Enterprise Consultation')}
-              className="px-8 py-3.5 rounded-full bg-white text-[#0F172A] hover:bg-slate-100 font-bold text-sm transition-all duration-200 shadow-xl cursor-pointer hover:scale-105 active:scale-95"
+              className="px-8 py-3.5 rounded-full bg-white text-[#0F172A] hover:bg-slate-100 font-bold text-sm transition-all duration-200 shadow-2xl cursor-pointer hover:scale-105 active:scale-95"
             >
               Connect with us
             </button>
             <button
               onClick={() => onOpenContact('Careers & Talent')}
-              className="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 backdrop-blur-md transition-colors cursor-pointer"
+              className="px-8 py-3.5 rounded-full bg-black/40 hover:bg-black/60 text-white font-medium text-sm border border-white/25 backdrop-blur-md transition-colors cursor-pointer"
             >
               Join our team
             </button>

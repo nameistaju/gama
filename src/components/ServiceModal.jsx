@@ -493,23 +493,25 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
           {/* ======================================================== */}
           {/* 5. ENTERPRISE CONSULTATION CALL-TO-ACTION                */}
           {/* ======================================================== */}
-          <section className="relative px-6 sm:px-12 md:px-16 py-20 sm:py-28 overflow-hidden border-t border-white/10 text-center">
-            {/* Background Image: bg1.png with cinematic dark overlay */}
-            <div className="absolute inset-0 z-0">
+          <section className="relative px-6 sm:px-12 md:px-16 py-24 sm:py-32 min-h-[440px] flex items-center justify-center overflow-hidden border-t border-white/10 text-center bg-[#02050b]">
+            {/* Background Image: bg1.png with full logo visibility */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
               <img
                 src="/bg1.png"
                 alt="GAMA Ribbon Core"
-                className="w-full h-full object-cover object-center opacity-45 scale-105"
+                className="w-full h-full max-w-[1200px] object-contain object-center opacity-90 scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-[#050B14]/80 to-[#02050b]" />
-              <div className="absolute inset-0 bg-black/30" />
+              {/* Subtle top & bottom edge blend into section bg */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#02050b] via-transparent to-[#02050b]/90 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#02050b] via-transparent to-[#02050b] pointer-events-none" />
+              <div className="absolute inset-0 bg-black/35 pointer-events-none" />
             </div>
 
             <div className="relative z-10 max-w-4xl mx-auto">
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-lg">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
                 Partner with GAMA on {data.name}
               </h2>
-              <p className="text-slate-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light drop-shadow-md">
+              <p className="text-slate-100 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-normal drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]">
                 Connect directly with our engineering leadership to review system requirements, migration roadmaps, or distributed system designs.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -517,13 +519,13 @@ export default function ServiceModal({ serviceId, onClose, onOpenContact }) {
                   onClick={() => {
                     onOpenContact?.(data.name);
                   }}
-                  className="px-8 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#0F172A] font-bold text-sm transition-all duration-200 shadow-xl cursor-pointer hover:scale-105 active:scale-95"
+                  className="px-8 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#0F172A] font-bold text-sm transition-all duration-200 shadow-2xl cursor-pointer hover:scale-105 active:scale-95"
                 >
                   Schedule Architectural Review
                 </button>
                 <button
                   onClick={onClose}
-                  className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 backdrop-blur-md transition-colors cursor-pointer"
+                  className="px-6 py-3.5 rounded-full bg-black/40 hover:bg-black/60 text-white font-medium text-sm border border-white/25 backdrop-blur-md transition-colors cursor-pointer"
                 >
                   Close Specification
                 </button>
