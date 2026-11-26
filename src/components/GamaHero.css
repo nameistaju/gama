@@ -1,0 +1,442 @@
+/* GAMA Technologies Hero Section - Cosmic Butterfly Design */
+
+.gm-hero {
+  --u: calc(100vw / 1672);
+  --px: 0px;
+  --py: 0px;
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  height: max(100dvh, calc(var(--u) * 941));
+  overflow: hidden;
+  color: #fff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 34%, #0d3aa6 0%, rgba(10, 40, 130, 0.55) 45%, transparent 75%),
+    radial-gradient(ellipse 35% 30% at 92% 100%, rgba(255, 120, 30, 0.35), transparent 70%),
+    radial-gradient(ellipse 35% 30% at 8% 95%, rgba(70, 70, 255, 0.35), transparent 70%),
+    linear-gradient(180deg, #04103f 0%, #030b2e 60%, #020720 100%);
+}
+
+.gm-hero *, .gm-hero *::before, .gm-hero *::after {
+  box-sizing: border-box;
+}
+
+/* Background Cosmic SVG Waves & Radar Rings */
+.gm-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: translate(calc(var(--px) * 0.3), calc(var(--py) * 0.3));
+  transition: transform 0.15s ease-out;
+}
+
+/* Twinkling Stars */
+.gm-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #9fd0ff;
+  box-shadow: 0 0 8px #6db4ff;
+  pointer-events: none;
+  animation: gm-twinkle 3.5s ease-in-out infinite;
+}
+
+@keyframes gm-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.95; transform: scale(1.3); }
+}
+
+/* Floating Glassmorphism Service Chips */
+.gm-chip {
+  position: absolute;
+  z-index: 3;
+  height: calc(var(--u) * 55);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 16);
+  padding: 0 calc(var(--u) * 24) 0 calc(var(--u) * 26);
+  font-size: calc(var(--u) * 17);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: pre-line;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(40, 100, 230, 0.38), rgba(20, 50, 140, 0.3));
+  border: 1px solid rgba(120, 175, 255, 0.35);
+  box-shadow: 0 0 26px rgba(40, 110, 255, 0.35), inset 0 0 18px rgba(90, 150, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: gm-bob 6s ease-in-out infinite;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.gm-chip:hover {
+  border-color: rgba(160, 205, 255, 0.7);
+  box-shadow: 0 0 35px rgba(60, 140, 255, 0.6), inset 0 0 22px rgba(120, 180, 255, 0.25);
+  transform: translateY(calc(var(--u) * -4)) scale(1.03);
+}
+
+.gm-chip-ico {
+  width: calc(var(--u) * 28);
+  height: calc(var(--u) * 28);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gm-chip-ico svg {
+  width: 100%;
+  height: 100%;
+}
+
+.c-it    { left: 18.6%; top: 18.3%; width: calc(var(--u) * 178); }
+.c-ai    { left: 15.2%; top: 32.8%; width: calc(var(--u) * 184); }
+.c-pe    { left: 20%;   top: 44.8%; width: calc(var(--u) * 180); height: calc(var(--u) * 60); animation-delay: -2s; }
+.c-web   { left: 70.6%; top: 18.8%; width: calc(var(--u) * 222); animation-delay: -1s; }
+.c-cloud { left: 70.8%; top: 35%;   width: calc(var(--u) * 216); animation-delay: -3s; }
+.c-data  { left: 68.8%; top: 44.8%; width: calc(var(--u) * 164); height: calc(var(--u) * 60); animation-delay: -4s; }
+
+@keyframes gm-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(var(--u) * -7)); }
+}
+
+/* Butterfly in the Center */
+.gm-butterfly-wrap {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 9%;
+  transform: translateX(-50%) translate(calc(var(--px) * 0.7), calc(var(--py) * 0.7));
+  width: calc(var(--u) * 440);
+  max-width: 440px;
+  pointer-events: none;
+  transition: transform 0.15s ease-out;
+}
+
+.gm-glow-layer {
+  position: absolute;
+  inset: -15%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 35% 50%, rgba(0, 160, 255, 0.45) 0%, transparent 60%),
+    radial-gradient(circle at 65% 50%, rgba(0, 230, 160, 0.4) 0%, transparent 60%);
+  filter: blur(28px);
+  animation: gm-glowpulse 2.4s ease-in-out infinite;
+}
+
+@keyframes gm-glowpulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.94); }
+}
+
+.gm-body-bob {
+  position: relative;
+  width: 100%;
+  animation: gm-hover 3s ease-in-out infinite;
+}
+
+@keyframes gm-hover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.gm-butterfly-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 28px rgba(0, 180, 255, 0.6)) drop-shadow(0 0 45px rgba(0, 240, 160, 0.35));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Copy & Typography */
+.gm-eyebrow {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 51.4%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 14);
+  white-space: nowrap;
+  font-size: calc(var(--u) * 14.5);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.gm-eyebrow i {
+  display: block;
+  width: calc(var(--u) * 32);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.gm-title {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 53.2%;
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: calc(var(--u) * 56);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-shadow: 0 4px 30px rgba(0, 10, 60, 0.6);
+}
+
+.gm-title em {
+  font-style: italic;
+  background: linear-gradient(90deg, #8a6bff 0%, #3fa0ff 22%, #35e0e8 42%, #5df08a 62%, #d8f04a 85%, #ffd84a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.06em;
+}
+
+.gm-sub {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 72.4%;
+  margin: 0;
+  text-align: center;
+  font-size: calc(var(--u) * 18);
+  line-height: 1.42;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 0 20px;
+}
+
+/* Action Buttons */
+.gm-cta {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 80.8%;
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--u) * 24);
+}
+
+.gm-btn {
+  height: calc(var(--u) * 56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--u) * 12);
+  border-radius: 999px;
+  font-size: calc(var(--u) * 18);
+  font-weight: 600;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.gm-btn:hover {
+  transform: translateY(-2px);
+}
+
+.gm-btn-solid {
+  padding: 0 calc(var(--u) * 28);
+  background: #ffffff;
+  color: #0a1230 !important;
+  box-shadow: 0 8px 30px rgba(120, 170, 255, 0.25);
+}
+
+.gm-btn-solid:hover {
+  background: #f1f5f9;
+  box-shadow: 0 12px 35px rgba(120, 170, 255, 0.38);
+}
+
+.gm-btn-ghost {
+  padding: 0 calc(var(--u) * 26);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.gm-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Scroll to Explore Indicator */
+.gm-scroll {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 89.6%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 6);
+  font-size: calc(var(--u) * 13);
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.gm-scroll:hover {
+  opacity: 1;
+}
+
+.gm-scroll svg:last-child {
+  animation: gm-nudge 1.6s ease-in-out infinite;
+}
+
+@keyframes gm-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* Tablet Adaptations (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gm-hero {
+    --u: calc(100vw / 1100);
+    height: max(100dvh, 880px);
+  }
+  .gm-butterfly-wrap {
+    width: 320px;
+    top: 9%;
+  }
+  .c-it    { left: 6%;  top: 15%; }
+  .c-ai    { left: 3%;  top: 28%; }
+  .c-pe    { left: 6%;  top: 41%; }
+  .c-web   { left: 74%; top: 15%; }
+  .c-cloud { left: 74%; top: 28%; }
+  .c-data  { left: 74%; top: 41%; }
+  .gm-title {
+    font-size: 38px;
+    top: 52%;
+  }
+  .gm-sub {
+    font-size: 15px;
+    top: 71%;
+  }
+  .gm-cta {
+    top: 80%;
+  }
+  .gm-btn {
+    height: 48px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile Screen Adaptations (< 768px) */
+@media (max-width: 767px) {
+  .gm-hero {
+    min-height: 100dvh;
+    height: auto;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .gm-chip,
+  .gm-scroll,
+  .gm-star:nth-child(n+9) {
+    display: none;
+  }
+
+  .gm-butterfly-wrap {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+    width: 250px;
+    margin: 10px auto 16px auto;
+  }
+
+  .gm-eyebrow {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+  }
+  .gm-eyebrow i {
+    width: 18px;
+  }
+
+  .gm-title {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    font-size: 26px;
+    line-height: 1.15;
+    padding: 0 16px;
+    margin-bottom: 14px;
+  }
+
+  .gm-sub {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    font-size: 13.5px;
+    line-height: 1.45;
+    padding: 0 20px;
+    margin-bottom: 24px;
+    max-width: 360px;
+  }
+
+  .gm-cta {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .gm-btn {
+    height: 44px;
+    font-size: 14px;
+    padding: 0 20px;
+  }
+
+  .gm-btn-solid {
+    width: auto;
+    min-width: 175px;
+  }
+
+  .gm-btn-ghost {
+    width: auto;
+    min-width: 155px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-body-bob,
+  .gm-chip,
+  .gm-star,
+  .gm-glow-layer,
+  .gm-scroll svg {
+    animation: none !important;
+  }
+}

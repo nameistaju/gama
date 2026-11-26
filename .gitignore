@@ -27,3 +27,5 @@ dist-ssr
 scratch/
 snap.png
 fullpage_snap.png
+.vercel
+
